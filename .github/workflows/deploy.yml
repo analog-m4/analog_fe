@@ -1,5 +1,6 @@
 name: Analog
-on: [ push, pull_request ]
+on: [push, pull_request]
+
 jobs:
   vercel:
     runs-on: ubuntu-latest
@@ -14,12 +15,9 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-        
-      - name: Build
-        run: npm run build      
 
-      # - name: Run Tests Locally
-      #   run: npm run test
+      - name: Build
+        run: npm run build
 
       - name: Deploy to Staging
         id: deploy-vercel-staging
@@ -28,20 +26,15 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_TL_ENGINE }}
-          scope: ${{ secrets.VERCEL_ORG_ID }} 
-
-      # - name: Run Tests Against Vercel
-      #   env: 
-      #     VERCEL_URL: ${{ steps.deploy-vercel-staging.outputs.preview-url }}
-      #   run: npm run test 
+          scope: ${{ secrets.VERCEL_ORG_ID }}
 
       - name: Deploy to Production
         uses: amondnet/vercel-action@v20
         id: deploy-vercel-production
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_TL_ENGINE }}
-          vercel-args: '--prod' 
-          scope: ${{ secrets.VERCEL_ORG_ID }} 
+          vercel-args: '--prod'
+          scope: ${{ secrets.VERCEL_ORG_ID }}
