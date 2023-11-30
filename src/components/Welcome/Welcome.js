@@ -1,7 +1,7 @@
 function Welcome() {
   return (
     <>
-    <h1>Welcome</h1>
+    <div className="flex justify-center">Welcome</div>
     </>
   );
 }
