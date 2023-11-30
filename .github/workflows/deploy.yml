@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Install Dependencies
+        run: npm install
+        
       - name: Build
         run: npm run build      
 
