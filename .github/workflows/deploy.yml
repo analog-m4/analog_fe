@@ -19,11 +19,10 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install Dependencies
-        run: npm install
-        
-      - name: Build
-        run: npm run build      
+      - name: Build ...
+        run: |
+          yarn install --frozen-lockfile
+          npm run bundle  
 
       - name: Run Tests Locally ...
         run: npm run test
