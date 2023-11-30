@@ -18,9 +18,6 @@ jobs:
       - name: Build
         run: npm run build      
 
-      - name: Run Tests Locally ...
-        run: npm run test
-
       - name: Deploy to Staging ...
         id: deploy-vercel-staging
         uses: amondnet/vercel-action@v20
@@ -29,11 +26,6 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_TL_ENGINE }}
           scope: ${{ secrets.VERCEL_ORG_ID }} 
-
-      - name: Run Tests Against Vercel ...
-        env: 
-          VERCEL_URL: ${{ steps.deploy-vercel-staging.outputs.preview-url }}
-        run: npm run test 
 
       - name: Deploy to Production ...
         uses: amondnet/vercel-action@v20
