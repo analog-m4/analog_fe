@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     fetchData()
     .then((data) => {
-      // setData(data)
+      setData(data)
       console.log(`useEffect`, data)
     })
   }, [])
