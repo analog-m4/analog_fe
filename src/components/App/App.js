@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { fetchData } from "../../apiCalls";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
+import Projects from "../Projects/Projects";
 
 function App() {
   const [userStatus, setUserStatus] = useState(false);
@@ -34,6 +35,7 @@ function App() {
             />
           }
         ></Route>
+        <Route path="/:user_id/:project_id" element={<Projects />}></Route>
       </Routes>
     </>
   );

@@ -14,7 +14,7 @@ function Account({ userStatus, user, handleLogin }) {
       ) : (
         <>
           <div className="text-xl flex items-center">Logged In!</div>
-          <p>Welcome {user.username}</p>
+          <p className="text-xl flex items-center">Welcome {user.username}</p>
         </>
       )}
     </div>
