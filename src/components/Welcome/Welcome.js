@@ -1,7 +1,11 @@
+import Header from "../Header/Header";
+
 function Welcome() {
   return (
     <>
-    <div className="flex justify-center">Welcome</div>
+      <div className="flex justify-center h-screen">
+        <Header />
+      </div>
     </>
   );
 }
