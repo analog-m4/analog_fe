@@ -2,13 +2,12 @@ import Welcome from "../Welcome/Welcome";
 import Dashboard from "../Dashboard/Dashboard";
 import { useState, useEffect } from "react";
 import { fetchData } from "../../apiCalls";
-import { Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
-import Projects from "../Projects/Projects";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 function App() {
   const [userStatus, setUserStatus] = useState(false);
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData().then((data) => {
@@ -19,6 +18,7 @@ function App() {
 
   const handleLogin = () => {
     setUserStatus(!userStatus);
+    navigate("/projects");
   };
 
   return (
@@ -29,13 +29,16 @@ function App() {
           element={
             <Welcome
               userStatus={userStatus}
-              setUserStatus={setUserStatus}
               user={user}
               handleLogin={handleLogin}
             />
           }
         ></Route>
-        <Route path="/:user_id/:project_id" element={<Projects />}></Route>
+        {/* <Route path="/:user_id/:project_id" element={<Projects />}></Route> */}
+        <Route
+          path="/projects"
+          element={<Dashboard userStatus={userStatus} user={user} />}
+        ></Route>
       </Routes>
     </>
   );

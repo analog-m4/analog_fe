@@ -1,6 +1,6 @@
 import Account from "../Account/Account";
 
-function Header({ userStatus, setUserStatus, user, handleLogin }) {
+function Header({ userStatus, user, handleLogin }) {
   return (
     <div>
       <div className="header flex h-32 w-screen justify-between">
@@ -9,12 +9,10 @@ function Header({ userStatus, setUserStatus, user, handleLogin }) {
         </h1>
         <Account
           userStatus={userStatus}
-          setUserStatus={setUserStatus}
           handleLogin={handleLogin}
           user={user}
         />
       </div>
-      <div>Render a button to route to projects if login is successful?</div>
     </div>
   );
 }
