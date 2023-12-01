@@ -4,21 +4,21 @@ import { useState, useEffect } from 'react';
 import { fetchData } from '../../apiCalls';
 
 function App() {
-  const [data, setData] = useState([]);
   const [userStatus, setUserStatus] = useState(false);
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     fetchData()
     .then((data) => {
-      setData(data)
-      console.log(`useEffect`, data)
+      setUser(data.data.attributes['user-data'])
+      console.log(`useEffect`, user)
     })
   }, [])
   
   return (
     <>
       <Welcome userStatus={userStatus} setUserStatus={setUserStatus} />
-      <Dashboard data={data} />
+      <Dashboard user={user} />
     </>
   );
 }
