@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <Welcome userStatus={userStatus} setUserStatus={setUserStatus} />
-      <Dashboard user={user} />
+      {/* {user && <Dashboard user={user} />} */}
     </>
   );
 }
