@@ -5,6 +5,7 @@ import { fetchData } from '../../apiCalls';
 
 function App() {
   const [data, setData] = useState([]);
+  const [userStatus, setUserStatus] = useState(false);
 
   useEffect(() => {
     fetchData()
@@ -16,8 +17,8 @@ function App() {
   
   return (
     <>
-      <Welcome/>
-      <Dashboard data={data}/>
+      <Welcome userStatus={userStatus} setUserStatus={setUserStatus} />
+      <Dashboard data={data} />
     </>
   );
 }
