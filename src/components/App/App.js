@@ -3,16 +3,20 @@ import Dashboard from "../Dashboard/Dashboard";
 import { useState, useEffect } from "react";
 import { fetchData } from "../../apiCalls";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../reducers/user";
 
 function App() {
+  const dispatch = useDispatch();
   const [userStatus, setUserStatus] = useState(false);
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchData().then((data) => {
-      setUser(data.data.attributes["user-data"]);
-      console.log(`useEffect`, user);
+      dispatch(setUserData(data.data.attributes["user-data"]));
+      // setUser(data.data.attributes["user-data"]);
+      // console.log(`useEffect`, user);
     });
   }, []);
 
@@ -29,7 +33,7 @@ function App() {
           element={
             <Welcome
               userStatus={userStatus}
-              user={user}
+              // user={user}
               handleLogin={handleLogin}
             />
           }
@@ -37,7 +41,7 @@ function App() {
         {/* <Route path="/:user_id/:project_id" element={<Projects />}></Route> */}
         <Route
           path="/projects"
-          element={<Dashboard userStatus={userStatus} user={user} />}
+          element={<Dashboard userStatus={userStatus} />}
         ></Route>
       </Routes>
     </>
