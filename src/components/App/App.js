@@ -1,4 +1,5 @@
 import Welcome from '../Welcome/Welcome';
+import Dashboard from '../Dashboard/Dashboard';
 import { useState, useEffect } from 'react';
 import { fetchData } from '../../apiCalls';
 
@@ -8,7 +9,7 @@ function App() {
   useEffect(() => {
     fetchData()
     .then((data) => {
-      // setData(data)
+      setData(data)
       console.log(`useEffect`, data)
     })
   }, [])
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
       <Welcome/>
+      <Dashboard data={data}/>
     </>
   );
 }
