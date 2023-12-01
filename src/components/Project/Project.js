@@ -1,7 +1,7 @@
-function Projects() {
+function Projects({ title }) {
   return (
     <>
-    <h1>Projects</h1>
+      <p>{title}</p>
     </>
   );
 }

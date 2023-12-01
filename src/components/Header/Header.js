@@ -1,6 +1,6 @@
 import Account from "../Account/Account";
 
-function Header({ userStatus, user, handleLogin }) {
+function Header({ userStatus, handleLogin }) {
   return (
     <div>
       <div className="header flex h-32 w-screen justify-between">
@@ -10,7 +10,7 @@ function Header({ userStatus, user, handleLogin }) {
         <Account
           userStatus={userStatus}
           handleLogin={handleLogin}
-          user={user}
+          // user={user}
         />
       </div>
     </div>
