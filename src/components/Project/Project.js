@@ -1,9 +1,12 @@
-function Projects({ title }) {
+import { useState } from 'react';
+
+function Project({ title, onClick }) {
+
   return (
-    <>
-      <p>{title}</p>
-    </>
+    <div className="project">
+      <button onClick={onClick}>{title}</button>
+    </div>
   );
 }
 
-export default Projects;
+export default Project;

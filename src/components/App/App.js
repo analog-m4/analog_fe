@@ -5,6 +5,7 @@ import { fetchData } from "../../apiCalls";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../../reducers/user";
+import Header from "../Header/Header";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,18 +28,19 @@ function App() {
 
   return (
     <>
+      <Header
+          userStatus={userStatus}
+          // user={user}
+          handleLogin={handleLogin}
+        />
       <Routes>
         <Route
           path="/"
           element={
-            <Welcome
-              userStatus={userStatus}
-              // user={user}
-              handleLogin={handleLogin}
-            />
+            <Welcome />
           }
         ></Route>
-        {/* <Route path="/:user_id/:project_id" element={<Projects />}></Route> */}
+        {/* <Route path="/:user_id/:project_id" element={<ProjectBoard userStatus={userStatus} />}></Route> */}
         <Route
           path="/projects"
           element={<Dashboard userStatus={userStatus} />}
