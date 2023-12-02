@@ -1,15 +1,11 @@
 import Header from "../Header/Header";
 import About from "../About/About";
 
-function Welcome({ userStatus, handleLogin }) {
+function Welcome() {
   return (
     <>
       <div className="flex flex-col h-screen">
-        <Header
-          userStatus={userStatus}
-          // user={user}
-          handleLogin={handleLogin}
-        />
+        <p>Welcome to Analog</p>
         <About />
       </div>
     </>

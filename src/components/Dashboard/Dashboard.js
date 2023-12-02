@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 import Project from "../Project/Project";
 import { useSelector } from "react-redux";
+import ProjectBoard from "../ProjectBoard/ProjectBoard";
 
 function Dashboard({ userStatus }) {
   const user = useSelector((state) => state.user.user);
@@ -12,10 +13,13 @@ function Dashboard({ userStatus }) {
 
   return (
     <div className="dashboard flex-col h-60">
-      <Header userStatus={userStatus} />
-      <div className="projects flex flex-col w-2/12 bg-gray-200 rounded-lg">
-        <div className="font-bold">Projects</div>
-        <div>{userProjects}</div>
+      {/* <Header userStatus={userStatus} /> */}
+      <div className="flex">
+        <div className="projects flex flex-col w-2/12 bg-gray-200 rounded-lg">
+          <div className="font-bold">Projects</div>
+          <div>{userProjects}</div>
+        </div>
+        <ProjectBoard />
       </div>
     </div>
   );
