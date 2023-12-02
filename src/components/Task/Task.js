@@ -1,7 +1,7 @@
-function Task() {
+function Task({ title }) {
   return (
     <>
-    <h1>Task</h1>
+      <h1>{title}</h1>
     </>
   );
 }

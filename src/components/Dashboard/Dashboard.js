@@ -2,13 +2,21 @@ import Header from "../Header/Header";
 import Project from "../Project/Project";
 import { useSelector } from "react-redux";
 import ProjectBoard from "../ProjectBoard/ProjectBoard";
+import { useState } from "react";
 
 function Dashboard({ userStatus }) {
   const user = useSelector((state) => state.user.user);
   // console.log("Current User:", user);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const userProjects = user.projects.map((project) => {
-    return <Project key={project.id} title={project.title} />; // return <p>{project.title}</p>;
+    return (
+      <Project 
+        key={project.id} 
+        title={project.title} 
+        onClick={() => setSelectedProject(project)}
+      />
+    );
   });
 
   return (
@@ -19,7 +27,7 @@ function Dashboard({ userStatus }) {
           <div>{userProjects}</div>
         </div>
       </div>
-        <ProjectBoard />
+        <ProjectBoard selectedProject={selectedProject} />
     </div>
   );
 }
