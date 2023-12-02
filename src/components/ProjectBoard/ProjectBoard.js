@@ -4,9 +4,7 @@ function ProjectBoard({ title }) {
   const user = useSelector((state) => state.user.user);
   
   return (
-    <>
-      <p>it worked</p>
-    </>
+      <div className="flex w-10/12">it worked</div>
   );
 }
 

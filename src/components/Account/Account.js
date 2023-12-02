@@ -7,7 +7,7 @@ function Account({ userStatus, handleLogin }) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="nav flex gap-2 pr-5">
+      <div className="nav">
         {userStatus === false ? (
           <>
             <div
