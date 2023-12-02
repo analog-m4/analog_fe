@@ -1,7 +1,8 @@
-function Task({ title }) {
+function Task({ title, description }) {
   return (
     <>
       <h1>{title}</h1>
+      <h1>{description}</h1>
     </>
   );
 }
