@@ -16,7 +16,7 @@ function ProjectBoard({ selectedProject }) {
     <>
       <div className="flex flex-col w-10/12">
         {selectedProject ? <p>{selectedProject.title}</p> : <p>No project selected</p>}
-        <div className="flex h-full">
+        <div className="flex h-3/4 w-9/12 border border-gray-200 rounded-lg bg-white">
           <Column columnName='Backlog' tasks={backlogTasks} />
           <Column columnName='Doing' tasks={doingTasks} />
           <Column columnName='Done' tasks={doneTasks} />
