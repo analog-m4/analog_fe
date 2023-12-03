@@ -27,7 +27,7 @@ function App() {
   };
 
   return (
-    <div className="bg-cream">
+    <div className="bg-cream font-lato">
       <Header
           userStatus={userStatus}
           // user={user}
