@@ -20,8 +20,9 @@ function Login({ handleLogin }) {
   }
 
   return (
-    <form>
+    <form className="flex flex-col mt-2">
       <input
+        className="m-2 w-max"
         type="text"
         placeholder="username"
         name="username"
@@ -29,6 +30,7 @@ function Login({ handleLogin }) {
         onChange={(event) => setUserName(event.target.value)}
       />
       <input
+        className="m-2 w-max"
         type="password"
         placeholder="password"
         name="password"
