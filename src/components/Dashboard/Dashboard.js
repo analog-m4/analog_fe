@@ -24,7 +24,9 @@ function Dashboard({ userStatus }) {
       <div className="w-2/12 p-5 min-w-max">
         <div className="dashboard min-w-max p-3 bg-white border border-gray-200 rounded-lg">
           <div className="projects font-bold text-gray-900">Projects</div>
-            <div>{userProjects}</div>
+            <div>
+              {userProjects}
+            </div>
         </div>
       </div>
         <ProjectBoard selectedProject={selectedProject} />
