@@ -1,8 +1,10 @@
 function Task({ title, description }) {
   return (
     <>
-      <h1>{title}</h1>
-      <h1>{description}</h1>
+      <div className="task flex flex-col rounded-md border border-gray-200 p-2 shadow-sm mb-3">
+        <div className="task-title">{title}</div>
+        <div className="task-description font-light text-sm">{description}</div>
+      </div>
     </>
   );
 }

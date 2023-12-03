@@ -3,6 +3,5 @@
 @import 'tailwindcss/utilities';
 
 * {
-  border: 1px solid green;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* border: 1px solid green; */
 }
