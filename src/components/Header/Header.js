@@ -4,9 +4,10 @@ function Header({ userStatus, handleLogin }) {
   return (
     <div>
       <div className="header flex h-32 w-full justify-between">
-        <h1 className="text-3xl flex justify-center items-center w-72 font-fjalla">
-          Analog
-        </h1>
+        <div className="text-3xl flex justify-center items-center w-72 font-fjalla italic">
+          ANA
+        <div className="text-3xl font-fjalla italic text-purple-600">LOG</div>
+        </div>
         <Account
           userStatus={userStatus}
           handleLogin={handleLogin}

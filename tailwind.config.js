@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         "fjalla": ['Fjalla One', 'sans-serif'],
-        "mulish": ['Mulish', 'sans-serif']
+        "lato": ['Lato', 'sans-serif']
       }
     },
   },

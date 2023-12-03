@@ -3,7 +3,6 @@
 @import 'tailwindcss/utilities';
 
 * {
-  border: 1px solid green;
-  /* font-family: 'Fjalla One', sans-serif; */
-  font-family: 'Mulish', sans-serif;
+  /* border: 1px solid green; */
+  background-color: #FFF6F6;
 }
