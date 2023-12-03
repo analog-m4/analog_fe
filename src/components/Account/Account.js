@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import sampleAvatar from "../../images/sample-avatar.png";
 
 function Account({ userStatus, handleLogin }) {
   const user = useSelector((state) => state.user.user);
@@ -20,7 +21,7 @@ function Account({ userStatus, handleLogin }) {
           </>
         ) : (
           <div className="nav flex gap-2 items-center">
-            <div className="flex self-center h-10 w-10 border-black rounded-full border-2"></div>
+            <div className="flex self-center h-10 w-10"><img src={sampleAvatar} className="border-gray-900 rounded-full border-2"/></div>
             <div className="text-md flex items-center text-lg">{user.username}</div>
           </div>
         )}
