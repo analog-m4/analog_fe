@@ -12,7 +12,8 @@ function Dashboard({ userStatus }) {
   const userProjects = user.projects.map((project) => {
     return (
       <Project
-        key={project.id}
+        key={project.project_id}
+        id={project.project_id}
         title={project.title}
         onClick={() => setSelectedProject(project)}
       />
