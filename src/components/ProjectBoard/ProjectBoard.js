@@ -14,7 +14,7 @@ function ProjectBoard({ selectedProject }) {
 
   return (
     <>
-      <div className="flex flex-col w-10/12">
+      <div className="flex flex-col w-10/12 drop-shadow-sm">
         {selectedProject ? <p>{selectedProject.title}</p> : <p>No project selected</p>}
         <div className="flex h-3/4 w-9/12 border border-gray-200 rounded-lg bg-white">
           <Column columnName='Backlog' tasks={backlogTasks} />
