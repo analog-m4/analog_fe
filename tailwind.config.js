@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         "fjalla": ['Fjalla One', 'sans-serif'],
         "lato": ['Lato', 'sans-serif']
+      },
+      colors: {
+        'cream': '#FFF6F6'
       }
     },
   },

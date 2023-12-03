@@ -27,7 +27,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="bg-cream">
       <Header
           userStatus={userStatus}
           // user={user}
@@ -46,7 +46,7 @@ function App() {
           element={<Dashboard userStatus={userStatus} />}
         ></Route>
       </Routes>
-    </>
+    </div>
   );
 }
 
