@@ -7,7 +7,7 @@ function Account({ userStatus, handleLogin }) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="nav flex gap-5 w-1/6 sm:w-1/4">
+      <div className="nav flex gap-5 sm:w-1/4 md:w-1/6">
         {userStatus === false ? (
           <>
             <div
@@ -19,10 +19,10 @@ function Account({ userStatus, handleLogin }) {
             <div className="join-btn text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl">JOIN NOW</div>
           </>
         ) : (
-          <>
-            <div className="text-md flex items-center">Logged In!</div>
-            <p className="text-md flex items-center">Welcome {user.username}</p>
-          </>
+          <div className="nav flex gap-2 items-center">
+            <div className="flex self-center h-10 w-10 border-black rounded-full border-2"></div>
+            <div className="text-md flex items-center text-lg">{user.username}</div>
+          </div>
         )}
       </div>
     );
