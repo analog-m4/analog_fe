@@ -4,5 +4,6 @@
 
 * {
   border: 1px solid green;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* font-family: 'Fjalla One', sans-serif; */
+  font-family: 'Mulish', sans-serif;
 }

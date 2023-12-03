@@ -5,7 +5,12 @@ module.exports = {
     "./public/index.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "fjalla": ['Fjalla One', 'sans-serif'],
+        "mulish": ['Mulish', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }
