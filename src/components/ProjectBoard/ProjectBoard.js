@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import Column from "../Column/Column";
-import Task from "../Task/Task";
 
 function ProjectBoard({ selectedProject }) {
   const user = useSelector((state) => state.user.user);
