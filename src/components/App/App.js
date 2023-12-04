@@ -12,7 +12,7 @@ function App() {
   const [userStatus, setUserStatus] = useState(false);
   // const [user, setUser] = useState({});
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     fetchData().then((data) => {
       dispatch(setUserData(data.data.attributes["user-data"]));

@@ -3,11 +3,17 @@ import Project from "../Project/Project";
 import { useSelector } from "react-redux";
 import ProjectBoard from "../ProjectBoard/ProjectBoard";
 import { useState } from "react";
+import WhiteBoard from "../WhiteBoard/WhiteBoard";
+import { createSocket } from '../utils/websocket'; // Correct import path
+
+
 
 function Dashboard({ userStatus }) {
   const user = useSelector((state) => state.user.user);
   // console.log("Current User:", user);
   const [selectedProject, setSelectedProject] = useState(null);
+
+  const socket = createSocket();
 
   const userProjects = user.projects.map((project) => {
     return (
@@ -47,6 +53,7 @@ function Dashboard({ userStatus }) {
           </div>
         </div>
       </div>
+      <WhiteBoard socket={socket}/>
       <ProjectBoard selectedProject={selectedProject} />
     </div>
   );
