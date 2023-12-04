@@ -2,13 +2,9 @@ import { useSelector } from "react-redux";
 import Column from "../Column/Column";
 
 function ProjectBoard({ selectedProject }) {
-  console.log(selectedProject)
+  console.log("selectedProject", selectedProject)
   const projectTasks = selectedProject && selectedProject.tasks && selectedProject.tasks > 0 ? selectedProject.tasks : [];
-  console.log("Selected Project:", selectedProject)
-
-  // const addTask = () => {
-
-  // }
+  console.log("projectTasks", projectTasks)
 
   const backlogTasks = projectTasks.filter(task => task.status === 'backlog');
   const doingTasks = projectTasks.filter(task => task.status === 'doing');
