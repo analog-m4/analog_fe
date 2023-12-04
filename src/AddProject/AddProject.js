@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { useDispatch } from 'react-redux';
+import { addProjectToUser } from '../reducers/user';
 
 const style = {
   position: 'absolute',
@@ -17,12 +19,23 @@ const style = {
 };
 
 function AddProject() {
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
+  const [newProjectTitle, setNewProjectTitle] = React.useState('');
+
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setNewProjectTitle('');
+  }
+  
+  const handleAddProject = () => {
+    dispatch(addProjectToUser({ title: newProjectTitle }));
+    handleClose();
+  }
 
   return (
-    <div className="add-project-btn flex text-gray-400 font-light text-sm items-center cursor-pointer mt-3">
+    <div className="add-project-btn flex text-gray-400 font-light text-sm items-center cursor-pointer mt-3" onClick={handleOpen}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -46,11 +59,15 @@ function AddProject() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            Add Project
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <input
+            type="text"
+            placeholder="Project Title"
+            value={newProjectTitle}
+            onChange={(e) => setNewProjectTitle(e.target.value)}
+          />
+          <Button onClick={handleAddProject}>Add Project</Button>
         </Box>
       </Modal>
     </div>
