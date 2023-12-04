@@ -1,7 +1,7 @@
 import Task from "../Task/Task";
 import AddTask from "../AddTask/AddTask";
 
-function Column({ columnName, tasks }) {
+function Column({ columnName, tasks, selectedProject }) {
   const columnTasks = tasks.map((task) => {
     return (
       <Task
@@ -19,7 +19,7 @@ function Column({ columnName, tasks }) {
           {columnName}
         </div>
         <div className="w-10/12 p-2 sm:w-11/12">{columnTasks}</div>
-        <AddTask />
+        <AddTask selectedProject={selectedProject} />
       </div>
     </>
   );

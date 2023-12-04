@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-function AddTask() {
+function AddTask({ selectedProject }) {
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const [newTaskTitle, setNewTaskTitle] = React.useState('');
@@ -33,18 +33,20 @@ function AddTask() {
   }
 
   const handleAddTask = () => {
+    console.log("Adding task:", newTaskTitle, newTaskDescription)
     dispatch(addTaskToProject({
       task_id: uuidv4(), // random uuid
       title: newTaskTitle,
       description: newTaskDescription,
+      selectedProject: selectedProject, // pass it as part of the payload
     }));
     handleClose();
   }
 
   return (
     <div className="add-task-btn flex text-gray-400 text-sm items-center cursor-pointer mt-3 pl-3" onClick={handleOpen}>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-6 text-green-400 mr-2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-6 text-green-400 mr-2">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
       </svg>
      Add Task
      <Modal
@@ -65,7 +67,7 @@ function AddTask() {
           />
           <input
             type="text"
-            placeholder="Project Description"
+            placeholder="Task Description"
             value={newTaskDescription}
             onChange={(e) => setNewTaskDescription(e.target.value)}
           />

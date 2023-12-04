@@ -24,15 +24,17 @@ export const userSlice = createSlice({
       return { ...state, user: { ...state.user, projects: [...state.user.projects, newProject ]}}
     },
     addTaskToProject: (state, action) => {
-      const newTask = action.payload;
-      const updatedProjects = state.user.projects.map((project) => ({
-        ...project,
-        tasks: [...project.tasks, newTask],
-      }))
+      const { newTask, selectedProject } = action.payload;
+      const updatedProjects = state.user.projects.map((project) => {
+        if (project.project_id === selectedProject.project_id) {
+          return { ...project, tasks: [...project.tasks, newTask] };
+        }
+        return project;
+      });
       return { ...state, user: { ...state.user, projects: updatedProjects } };
     },
   },
-});
+})
 
 export const { setUserData, addProjectToUser, addTaskToProject } = userSlice.actions;
 
