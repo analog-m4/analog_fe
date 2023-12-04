@@ -10,6 +10,7 @@ function EditTask() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // THIS NEEDS TO MOVE TO THE SLICE - UPDATE THE SPECIFIC TASK FROM THE PAYLOAD?
   function updateTask(id, title, description, status) {
 
     const updateTasks = user..map((employee) => {
@@ -50,7 +51,7 @@ function EditTask() {
             id="editmodal"
             className="w-full max-w-sm"
           >
-            {/* ===== PICKUP HERE ===== */}
+            {/* ===== PICKUP ABOVE HERE ===== */}
             <div className="md:flex md:items-center mb-6">
               <div className="md:w-1/3">
                 <label
