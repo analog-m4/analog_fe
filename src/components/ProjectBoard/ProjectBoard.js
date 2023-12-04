@@ -2,10 +2,9 @@ import { useSelector } from "react-redux";
 import Column from "../Column/Column";
 
 function ProjectBoard({ selectedProject }) {
-  const user = useSelector((state) => state.user.user);
-  
-  const projectTasks = selectedProject ? selectedProject.tasks : [];
   console.log(selectedProject)
+  const projectTasks = selectedProject ? selectedProject.tasks : [];
+  console.log("Selected Project:", selectedProject)
 
   // const addTask = () => {
 

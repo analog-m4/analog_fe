@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
 import { addProjectToUser } from '../reducers/user';
+import { v4 as uuidv4 } from 'uuid';
 
 const style = {
   position: 'absolute',
@@ -22,6 +23,7 @@ function AddProject() {
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const [newProjectTitle, setNewProjectTitle] = React.useState('');
+  const [newProjectDescription, setNewProjectDescription] = React.useState('');
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -30,7 +32,11 @@ function AddProject() {
   }
   
   const handleAddProject = () => {
-    dispatch(addProjectToUser({ title: newProjectTitle }));
+    dispatch(addProjectToUser({ 
+      id: uuidv4(), // random uuid
+      title: newProjectTitle,
+      description: newProjectDescription,
+    }));
     handleClose();
   }
 
@@ -66,6 +72,12 @@ function AddProject() {
             placeholder="Project Title"
             value={newProjectTitle}
             onChange={(e) => setNewProjectTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Project Description"
+            value={newProjectDescription}
+            onChange={(e) => setNewProjectDescription(e.target.value)}
           />
           <Button onClick={handleAddProject}>Add Project</Button>
         </Box>
