@@ -7,6 +7,10 @@ function ProjectBoard({ selectedProject }) {
   const projectTasks = selectedProject ? selectedProject.tasks : [];
   console.log(selectedProject)
 
+  // const addTask = () => {
+
+  // }
+
   const backlogTasks = projectTasks.filter(task => task.status === 'backlog');
   const doingTasks = projectTasks.filter(task => task.status === 'doing');
   const doneTasks = projectTasks.filter(task => task.status === 'done');
