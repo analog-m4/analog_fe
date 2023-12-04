@@ -3,7 +3,7 @@ import Column from "../Column/Column";
 
 function ProjectBoard({ selectedProject }) {
   console.log(selectedProject)
-  const projectTasks = selectedProject ? selectedProject.tasks : [];
+  const projectTasks = selectedProject && selectedProject.tasks && selectedProject.tasks > 0 ? selectedProject.tasks : [];
   console.log("Selected Project:", selectedProject)
 
   // const addTask = () => {
