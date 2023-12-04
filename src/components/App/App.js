@@ -19,27 +19,20 @@ function App() {
       // setUser(data.data.attributes["user-data"]);
       // console.log(`useEffect`, user);
     });
-  }, []);
+  }, [handleLogin]);
 
-  const handleLogin = () => {
+  function handleLogin() {
     setUserStatus(!userStatus);
     navigate("/projects");
-  };
-
+  }
   return (
     <div className="bg-cream font-lato">
       <Header
-          userStatus={userStatus}
-          // user={user}
-          handleLogin={handleLogin}
-        />
+        userStatus={userStatus}
+        // user={user}
+      />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Welcome />
-          }
-        ></Route>
+        <Route path="/" element={<Welcome handleLogin={handleLogin} />}></Route>
         {/* <Route path="/:user_id/:project_id" element={<ProjectBoard userStatus={userStatus} />}></Route> */}
         <Route
           path="/projects"
