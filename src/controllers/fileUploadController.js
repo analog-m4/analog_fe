@@ -1,4 +1,4 @@
-const awsS3Service = require('../services/awsS3service.js');;
+const awsS3Service = require('../src/services/awsS3service.js');;
 
 async function handleFileUpload(filePath, fileName) {
   try {

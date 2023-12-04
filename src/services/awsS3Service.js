@@ -10,7 +10,7 @@ AWS.config.update({
 
 const s3 = new AWS.S3();
 
-async function uploadImageToS3(filePath, fileName) {
+async function uploadFileToS3(filePath, fileName) {
   try {
     const fileContent = fs.readFileSync(filePath);
 
