@@ -3,6 +3,7 @@ import Project from "../Project/Project";
 import { useSelector } from "react-redux";
 import ProjectBoard from "../ProjectBoard/ProjectBoard";
 import { useState } from "react";
+import WhiteBoard from "../WhiteBoard/WhiteBoard";
 
 function Dashboard({ userStatus }) {
   const user = useSelector((state) => state.user.user);
@@ -47,6 +48,7 @@ function Dashboard({ userStatus }) {
           </div>
         </div>
       </div>
+      <WhiteBoard />
       <ProjectBoard selectedProject={selectedProject} />
     </div>
   );
