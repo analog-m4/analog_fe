@@ -11,8 +11,8 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("tasks for this project:", user.projects[projectId]?.tasks);
-  }, [user, projectId]);
+    console.log("EditTask props updated:", taskTitle, taskDescription);
+  }, [taskTitle, taskDescription]);
 
   // Check if project and task exist before accessing properties
 
@@ -44,18 +44,19 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
         <Modal.Body>
           <form
             onSubmit={(e) => {
-              handleClose();
               e.preventDefault();
               dispatch(
                 updateTask({
-                  project_id: { projectId },
-                  task_id: { taskId },
+                  project_id: parseInt(projectId),
+                  task_id: taskId,
                   modifiedTask: {
-                    title: { title },
-                    description: { description },
+                    title: title,
+                    description: description,
                   },
                 })
               );
+              console.log("State after dispatch:", user); // Log the state here
+              handleClose();
             }}
             id="editmodal"
             className="w-full max-w-sm"
@@ -65,7 +66,7 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="title"
+                  htmlFor="title"
                 >
                   Title
                 </label>
@@ -86,7 +87,7 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="description"
+                  htmlFor="description"
                 >
                   Description
                 </label>
