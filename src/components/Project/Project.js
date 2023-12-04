@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-function Project({ title, onClick }) {
-
+function Project({ title, id, onClick }) {
   return (
     <div className="project flex gap-1 cursor-pointer" onClick={onClick}>
-      <div className='project-color self-center w-2.5 h-2.5 border-purple-600 border bg-purple-600 rounded-full'></div>
+      <NavLink to={`/project/${id}`}>
+        <div className="project-color self-center w-2.5 h-2.5 border-purple-600 border bg-purple-600 rounded-full"></div>
         <div>{title}</div>
+      </NavLink>
     </div>
   );
 }

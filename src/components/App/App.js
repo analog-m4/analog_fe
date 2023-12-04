@@ -38,6 +38,10 @@ function App() {
           path="/projects"
           element={<Dashboard userStatus={userStatus} />}
         ></Route>
+        <Route
+          path="/project/:id"
+          element={<Dashboard userStatus={userStatus} />}
+        ></Route>
       </Routes>
     </div>
   );
