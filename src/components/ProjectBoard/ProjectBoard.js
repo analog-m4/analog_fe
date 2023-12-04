@@ -3,7 +3,7 @@ import Column from "../Column/Column";
 
 function ProjectBoard({ selectedProject }) {
   console.log("selectedProject", selectedProject)
-  const projectTasks = selectedProject && selectedProject.tasks && selectedProject.tasks > 0 ? selectedProject.tasks : [];
+  const projectTasks = selectedProject && selectedProject.tasks && selectedProject.tasks.length > 0 ? selectedProject.tasks : [];
   console.log("projectTasks", projectTasks)
 
   const backlogTasks = projectTasks.filter(task => task.status === 'backlog');
