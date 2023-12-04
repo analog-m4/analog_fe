@@ -29,6 +29,7 @@ function AddProject() {
   const handleClose = () => {
     setOpen(false);
     setNewProjectTitle('');
+    setNewProjectDescription('');
   }
   
   const handleAddProject = () => {
