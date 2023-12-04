@@ -3,6 +3,9 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { useDispatch } from 'react-redux';
+import { addTaskToProject } from '../../reducers/user';
+import { v4 as uuidv4 } from 'uuid';
 
 const style = {
   position: 'absolute',
@@ -17,9 +20,26 @@ const style = {
 };
 
 function AddTask() {
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
+  const [newTaskTitle, setNewTaskTitle] = React.useState('');
+  const [newTaskDescription, setNewTaskDescription] = React.useState('');
+
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setNewTaskTitle('');
+    setNewTaskDescription('');
+  }
+
+  const handleAddTask = () => {
+    dispatch(addTaskToProject({
+      task_id: uuidv4(), // random uuid
+      title: newTaskTitle,
+      description: newTaskDescription,
+    }));
+    handleClose();
+  }
 
   return (
     <div className="add-task-btn flex text-gray-400 text-sm items-center cursor-pointer mt-3 pl-3" onClick={handleOpen}>
@@ -37,9 +57,19 @@ function AddTask() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Add Task
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <input
+            type="text"
+            placeholder="Task Title"
+            value={newTaskTitle}
+            onChange={(e) => setNewTaskTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Project Description"
+            value={newTaskDescription}
+            onChange={(e) => setNewTaskDescription(e.target.value)}
+          />
+          <Button onClick={handleAddTask}>Add Task</Button>
         </Box>
       </Modal>
     </div>

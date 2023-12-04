@@ -23,7 +23,7 @@ export const userSlice = createSlice({
       const newProject = action.payload;
       return { ...state, user: { ...state.user, projects: [...state.user.projects, newProject ]}}
     },
-    addTaskToUser: (state, action) => {
+    addTaskToProject: (state, action) => {
       const newTask = action.payload;
       const updatedProjects = state.user.projects.map((project) => ({
         ...project,
@@ -34,6 +34,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUserData, addProjectToUser, addTaskToUser } = userSlice.actions;
+export const { setUserData, addProjectToUser, addTaskToProject } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -34,7 +34,7 @@ function AddProject() {
   
   const handleAddProject = () => {
     dispatch(addProjectToUser({ 
-      id: uuidv4(), // random uuid
+      project_id: uuidv4(), // random uuid
       title: newProjectTitle,
       description: newProjectDescription,
     }));
