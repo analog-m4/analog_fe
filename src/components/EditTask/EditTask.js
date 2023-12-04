@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { updateTask } from "../../reducers/user";
 
-function EditTask() {
+function EditTask({ taskId, taskTitle, taskDescription }) {
   const user = useSelector((state) => state.user.user);
-  const [show, setShow] = useState(false);
+  const projectId = useParams().id;
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    console.log("tasks for this project:", user.projects[projectId]?.tasks);
+  }, [user, projectId]);
+
+  // Check if project and task exist before accessing properties
+
+  const [title, setTitle] = useState(taskTitle);
+  const [description, setDescription] = useState(taskDescription);
+
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  // THIS NEEDS TO MOVE TO THE SLICE - UPDATE THE SPECIFIC TASK FROM THE PAYLOAD?
-  function updateTask(id, title, description, status) {
-
-    const updateTasks = user..map((employee) => {
-        if (id == employee.id) {
-            return { ...employee, name: newName, role: newRole };
-        }
-
-        return employee;
-    });
-    setEmployees(updatedEmployees);
-}
 
   return (
     <div>
@@ -46,7 +46,16 @@ function EditTask() {
             onSubmit={(e) => {
               handleClose();
               e.preventDefault();
-              props.updateEmployee(props.id, name, role);
+              dispatch(
+                updateTask({
+                  project_id: { projectId },
+                  task_id: { taskId },
+                  modifiedTask: {
+                    title: { title },
+                    description: { description },
+                  },
+                })
+              );
             }}
             id="editmodal"
             className="w-full max-w-sm"
@@ -56,19 +65,19 @@ function EditTask() {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="name"
+                  for="title"
                 >
-                  Full Name
+                  Title
                 </label>
               </div>
               <div className="md:w-2/3">
                 <input
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                  id="name"
+                  id="title"
                   type="text"
-                  value={name}
+                  value={title}
                   onChange={(e) => {
-                    setName(e.target.value);
+                    setTitle(e.target.value);
                   }}
                 />
               </div>
@@ -77,19 +86,19 @@ function EditTask() {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="role"
+                  for="description"
                 >
-                  Role
+                  Description
                 </label>
               </div>
               <div className="md:w-2/3">
                 <input
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                  id="role"
+                  id="description"
                   type="text"
-                  value={role}
+                  value={description}
                   onChange={(e) => {
-                    setRole(e.target.value);
+                    setDescription(e.target.value);
                   }}
                 />
               </div>
