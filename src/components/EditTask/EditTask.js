@@ -35,7 +35,7 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
         show={show}
         onHide={handleClose}
         backdrop="static"
-        keyboard={false}
+        keyboard={true}
       >
         <Modal.Header closeButton>
           <Modal.Title>Update Task</Modal.Title>
