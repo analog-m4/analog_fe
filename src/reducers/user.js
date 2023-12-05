@@ -112,6 +112,7 @@ export const {
   addProjectToUser,
   addTaskToProject,
   setSelectedProject,
+  updateTask,
 } = userSlice.actions;
 
 export default userSlice.reducer;
