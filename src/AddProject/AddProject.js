@@ -37,6 +37,7 @@ function AddProject() {
       project_id: uuidv4(), // random uuid
       title: newProjectTitle,
       description: newProjectDescription,
+      tasks: [],
     }));
     handleClose();
   }

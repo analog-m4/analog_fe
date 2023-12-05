@@ -25,12 +25,18 @@ export const userSlice = createSlice({
     },
     addTaskToProject: (state, action) => {
       const { newTask, selectedProject } = action.payload;
+      console.log("New Task:", newTask);
+      console.log("Selected Project:", selectedProject);
+      
       const updatedProjects = state.user.projects.map((project) => {
         if (project.project_id === selectedProject.project_id) {
           return { ...project, tasks: [...project.tasks, newTask] };
         }
         return project;
       });
+
+      console.log("Updated Projects:", updatedProjects);
+
       return { ...state, user: { ...state.user, projects: updatedProjects } };
     },
   },
