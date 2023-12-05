@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-function AddTask({ selectedProject }) {
+function AddTask({ selectedProject, taskStatus }) {
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const [newTaskTitle, setNewTaskTitle] = React.useState('');
@@ -33,11 +33,14 @@ function AddTask({ selectedProject }) {
   }
 
   const handleAddTask = () => {
-    console.log("Adding task:", newTaskTitle, newTaskDescription)
+    console.log("Adding task:", newTaskTitle, newTaskDescription, taskStatus)
     dispatch(addTaskToProject({
-      task_id: uuidv4(), // random uuid
-      title: newTaskTitle,
-      description: newTaskDescription,
+      newTask: {
+        task_id: uuidv4(), // random uuid
+        title: newTaskTitle,
+        description: newTaskDescription,
+        status: taskStatus, 
+      },
       selectedProject: selectedProject, // pass it as part of the payload
     }));
     handleClose();

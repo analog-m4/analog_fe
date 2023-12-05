@@ -22,9 +22,9 @@ function ProjectBoard({ selectedProject }) {
           </div> : 
         <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-1">No project selected</div>}
         <div className="flex h-3/4 w-9/12 border border-gray-200 rounded-lg bg-white shadow-sm">
-          <Column columnName='Backlog' tasks={backlogTasks} selectedProject={selectedProject} />
-          <Column columnName='Doing' tasks={doingTasks} selectedProject={selectedProject} />
-          <Column columnName='Done' tasks={doneTasks} selectedProject={selectedProject} />
+          <Column columnName='Backlog' tasks={backlogTasks} selectedProject={selectedProject} taskStatus='backlog' />
+          <Column columnName='Doing' tasks={doingTasks} selectedProject={selectedProject} taskStatus='doing' />
+          <Column columnName='Done' tasks={doneTasks} selectedProject={selectedProject} taskStatus='done' />
         </div>
       </div>
     </>
