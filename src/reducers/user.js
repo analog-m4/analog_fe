@@ -8,6 +8,7 @@ const initialStateValue = {
       }
     ],
   },
+  selectedProject: null,
 };
 
 export const userSlice = createSlice({
@@ -24,24 +25,29 @@ export const userSlice = createSlice({
       return { ...state, user: { ...state.user, projects: [...state.user.projects, newProject ]}}
     },
     addTaskToProject: (state, action) => {
-      const { newTask, selectedProject } = action.payload;
+      const newTask = action.payload;
       console.log("New Task:", newTask);
-      console.log("Selected Project:", selectedProject);
       
-      const updatedProjects = state.user.projects.map((project) => {
-        if (project.project_id === selectedProject.project_id) {
-          return { ...project, tasks: [...project.tasks, newTask] };
-        }
-        return project;
-      });
+      if (state.selectedProject) {
+        const updatedProjects = state.user.projects.map((project) => {
+          if (project.project_id === state.selectedProject) {
+            return { ...project, tasks: [...project.tasks, newTask] };
+          }
+          return project;
+        });
 
-      console.log("Updated Projects:", updatedProjects);
+        return { ...state, user: { ...state.user, projects: updatedProjects } };
+      }
 
-      return { ...state, user: { ...state.user, projects: updatedProjects } };
+      return state;
+    },
+    setSelectedProject: (state, action) => {
+      const selectedProject = action.payload;
+      return { ...state, selectedProject };
     },
   },
 })
 
-export const { setUserData, addProjectToUser, addTaskToProject } = userSlice.actions;
+export const { setUserData, addProjectToUser, addTaskToProject, setSelectedProject } = userSlice.actions;
 
 export default userSlice.reducer;

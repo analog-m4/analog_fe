@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTaskToProject } from '../../reducers/user';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -19,8 +19,9 @@ const style = {
   p: 4,
 };
 
-function AddTask({ selectedProject, taskStatus }) {
+function AddTask({ taskStatus }) {
   const dispatch = useDispatch();
+  const selectedProject = useSelector((state) => state.user.selectedProject);
   const [open, setOpen] = React.useState(false);
   const [newTaskTitle, setNewTaskTitle] = React.useState('');
   const [newTaskDescription, setNewTaskDescription] = React.useState('');
@@ -41,7 +42,6 @@ function AddTask({ selectedProject, taskStatus }) {
         description: newTaskDescription,
         status: taskStatus, 
       },
-      selectedProject: selectedProject, // pass it as part of the payload
     }));
     handleClose();
   }

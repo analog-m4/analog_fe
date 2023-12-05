@@ -1,14 +1,15 @@
-import Header from "../Header/Header";
 import Project from "../Project/Project";
 import { useSelector } from "react-redux";
 import ProjectBoard from "../ProjectBoard/ProjectBoard";
-import { useState } from "react";
 import AddProject from "../../AddProject/AddProject";
+import { useDispatch } from 'react-redux';
+import { setSelectedProject } from "../../reducers/user";
 
 function Dashboard({ userStatus }) {
   const user = useSelector((state) => state.user.user);
   // console.log("Current User:", user);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const selectedProject = useSelector((state) => state.user.selectedProject);
+  // const dispatch = useDispatch();
 
   const userProjects = user.projects.map((project) => {
     return (
@@ -16,7 +17,7 @@ function Dashboard({ userStatus }) {
         key={project.project_id}
         id={project.project_id}
         title={project.title}
-        onClick={() => setSelectedProject(project)}
+        // onClick={() => dispatch(setSelectedProject(project))}
       />
     );
   });
@@ -32,7 +33,7 @@ function Dashboard({ userStatus }) {
           <AddProject />
         </div>
       </div>
-      <ProjectBoard selectedProject={selectedProject} />
+      <ProjectBoard />
     </div>
   );
 }

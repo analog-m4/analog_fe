@@ -1,10 +1,23 @@
 import { useSelector } from "react-redux";
 import Column from "../Column/Column";
 
-function ProjectBoard({ selectedProject }) {
-  console.log("selectedProject", selectedProject)
-  const projectTasks = selectedProject && selectedProject.tasks && selectedProject.tasks.length > 0 ? selectedProject.tasks : [];
-  console.log("projectTasks", projectTasks)
+function ProjectBoard() {
+  const selectedProject = useSelector((state) => state.user.selectedProject);
+  const user = useSelector((state) => state.user.user)
+  console.log('user', user)
+
+  console.log(selectedProject)
+
+  const project = selectedProject 
+    ? user.projects.find((project) => project.project_id === selectedProject)
+    : null;
+
+  const projectTasks = project ? project.tasks : [];
+
+  console.log(projectTasks);
+  // const projectTasks = selectedProject && selectedProject.tasks && selectedProject.tasks.length > 0 ? selectedProject.tasks : [];
+  // console.log("selectedProject", selectedProject);
+  // console.log("projectTasks", projectTasks);
 
   const backlogTasks = projectTasks.filter(task => task.status === 'backlog');
   const doingTasks = projectTasks.filter(task => task.status === 'doing');
@@ -22,9 +35,9 @@ function ProjectBoard({ selectedProject }) {
           </div> : 
         <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-1">No project selected</div>}
         <div className="flex h-3/4 w-9/12 border border-gray-200 rounded-lg bg-white shadow-sm">
-          <Column columnName='Backlog' tasks={backlogTasks} selectedProject={selectedProject} taskStatus='backlog' />
-          <Column columnName='Doing' tasks={doingTasks} selectedProject={selectedProject} taskStatus='doing' />
-          <Column columnName='Done' tasks={doneTasks} selectedProject={selectedProject} taskStatus='done' />
+          <Column columnName='Backlog' tasks={backlogTasks} taskStatus='backlog' />
+          <Column columnName='Doing' tasks={doingTasks} taskStatus='doing' />
+          <Column columnName='Done' tasks={doneTasks} taskStatus='done' />
         </div>
       </div>
     </>
