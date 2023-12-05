@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSelectedProject } from "../../reducers/user";
 
-function Project({ title, id, onClick }) {
+function Project({ title, id }) {
   const dispatch = useDispatch();
   return (
     <>

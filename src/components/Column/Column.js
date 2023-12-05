@@ -6,6 +6,7 @@ function Column({ columnName, tasks, taskStatus }) {
     return (
       <Task
         key={task.task_id}
+        id={task.task_id}
         title={task.title}
         description={task.description}
       />
