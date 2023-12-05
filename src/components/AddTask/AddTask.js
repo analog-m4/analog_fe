@@ -13,7 +13,7 @@ function AddTask({ taskStatus }) {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // this makes the close button work but the others not work
     setShow(false);
     setNewTaskTitle('');
     setNewTaskDescription('');
