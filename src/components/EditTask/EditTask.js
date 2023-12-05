@@ -54,7 +54,6 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
                   },
                 })
               );
-              console.log("State after dispatch:", user); // Log the state here
               handleClose();
             }}
             id="editmodal"
