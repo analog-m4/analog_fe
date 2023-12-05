@@ -43,14 +43,14 @@ function AddProject() {
   }
 
   return (
-    <div className="add-project-btn flex text-gray-400 font-light text-sm items-center cursor-pointer mt-3" onClick={handleOpen}>
+    <div className="add-project-btn flex text-gray-400 font-light text-sm items-center cursor-pointer mt-2" onClick={handleOpen}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="2 0 30 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-4 h-6 text-green-500"
+        className="w-5 h-6 text-green-400"
       >
         <path
           strokeLinecap="round"
