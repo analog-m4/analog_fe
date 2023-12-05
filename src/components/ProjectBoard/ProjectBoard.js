@@ -6,7 +6,7 @@ function ProjectBoard() {
   const user = useSelector((state) => state.user.user)
   console.log('user', user)
 
-  console.log(selectedProject)
+  console.log('selected project', selectedProject)
 
   const project = selectedProject 
     ? user.projects.find((project) => project.project_id === selectedProject)
@@ -14,16 +14,11 @@ function ProjectBoard() {
 
   const projectTasks = project ? project.tasks : [];
 
-  console.log(projectTasks);
-  // const projectTasks = selectedProject && selectedProject.tasks && selectedProject.tasks.length > 0 ? selectedProject.tasks : [];
-  // console.log("selectedProject", selectedProject);
-  // console.log("projectTasks", projectTasks);
+  console.log('project tasks', projectTasks);
 
   const backlogTasks = projectTasks.filter(task => task.status === 'backlog');
   const doingTasks = projectTasks.filter(task => task.status === 'doing');
   const doneTasks = projectTasks.filter(task => task.status === 'done');
-
-  console.log("updatedbl", backlogTasks)
   
   return (
     <>

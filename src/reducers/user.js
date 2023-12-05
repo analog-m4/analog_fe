@@ -26,7 +26,7 @@ export const userSlice = createSlice({
     },
     addTaskToProject: (state, action) => {
       const newTask = action.payload;
-      console.log("New Task:", newTask);
+      console.log("new task", newTask);
       
       if (state.selectedProject) {
         const updatedProjects = state.user.projects.map((project) => {
