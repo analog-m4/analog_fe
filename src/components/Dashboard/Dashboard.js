@@ -2,6 +2,7 @@ import Project from "../Project/Project";
 import { useSelector } from "react-redux";
 import ProjectBoard from "../ProjectBoard/ProjectBoard";
 import AddProject from "../../AddProject/AddProject";
+import FileUpload from "../FileUpload/FileUpload";
 
 function Dashboard({ userStatus }) {
   const user = useSelector((state) => state.user.user);
@@ -24,11 +25,16 @@ function Dashboard({ userStatus }) {
           <div className="projects font-bold text-gray-900 border-b pb-1 mb-1 font-fjalla text-lg">
             Projects
           </div>
-          <div>{userProjects}</div>
+          <div className="flex flex-col">{userProjects}</div>
           <AddProject />
         </div>
       </div>
-      <ProjectBoard />
+      <div className="flex flex-col w-10/12">
+        <FileUpload />
+        <div className="h-screen">
+          <ProjectBoard />
+        </div>
+      </div>
     </div>
   );
 }
