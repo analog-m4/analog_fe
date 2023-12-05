@@ -21,7 +21,6 @@ const style = {
 
 function AddTask({ taskStatus }) {
   const dispatch = useDispatch();
-  const selectedProject = useSelector((state) => state.user.selectedProject);
   const [open, setOpen] = React.useState(false);
   const [newTaskTitle, setNewTaskTitle] = React.useState('');
   const [newTaskDescription, setNewTaskDescription] = React.useState('');
@@ -36,12 +35,10 @@ function AddTask({ taskStatus }) {
   const handleAddTask = () => {
     console.log("Adding task:", newTaskTitle, newTaskDescription, taskStatus)
     dispatch(addTaskToProject({
-      newTask: {
         task_id: uuidv4(), // random uuid
         title: newTaskTitle,
         description: newTaskDescription,
         status: taskStatus, 
-      },
     }));
     handleClose();
   }

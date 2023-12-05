@@ -23,6 +23,8 @@ function ProjectBoard() {
   const doingTasks = projectTasks.filter(task => task.status === 'doing');
   const doneTasks = projectTasks.filter(task => task.status === 'done');
 
+  console.log("updatedbl", backlogTasks)
+  
   return (
     <>
       <div className="flex flex-col w-10/12">
