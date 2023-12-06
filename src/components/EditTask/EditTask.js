@@ -44,16 +44,17 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              dispatch(
-                updateTask({
-                  project_id: parseInt(projectId),
-                  task_id: taskId,
-                  modifiedTask: {
-                    title: title,
-                    description: description,
-                  },
-                })
-              );
+              // dispatch(
+              //   updateTask({
+              //     project_id: parseInt(projectId),
+              //     task_id: taskId,
+              //     modifiedTask: {
+              //       title: title,
+              //       description: description,
+              //     },
+              //   })
+              // );
+              // POST REQUEST 
               handleClose();
             }}
             id="editmodal"

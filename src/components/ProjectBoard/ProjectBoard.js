@@ -3,23 +3,23 @@ import Column from "../Column/Column";
 
 function ProjectBoard() {
   const selectedProject = useSelector((state) => state.user.selectedProject);
-  const user = useSelector((state) => state.user.user)
-  console.log('user', user)
+  const user = useSelector((state) => state.user.user);
+  console.log("user", user);
 
-  console.log('selected project', selectedProject)
+  console.log("selected project", selectedProject);
 
-  const project = selectedProject 
-    ? user.projects.find((project) => project.project_id === selectedProject)
+  const project = selectedProject
+    ? user.projects.find((project) => project.id === selectedProject)
     : null;
 
   const projectTasks = project ? project.tasks : [];
 
-  console.log('project tasks', projectTasks);
+  console.log("project tasks", projectTasks);
 
-  const backlogTasks = projectTasks.filter(task => task.status === 'backlog');
-  const doingTasks = projectTasks.filter(task => task.status === 'doing');
-  const doneTasks = projectTasks.filter(task => task.status === 'done');
-  
+  const backlogTasks = projectTasks.filter((task) => task.status === "backlog");
+  const doingTasks = projectTasks.filter((task) => task.status === "doing");
+  const doneTasks = projectTasks.filter((task) => task.status === "done");
+
   return (
     <>
       <div className="flex flex-col w-auto h-auto">
@@ -36,9 +36,13 @@ function ProjectBoard() {
           </div>
         )}
         <div className="flex h-3/4 w-9/12 border border-gray-200 rounded-lg bg-white shadow-sm">
-          <Column columnName='Backlog' tasks={backlogTasks} taskStatus='backlog' />
-          <Column columnName='Doing' tasks={doingTasks} taskStatus='doing' />
-          <Column columnName='Done' tasks={doneTasks} taskStatus='done' />
+          <Column
+            columnName="Backlog"
+            tasks={backlogTasks}
+            taskStatus="backlog"
+          />
+          <Column columnName="Doing" tasks={doingTasks} taskStatus="doing" />
+          <Column columnName="Done" tasks={doneTasks} taskStatus="done" />
         </div>
       </div>
     </>

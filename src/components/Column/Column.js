@@ -5,8 +5,8 @@ function Column({ columnName, tasks, taskStatus }) {
   const columnTasks = tasks.map((task) => {
     return (
       <Task
-        key={task.task_id}
-        id={task.task_id}
+        key={task.id}
+        id={task.id}
         title={task.title}
         description={task.description}
       />
