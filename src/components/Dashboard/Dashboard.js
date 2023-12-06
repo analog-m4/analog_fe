@@ -15,8 +15,8 @@ function Dashboard({ userStatus }) {
   const userProjects = user?.projects?.map((project) => {
     return (
       <Project
-        key={project.project_id}
-        id={project.project_id}
+        key={project.id}
+        id={project.id}
         title={project.title}
       />
     );
