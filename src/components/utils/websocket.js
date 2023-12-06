@@ -1,6 +1,6 @@
 function createSocket() {
   // const socket = new WebSocket('ws://localhost:5000/cable');
-  const socket = new WebSocket('wss://analog-be-18680af1ea7c.herokuapp.com/cable');
+  const socket = new WebSocket('ws://analog-be-18680af1ea7c.herokuapp.com/cable');
   socket.onopen = function(event) {
     console.log('WebSocket Client Connected');
     // var id = Math.random().toString(10)
