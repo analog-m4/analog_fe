@@ -6,18 +6,7 @@ Add a new photo later
 
 # <p align="center"> Analog </p>
 
-This application has been designed to expose backend endpoints for our frontend application to consume. The project utilizes a service-oriented architecture, enabling the frontend to consume both this API and our AWS S3-specific API. This setup allows users to organize their projects and tasks within a single application.
-
-[Frontend Code Repository](https://github.com/analog-m4/analog_fe)
-
-Our Applications:
-- Backend: [Heroku](https://analog-be-18680af1ea7c.herokuapp.com/)
-- S3 Microservice: [Heroku](https://s3-direct-upload-microservice-a2d4cfd91078.herokuapp.com/)
-- Frontend: [Vercel](https://analog-fe.vercel.app/)
-
-This project served as our group's capstone, fulfilling the graduation requirements for the Turing School of Software and Design. For further information on Capstone requirements, please visit: [Capstone Project](https://mod4.turing.edu/projects/capstone/)
-
-![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white) ![Rails](https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white) ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+## Table of Contents 
 
 ## About Analog
 
@@ -29,29 +18,48 @@ INCLUDE:
 
 I will do this later if no one else wants to do the pitch.  
 
+## Application Details
+
+This application has been designed to be the user interface.  This project utilizes service-oriented architecture, which allows this application to consume endpoints from both the backend repository and the AWS S3-specific repository.
+
+[Backend Code Repository](https://github.com/analog-m4/analog_be)
+
+Our Applications:
+- Backend: [Heroku](https://analog-be-18680af1ea7c.herokuapp.com/)
+- S3 Microservice: [Heroku](https://s3-direct-upload-microservice-a2d4cfd91078.herokuapp.com/)
+- Frontend: [Vercel](https://analog-fe.vercel.app/)
+
+This project served as our group's capstone, fulfilling the graduation requirements for the Turing School of Software and Design. For further information on Capstone requirements, please visit: [Capstone Project](https://mod4.turing.edu/projects/capstone/)
+
+
+
+
+
+
+
+LATER FILL IN THIS WITH TECH PICTURES
+I'll talk to front end about which techs they used
+
 ## Technologies
-- Ruby 3.2.2
-- Rails 7.08
-- Gems:
-  - capybara | factory_bot_rails | faker | jsonapi-serializer |  rack-cors | rspec-rails | shoulda-matchers | simplecov 
-- CI with GitHub Actions
-- Postman
-- Heroku (with CD)
+SAME THING FOR THIS SECTION
 
 ## Installation
 1. Fork and clone this repository
-2. `cd` into the root directiory
-3. `bundle install`
-4. `rails db:{drop,create,migrate}`
-5. Run the test suite with `bundle exec rspec`
-6. Start the local server by running `rails s`
-7. Visit the app on `localhost:3000` in your web browser
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Run npm start
+   ```sh
+   npm start
+   ```
+5. Use the Link that is given in the Terminal & Open in Browser
+   ```sh
+   Example: http://localhost:3000/
+   ```
+TALK TO FE ABOUT THIS
 
-## Database Schema
-
-We'll fill this out at the end
-
-## Endpoints
+## Application Demo
 
 We'll fill this out at the end
 
@@ -63,6 +71,8 @@ We'll fill this out at the end
 - [Logan Matheny](https://www.linkedin.com/in/loganpmatheny/) - Github: [@loganpaulmatheny](https://github.com/loganpaulmatheny)
 - [Nicholas McEnroe](https://www.linkedin.com/in/nicholasmcenroe/) - GitHub: [@NSMcEnroe](https://github.com/NSMcEnroe)
 - [Will Weston](https://www.linkedin.com/in/weston-william/) - GitHub: [@WillWeston94](https://github.com/WillWeston94)
+
+
 
 
 
