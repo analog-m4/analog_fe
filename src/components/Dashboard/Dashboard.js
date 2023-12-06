@@ -1,14 +1,18 @@
 import Project from "../Project/Project";
 import { useSelector } from "react-redux";
 import ProjectBoard from "../ProjectBoard/ProjectBoard";
+import { useState } from "react";
+import WhiteBoard from "../WhiteBoard/WhiteBoard";
+// import createSocket from '../utils/websocket';
 import AddProject from "../../AddProject/AddProject";
 import FileUpload from "../FileUpload/FileUpload";
 
 function Dashboard({ userStatus }) {
   const user = useSelector((state) => state.user.user);
   // console.log("Current User:", user);
+  // const socket = createSocket();
 
-  const userProjects = user.projects.map((project) => {
+  const userProjects = user?.projects?.map((project) => {
     return (
       <Project
         key={project.project_id}
@@ -35,6 +39,7 @@ function Dashboard({ userStatus }) {
           <ProjectBoard />
         </div>
       </div>
+      <WhiteBoard />
     </div>
   );
 }
