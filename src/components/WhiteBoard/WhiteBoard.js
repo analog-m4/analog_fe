@@ -13,8 +13,10 @@ function WhiteBoard() {
   var remoteLastY = 0
 
   function received(data) {
+    console.log("Receiving Message")
     const jsonData = JSON.parse(data.data);
     const message = jsonData.message;
+    console.log(message)
     
     if (!message) {
       // console.error('Invalid data received from the server:', data);
@@ -89,14 +91,13 @@ function WhiteBoard() {
 
   function draw(event) {
     if (!isDrawing) return;
+    console.log("drawing");
     console.log("isDrawing:", isDrawing);
     console.log("lastX:", lastX);
     console.log("lastY:", lastY);
-    console.log("lastSent:", lastSent);
     
     // Send the coordinates to the server every 10ms
     // time.now() returns the current time in milliseconds
-    console.log("drawing");
     if (Date.now() - lastSent > 10) {
       sendDrawData(event.offsetX, event.offsetY, "drawing");
       lastSent = Date.now();
@@ -122,8 +123,6 @@ function WhiteBoard() {
   }
 
   function sendDrawData(x, y, state) {
-    console.log("This is inside send data.");
-    console.log("Socket:", socket);
 
     const message = {
       command: "message",
