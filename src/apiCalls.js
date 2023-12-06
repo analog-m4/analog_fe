@@ -14,3 +14,93 @@ export const fetchData = () => {
       console.error(`Error in Network Request`, error);
     });
 };
+
+
+export const postProject = (userId, title, description, color, deadline) => {
+  return fetch(
+    `https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}`,
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(
+      {
+        user_id: userId,
+        title: title,
+        description: description,
+        color: color,
+        deadline: deadline,
+    })
+  })
+  .then((response) => {
+    if(!response.ok) {
+      throw new Error(`Failed to POST`)
+    }
+  })
+}
+
+export const postTask = (userId, projectId, title, description, priority) => {
+  return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks`,
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(
+      {
+        project_id: projectId,
+        title: title,
+        description: description,
+        priority: priority,
+    })
+  })
+  .then((response) => {
+    if(!response.ok) {
+      throw new Error(`Failed to POST`)
+    }
+  })
+}
+
+export const patchTask = (userId, projectId, title, description, priority) => {
+  return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks`,
+  {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(
+      {
+        project_id: projectId,
+        title: title,
+        description: description,
+        priority: priority,
+    })
+  })
+  .then((response) => {
+    if(!response.ok) {
+      throw new Error(`Failed to PATCH`)
+    }
+  })
+}
+
+export const postFile = (userId, projectId, fileId, fileName) => {
+  return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/uploaded_files/${fileId}`,
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(
+      {
+      user_id: userId,
+      fileName: fileName,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Failed to POST');
+      }
+      return response.json();
+    })
+}
