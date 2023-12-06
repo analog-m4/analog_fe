@@ -22,7 +22,7 @@ function ProjectBoard() {
   
   return (
     <>
-      <div className="flex flex-col w-10/12">
+      <div className="flex flex-col w-auto h-auto">
         {selectedProject ? (
           <div className="flex justify-between w-9/12 pl-1 pr-2 font-fjalla text-2xl text-purple-600 mb-1">
             {selectedProject.title}

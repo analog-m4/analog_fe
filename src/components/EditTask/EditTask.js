@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { updateTask } from "../../reducers/user";
 
 function EditTask({ taskId, taskTitle, taskDescription }) {
-  const user = useSelector((state) => state.user.user);
+  // const user = useSelector((state) => state.user.user);
   const projectId = useParams().id;
   const dispatch = useDispatch();
 
@@ -35,7 +35,7 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
         show={show}
         onHide={handleClose}
         backdrop="static"
-        keyboard={false}
+        keyboard={true}
       >
         <Modal.Header closeButton>
           <Modal.Title>Update Task</Modal.Title>
