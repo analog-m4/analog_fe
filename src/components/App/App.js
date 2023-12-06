@@ -19,7 +19,7 @@ function App() {
       // setUser(data.data.attributes["user-data"]);
       // console.log(`useEffect`, user);
     });
-  }, [handleLogin]);
+  }, []);
 
   function handleLogin() {
     setUserStatus(!userStatus);
