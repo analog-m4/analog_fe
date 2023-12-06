@@ -13,24 +13,23 @@ function WhiteBoard() {
   var remoteLastY = 0
 
   function received(data) {
-    console.log("Receiving Message")
+    console.log("Receiving Message", data)
     const jsonData = JSON.parse(data.data);
-    const message = jsonData.message;
-    console.log(message)
+    const received_message = jsonData.message;
     
-    if (!message) {
+    if (!received_message) {
       // console.error('Invalid data received from the server:', data);
       return;
     }
 
-    if (message['state'] === "start" || message['state'] === "stop") {
+    if (received_message['state'] === "start" || received_message['state'] === "stop") {
       console.log("Info data", data)
-      remoteLastX = message['x'];
-      remoteLastY = message['y'];
+      remoteLastX = received_message['x'];
+      remoteLastY = received_message['y'];
       return;
     }
 
-    drawRemoteData(message['x'], message['y']);
+    drawRemoteData(received_message['x'], received_message['y']);
   }
 
   function drawRemoteData(x, y) {
