@@ -13,7 +13,7 @@ function WhiteBoard() {
   var remoteLastY = 0
 
   function received(data) {
-    // console.log("Receiving Message", data)
+    console.log("Receiving Message", data)
     const jsonData = JSON.parse(data.data);
     const received_message = jsonData.message;
     
