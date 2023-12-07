@@ -3,10 +3,9 @@ import Column from "../Column/Column";
 
 function ProjectBoard() {
   const selectedProject = useSelector((state) => state.user.selectedProject);
-  const user = useSelector((state) => state.user.user);
-  console.log("user", user);
+  const user = useSelector((state) => state.user.user.attributes);
 
-  console.log("selected project", selectedProject);
+  console.log("Selected Project:", selectedProject);
 
   const project = selectedProject
     ? user.projects.find((project) => project.id === selectedProject)
@@ -14,7 +13,7 @@ function ProjectBoard() {
 
   const projectTasks = project ? project.tasks : [];
 
-  console.log("project tasks", projectTasks);
+  console.log("Project Tasks:", projectTasks);
 
   const backlogTasks = projectTasks.filter((task) => task.status === "backlog");
   const doingTasks = projectTasks.filter((task) => task.status === "doing");

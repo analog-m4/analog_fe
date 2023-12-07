@@ -4,12 +4,12 @@ import ProjectBoard from "../ProjectBoard/ProjectBoard";
 import { useState } from "react";
 import WhiteBoard from "../WhiteBoard/WhiteBoard";
 // import createSocket from '../utils/websocket';
-import AddProject from "../../AddProject/AddProject";
+import AddProject from "../AddProject/AddProject";
 import FileUpload from "../FileUpload/FileUpload";
 
 function Dashboard({ userStatus }) {
-  const user = useSelector((state) => state.user.user);
-  // console.log("Current User:", user);
+  const user = useSelector((state) => state.user.user.attributes); // get user attributes
+  console.log("Current User:", user);
   // const socket = createSocket();
 
   const userProjects = user?.projects?.map((project) => {
