@@ -43,7 +43,7 @@ export const postProject = (userId, title, description, color, deadline) => {
   });
 };
 
-export const postTask = (userId, projectId, title, description, priority) => {
+export const postTask = (userId, projectId, title, description, priority, taskStatus) => {
   return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks`,
   {
     method: 'POST',
@@ -52,10 +52,10 @@ export const postTask = (userId, projectId, title, description, priority) => {
     },
     body: JSON.stringify(
       {
-        project_id: projectId,
         title: title,
         description: description,
         priority: priority,
+        status: taskStatus
     })
   })
   .then((response) => {

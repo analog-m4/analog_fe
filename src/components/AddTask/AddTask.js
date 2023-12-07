@@ -3,9 +3,12 @@ import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { addTaskToProject } from "../../reducers/user";
 import { v4 as uuidv4 } from "uuid";
+import { postTask } from "../../apiCalls";
 
 function AddTask({ taskStatus }) {
   const dispatch = useDispatch();
+  const currentUserId = useSelector((state) => state.user.user.id);
+  const selectedProject = useSelector((state) => state.user.selectedProject);
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskDescription, setNewTaskDescription] = useState("");
@@ -57,6 +60,7 @@ function AddTask({ taskStatus }) {
               //   })
               // );
               // INSERT POST REQUEST 
+              postTask(currentUserId, selectedProject, newTaskTitle, newTaskDescription, "low", taskStatus);
               handleClose();
             }}
             id="add-task"
