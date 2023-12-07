@@ -16,7 +16,8 @@ function App() {
   useEffect(() => {
     fetchData().then((data) => {
       console.log(data);
-      dispatch(setUserData(data.data.attributes));
+      dispatch(setUserData(data.data)); // removed .attributes to be able to retrieve user id
+      
       // setUser(data.data.attributes["user-data"]);
       // console.log(`useEffect`, user);
     });

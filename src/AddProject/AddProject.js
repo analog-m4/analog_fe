@@ -3,9 +3,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProjectToUser } from '../reducers/user';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
+import { postProject } from '../apiCalls';
 
 const style = {
   position: 'absolute',
@@ -20,10 +21,13 @@ const style = {
 };
 
 function AddProject() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const currentUserId = useSelector((state) => state.user.user.id);
   const [open, setOpen] = React.useState(false);
   const [newProjectTitle, setNewProjectTitle] = React.useState('');
   const [newProjectDescription, setNewProjectDescription] = React.useState('');
+  const color = "#7C3AED";
+  const deadline = "";
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -33,12 +37,14 @@ function AddProject() {
   }
   
   const handleAddProject = () => {
-    dispatch(addProjectToUser({ 
-      // project_id: uuidv4(), // random uuid
-      title: newProjectTitle,
-      description: newProjectDescription,
-      tasks: [],
-    }));
+    // dispatch(addProjectToUser({ 
+    //   // project_id: uuidv4(), // random uuid
+    //   title: newProjectTitle,
+    //   description: newProjectDescription,
+    //   tasks: [],
+    // }));
+    console.log("Current User ID:", currentUserId)
+    postProject(currentUserId, newProjectTitle, newProjectDescription, color, deadline);
     handleClose();
   }
 

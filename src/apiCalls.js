@@ -16,7 +16,7 @@ export const fetchData = () => {
 };
 
 
-export const postProject = (userId, title, description = "", color = "#7C3AED", deadline = "") => {
+export const postProject = (userId, title, description, color, deadline) => {
   return fetch(
     `https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/`,
     
@@ -44,7 +44,7 @@ export const postProject = (userId, title, description = "", color = "#7C3AED", 
   });
 };
 
-export const postTask = (projectId, title, description, priority = "") => {
+export const postTask = (userId, projectId, title, description, priority) => {
   return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks`,
   {
     method: 'POST',
@@ -69,7 +69,7 @@ export const postTask = (projectId, title, description, priority = "") => {
   });
 }
 
-export const patchTask = (projectId, title, description, priority) => {
+export const patchTask = (userId, projectId, title, description, priority) => {
   return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks`,
   {
     method: 'PATCH',
