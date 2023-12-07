@@ -26,8 +26,6 @@ function AddProject() {
   const [open, setOpen] = React.useState(false);
   const [newProjectTitle, setNewProjectTitle] = React.useState('');
   const [newProjectDescription, setNewProjectDescription] = React.useState('');
-  const color = "#7C3AED";
-  const deadline = "";
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -44,7 +42,7 @@ function AddProject() {
     //   tasks: [],
     // }));
     console.log("Current User ID:", currentUserId)
-    postProject(currentUserId, newProjectTitle, newProjectDescription, color, deadline);
+    postProject(currentUserId, newProjectTitle, newProjectDescription, "#FFFFFF", "2023-12-31");
     handleClose();
   }
 

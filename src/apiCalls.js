@@ -27,7 +27,6 @@ export const postProject = (userId, title, description, color, deadline) => {
     },
     body: JSON.stringify(
       {
-        user_id: userId,
         title: title,
         description: description,
         color: color,
