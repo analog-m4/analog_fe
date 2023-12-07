@@ -15,7 +15,7 @@ function FileUpload() {
     }
 
     try {
-      const presignedUrlResponse = await fetch('${baseUrl}/uploaded_files', {   // Add S3 API Gateway URL here
+      const presignedUrlResponse = await fetch('${baseUrl}/create_presigned_url', {   // Add S3 API Gateway URL here
         method: "POST",
         headers: {
           "Content-Type": "application/json",
