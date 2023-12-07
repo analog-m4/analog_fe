@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/152443257?s=96&v=4" alt="Analog" width="300" height="auto" />
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Add a new photo later
 
-## Available Scripts
+# <p align="center"> Analog </p>
 
-In the project directory, you can run:
+## Table of Contents 
 
-### `npm start`
+[Abstract](#abstract) |
+[Application Details](#application-details) |
+[Technologies](#technologies) |
+[installation](#installation) |
+[Application Demo](#application-demo) |
+[Contributors](#contributors) 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Abstract 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+INSERT PITCH HERE
+INCLUDE: 
+- File upload services
+- Whiteboard and Drawing Features
+- Project and task management
 
-### `npm test`
+I will do this later if no one else wants to do the pitch.  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Application Details
 
-### `npm run build`
+This application has been designed to be the user interface.  This project utilizes service-oriented architecture, which allows this application to consume endpoints from both the backend repository and the AWS S3-specific repository.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Backend Code Repository](https://github.com/analog-m4/analog_be)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Our Applications:
+- Backend: [Heroku](https://analog-be-18680af1ea7c.herokuapp.com/)
+- S3 Microservice: [Heroku](https://s3-direct-upload-microservice-a2d4cfd91078.herokuapp.com/)
+- Frontend: [Vercel](https://analog-fe.vercel.app/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project served as our group's capstone, fulfilling the graduation requirements for the Turing School of Software and Design. For further information on Capstone requirements, please visit: [Capstone Project](https://mod4.turing.edu/projects/capstone/)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+LATER FILL IN THIS WITH TECH PICTURES
+I'll talk to front end about which techs they used
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technologies
+SAME THING FOR THIS SECTION
 
-### Code Splitting
+## Installation
+1. Fork and clone this repository
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Run npm start
+   ```sh
+   npm start
+   ```
+5. Use the Link that is given in the Terminal & Open in Browser
+   ```sh
+   Example: http://localhost:3000/
+   ```
+TALK TO FE ABOUT THIS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Application Demo
 
-### Analyzing the Bundle Size
+We'll fill this out at the end
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributors
 
-### Making a Progressive Web App
+- [William Chen](https://www.linkedin.com/in/williamfchen/) - Github: [@williamfchen](https://github.com/williamfchen)
+- [Johann Dee](https://www.linkedin.com/in/johanndee/) - Github: [@joh-ann](https://github.com/joh-ann)
+- [Robert deLaguna](https://www.linkedin.com/in/robert-delaguna/) - Github: [@rjdelaguna](https://github.com/rjdelaguna)
+- [Logan Matheny](https://www.linkedin.com/in/loganpmatheny/) - Github: [@loganpaulmatheny](https://github.com/loganpaulmatheny)
+- [Nicholas McEnroe](https://www.linkedin.com/in/nicholasmcenroe/) - GitHub: [@NSMcEnroe](https://github.com/NSMcEnroe)
+- [Will Weston](https://www.linkedin.com/in/weston-william/) - GitHub: [@WillWeston94](https://github.com/WillWeston94)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
