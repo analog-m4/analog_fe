@@ -18,6 +18,7 @@ function Dashboard({ userStatus }) {
         key={project.id}
         id={project.id}
         title={project.title}
+        color={project.color}
       />
     );
   });
