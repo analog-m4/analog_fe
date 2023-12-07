@@ -33,7 +33,7 @@ export const userSlice = createSlice({
 
       if (state.selectedProject) {
         const updatedProjects = state.user.projects.map((project) => {
-          if (project.project_id === state.selectedProject) {
+          if (project.id === state.selectedProject) {
             return { ...project, tasks: [...project.tasks, newTask] };
           }
           return project;
