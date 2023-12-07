@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function FileUpload() {
   const [file, setFile] = useState(null);
-  const baseUrl = "https://localhost:3000/"; // Replace with AWS line for deployment checks 
+  const baseUrl = "https://localhost:3000/"; // Replace with AWS deployment line for deployment checks 
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -13,9 +13,9 @@ function FileUpload() {
       alert("Please select a file");
       return;
     }
-
+    // requests a presigned url from rails AWS microservice
     try {
-      const presignedUrlResponse = await fetch('${baseUrl}/create_presigned_url', {   // Add S3 API Gateway URL here
+      const presignedUrlResponse = await fetch('${baseUrl}/create_presigned_url', { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,40 +27,42 @@ function FileUpload() {
       });
 
       const presignedUrlData = await presignedUrlResponse.json();
-
+      // creates a form object and appends the file and url fields
       const formData = new FormData();
-      Object.entries(presignedUrlData.presignedUrlResponse.fields).forEach(([key, value]) => {
-        formData.append(key, value);
+      Object.keys(presignedUrlData.fields).forEach(key => {
+        formData.append(key, presignedUrlData.fields[key]);
       });
       formData.append("file", file);
 
-      const s3UploadResponse = await fetch(presignedUrlData.presignedUrlResponse.url, {
+      //  uploads the file to S3
+      const s3UploadResponse = await fetch(presignedUrlData.url, {
         method: "POST",
         body: formData,
       });
-
-     if (!s3UploadResponse.ok) {
-        throw new Error("Failed to upload file");
-      }
-
-      const uploadCompleteResponse = await fetch(`${baseUrl}/uploaded_complete`, {  
+      // notifies our microservice that the upload is complete
+     if (s3UploadResponse.ok) {
+      const uploadCompleteResponse = await fetch(`${baseUrl}/upload_complete`, {  
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name: file.name,
+          s3_key: presignedUrlData.fields.key,
         })
       });
-
-      if (!uploadCompleteResponse.ok) {
-        throw new Error("Failed to upload file");
+      // checks if the upload was successful if not throws an error
+      if (uploadCompleteResponse.ok) {
+        console.log('File uploaded successfully');
+      } else {
+        throw new Error('Failed to notify backend of upload completion');
       }
-
-      console.log("File upload successful");
+      } else {
+        throw new Error('Failed to upload file to S3');
+      }
     } catch (error) {
-      console.error("Error uploading file", error);
-      alert("Upload Failed: " + error.message);
+      console.error('Error uploading file', error); 
+      console.log('Failed to upload file' + error.message);
     }
   };
 
@@ -68,7 +70,7 @@ function FileUpload() {
     <div className="flex w-full mb-4">
       <div class="upload-file">
         <label for="formFile" class="form-label">Upload File</label>
-        <input class="form-control" type="file" id="formFile" onChange={handleFileChange}  />
+        <input class="form-control" type="file" id="formFile" onChange={handleFileChange} />
       </div>
       <div className="upload-file-btn flex items-end pb-2 ml-1 cursor-pointer" onClick={handleUpload}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
