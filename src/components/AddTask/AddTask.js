@@ -17,8 +17,8 @@ function AddTask({ taskStatus }) {
   const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
-    // setNewTaskTitle('');
-    // setNewTaskDescription('');
+    setNewTaskTitle('');
+    setNewTaskDescription('');
   };
 
   return (
