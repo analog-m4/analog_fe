@@ -10,6 +10,7 @@ function Column({ columnName, tasks, taskStatus }) {
         title={task.title}
         description={task.description}
         status={task.status}
+        priority={task.priority}
       />
     );
   });
