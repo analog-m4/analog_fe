@@ -13,7 +13,7 @@ function WhiteBoard() {
   var remoteLastY = 0
 
   function received(data) {
-    console.log("Receiving Message", data)
+    // console.log("Receiving Message", data)
     const jsonData = JSON.parse(data.data);
     const received_message = jsonData.message;
     
@@ -23,7 +23,7 @@ function WhiteBoard() {
     }
 
     if (received_message['state'] === "start" || received_message['state'] === "stop") {
-      console.log("Info data", data)
+      // console.log("Info data", data)
       remoteLastX = received_message['x'];
       remoteLastY = received_message['y'];
       return;

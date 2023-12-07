@@ -16,9 +16,10 @@ export const fetchData = () => {
 };
 
 
-export const postProject = (userId, title, description, color, deadline) => {
+export const postProject = (userId, title, description = "", color = "#7C3AED", deadline = "") => {
   return fetch(
-    `https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}`,
+    `https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/`,
+    
   {
     method: 'POST',
     headers: {
@@ -38,9 +39,12 @@ export const postProject = (userId, title, description, color, deadline) => {
       throw new Error(`Failed to POST`)
     }
   })
-}
+  .catch((error) => {
+    console.error(`Error in Network Request`, error);
+  });
+};
 
-export const postTask = (userId, projectId, title, description, priority) => {
+export const postTask = (projectId, title, description, priority = "") => {
   return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks`,
   {
     method: 'POST',
@@ -60,9 +64,12 @@ export const postTask = (userId, projectId, title, description, priority) => {
       throw new Error(`Failed to POST`)
     }
   })
+  .catch((error) => {
+    console.error(`Error in Network Request`, error);
+  });
 }
 
-export const patchTask = (userId, projectId, title, description, priority) => {
+export const patchTask = (projectId, title, description, priority) => {
   return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks`,
   {
     method: 'PATCH',
@@ -82,25 +89,7 @@ export const patchTask = (userId, projectId, title, description, priority) => {
       throw new Error(`Failed to PATCH`)
     }
   })
-}
-
-export const postFile = (userId, projectId, fileId, fileName) => {
-  return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/uploaded_files/${fileId}`,
-  {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(
-      {
-      user_id: userId,
-      fileName: fileName,
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Failed to POST');
-      }
-      return response.json();
-    })
+  .catch((error) => {
+    console.error(`Error in Network Request`, error);
+  });
 }

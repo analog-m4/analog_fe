@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function FileUpload() {
   const [file, setFile] = useState(null);
-  const baseUrl = "https://localhost:3000/"; // Replace with AWS deployment line for deployment checks 
+  const baseUrl = "https://s3-direct-upload-microservice-a2d4cfd91078.herokuapp.com"; // Replace with AWS deployment line for deployment checks 
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -15,7 +15,7 @@ function FileUpload() {
     }
     // requests a presigned url from rails AWS microservice
     try {
-      const presignedUrlResponse = await fetch('${baseUrl}/create_presigned_url', { 
+      const presignedUrlResponse = await fetch(`${baseUrl}/create_presigned_url`, { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
