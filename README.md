@@ -8,7 +8,14 @@ Add a new photo later
 
 ## Table of Contents 
 
-## About Analog
+[Abstract](#abstract) |
+[Application Details](#application-details) |
+[Technologies](#technologies) |
+[installation](#installation) |
+[Application Demo](#application-demo) |
+[Contributors](#contributors) 
+
+## Abstract 
 
 INSERT PITCH HERE
 INCLUDE: 
