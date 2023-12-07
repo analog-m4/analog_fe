@@ -4,7 +4,7 @@ import ProjectBoard from "../ProjectBoard/ProjectBoard";
 import { useState } from "react";
 import WhiteBoard from "../WhiteBoard/WhiteBoard";
 // import createSocket from '../utils/websocket';
-import AddProject from "../../AddProject/AddProject";
+import AddProject from "../AddProject/AddProject";
 import FileUpload from "../FileUpload/FileUpload";
 
 function Dashboard({ userStatus }) {

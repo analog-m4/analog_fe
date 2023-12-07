@@ -4,9 +4,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProjectToUser } from '../reducers/user';
+import { addProjectToUser } from '../../reducers/user';
 // import { v4 as uuidv4 } from 'uuid';
-import { postProject } from '../apiCalls';
+import { postProject } from '../../apiCalls';
 
 const style = {
   position: 'absolute',
