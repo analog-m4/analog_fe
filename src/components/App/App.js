@@ -3,7 +3,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import { useState, useEffect } from "react";
 import { fetchData } from "../../apiCalls";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../reducers/user";
 import Header from "../Header/Header";
 
@@ -12,6 +12,7 @@ function App() {
   const [userStatus, setUserStatus] = useState(false);
   // const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user.user.attributes);
 
   useEffect(() => {
     fetchData().then((data) => {
@@ -21,7 +22,7 @@ function App() {
       // setUser(data.data.attributes["user-data"]);
       // console.log(`useEffect`, user);
     });
-  }, []);
+  }, [user]);
 
   function handleLogin() {
     setUserStatus(!userStatus);
