@@ -5,8 +5,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { updateTask } from "../../reducers/user";
 import { patchTask } from "../../apiCalls";
+import Form from "react-bootstrap/Form";
 
-function EditTask({ taskId, taskTitle, taskDescription }) {
+function EditTask({
+  taskId,
+  taskTitle,
+  taskDescription,
+  taskStatus,
+  taskPriority,
+}) {
   // const user = useSelector((state) => state.user.user);
   const projectId = useParams().id;
   const dispatch = useDispatch();
@@ -21,6 +28,8 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
 
   const [title, setTitle] = useState(taskTitle);
   const [description, setDescription] = useState(taskDescription);
+  const [status, setStatus] = useState(taskStatus);
+  const [priority, setPriority] = useState(taskPriority);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -59,8 +68,8 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
                 taskId,
                 title,
                 description,
-                "high",
-                "doing",
+                priority,
+                status,
                 dispatch
               );
               handleClose();
@@ -108,6 +117,56 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
                     setDescription(e.target.value);
                   }}
                 />
+              </div>
+            </div>
+            <div className="md:flex md:items-center mb-6">
+              <div className="md:w-1/3">
+                <label
+                  className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                  htmlFor="priority"
+                >
+                  Priority
+                </label>
+              </div>
+              <div className="md:w-2/3">
+                <Form.Select
+                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  id="priority"
+                  value={priority}
+                  onChange={(e) => {
+                    setPriority(e.target.value);
+                  }}
+                >
+                  <option>{priority}</option>
+                  <option>low</option>
+                  <option>medium</option>
+                  <option>high</option>
+                </Form.Select>
+              </div>
+            </div>
+            <div className="md:flex md:items-center mb-6">
+              <div className="md:w-1/3">
+                <label
+                  className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                  htmlFor="status"
+                >
+                  Status
+                </label>
+              </div>
+              <div className="md:w-2/3">
+                <Form.Select
+                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  id="status"
+                  value={status}
+                  onChange={(e) => {
+                    setStatus(e.target.value);
+                  }}
+                >
+                  <option>{status}</option>
+                  <option>backlog</option>
+                  <option>doing</option>
+                  <option>done</option>
+                </Form.Select>
               </div>
             </div>
           </form>
