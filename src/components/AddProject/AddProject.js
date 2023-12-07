@@ -1,37 +1,30 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { addProjectToUser } from "../../reducers/user";
-// import { v4 as uuidv4 } from 'uuid';
 import { postProject } from "../../apiCalls";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 function AddProject() {
-  const dispatch = useDispatch();
   const currentUserId = useSelector((state) => state.user.user.id);
-  const [open, setOpen] = React.useState(false);
-  const [newProjectTitle, setNewProjectTitle] = React.useState("");
-  const [newProjectDescription, setNewProjectDescription] = React.useState("");
+  const dispatch = useDispatch();
 
-  const handleOpen = () => setOpen(true);
+  const [newProjectTitle, setNewProjectTitle] = useState("");
+  const [newProjectDescription, setNewProjectDescription] = useState("");
+
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
   const handleClose = () => {
-    setOpen(false);
+    setShow(false);
     setNewProjectTitle("");
     setNewProjectDescription("");
+  };
+
+  const randomHexCode = () => {
+    let hexColor = "#";
+    for (let i = 0; i < 6; i++) {
+      let hexDigit = Math.floor(Math.random() * 16).toString(16);
+      hexColor += hexDigit;
+    }
+    return hexColor;
   };
 
   const handleAddProject = () => {
@@ -46,7 +39,7 @@ function AddProject() {
       currentUserId,
       newProjectTitle,
       newProjectDescription,
-      "#FFFFFF",
+      randomHexCode(),
       "2023-12-31",
       dispatch
     );
@@ -54,51 +47,109 @@ function AddProject() {
   };
 
   return (
-    <div
-      className="add-project-btn flex text-gray-400 font-light text-sm items-center cursor-pointer mt-2"
-      onClick={handleOpen}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="2 0 30 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="w-5 h-6 text-green-400"
+    <>
+      <div
+        className="add-project-btn flex text-gray-400 font-light text-sm items-center cursor-pointer mt-2"
+        onClick={handleShow}
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-      Add Project
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add Project
-          </Typography>
-          <input
-            type="text"
-            placeholder="Project Title"
-            value={newProjectTitle}
-            onChange={(e) => setNewProjectTitle(e.target.value)}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="2 0 30 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="w-5 h-6 text-green-400"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
           />
-          <input
-            type="text"
-            placeholder="Project Description"
-            value={newProjectDescription}
-            onChange={(e) => setNewProjectDescription(e.target.value)}
-          />
-          <Button onClick={handleAddProject}>Add Project</Button>
-        </Box>
+        </svg>
+        Add Project
+      </div>
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={true}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Project</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              // dispatch(
+              //   addTaskToProject({
+              //     task_id: uuidv4(), // random uuid
+              //     title: newTaskTitle,
+              //     description: newTaskDescription,
+              //     status: taskStatus,
+              //   })
+              // );
+              // INSERT POST REQUEST
+              handleAddProject();
+              handleClose();
+            }}
+            id="add-project"
+            className="w-full max-w-sm"
+          >
+            <div className="md:flex md:items-center mb-6">
+              <div className="md:w-1/3">
+                <label
+                  className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                  htmlFor="new-task-title"
+                >
+                  Title
+                </label>
+              </div>
+              <div className="md:w-2/3">
+                <input
+                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  id="new-project-title"
+                  type="text"
+                  placeholder="Project Title"
+                  value={newProjectTitle}
+                  onChange={(e) => setNewProjectTitle(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="md:flex md:items-center mb-6">
+              <div className="md:w-1/3">
+                <label
+                  className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                  htmlFor="new-task-title"
+                >
+                  Description
+                </label>
+              </div>
+              <div className="md:w-2/3">
+                <input
+                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  id="new-project-description"
+                  type="text"
+                  placeholder="Project Description"
+                  value={newProjectDescription}
+                  onChange={(e) => setNewProjectDescription(e.target.value)}
+                />
+              </div>
+            </div>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            className="bg-slate-400 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded"
+            onClick={handleClose}
+          >
+            Close
+          </button>
+          {/* <Button onClick={handleAddProject}>Add Project</Button> */}
+          <button
+            className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+            form="add-project"
+          >
+            Add
+          </button>
+        </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 }
 

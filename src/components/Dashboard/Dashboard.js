@@ -13,7 +13,14 @@ function Dashboard({ userStatus }) {
   // const socket = createSocket();
 
   const userProjects = user?.projects?.map((project) => {
-    return <Project key={project.id} id={project.id} title={project.title} />;
+    return (
+      <Project
+        key={project.id}
+        id={project.id}
+        title={project.title}
+        color={project.color}
+      />
+    );
   });
 
   return (
