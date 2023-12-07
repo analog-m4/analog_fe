@@ -17,8 +17,8 @@ function AddTask({ taskStatus }) {
   const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
-    setNewTaskTitle('');
-    setNewTaskDescription('');
+    setNewTaskTitle("");
+    setNewTaskDescription("");
   };
 
   return (
@@ -59,8 +59,16 @@ function AddTask({ taskStatus }) {
               //     status: taskStatus,
               //   })
               // );
-              // INSERT POST REQUEST 
-              postTask(currentUserId, selectedProject, newTaskTitle, newTaskDescription, "low", taskStatus);
+              // INSERT POST REQUEST
+              postTask(
+                currentUserId,
+                selectedProject,
+                newTaskTitle,
+                newTaskDescription,
+                "low",
+                taskStatus,
+                dispatch
+              );
               handleClose();
             }}
             id="add-task"
