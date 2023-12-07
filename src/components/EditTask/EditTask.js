@@ -34,12 +34,7 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
       >
         Update
       </button>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={true}
-      >
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={true}>
         <Modal.Header closeButton>
           <Modal.Title>Update Task</Modal.Title>
         </Modal.Header>
@@ -57,8 +52,17 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
               //     },
               //   })
               // );
-              // POST REQUEST 
-              patchTask(currentUserId, selectedProject, taskId, title, description, "high", "doing")
+              // POST REQUEST
+              patchTask(
+                currentUserId,
+                selectedProject,
+                taskId,
+                title,
+                description,
+                "high",
+                "doing",
+                dispatch
+              );
               handleClose();
             }}
             id="editmodal"
