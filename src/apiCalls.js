@@ -17,8 +17,15 @@ export const fetchData = () => {
     });
 };
 
-export const postProject = (userId, title, description, color, deadline) => {
-  return fetch(
+export const postProject = (
+  userId,
+  title,
+  description,
+  color,
+  deadline,
+  dispatch
+) => {
+  fetch(
     `https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/`,
 
     {
@@ -38,6 +45,9 @@ export const postProject = (userId, title, description, color, deadline) => {
       if (!response.ok) {
         throw new Error(`Failed to POST`);
       }
+      fetchData().then((data) => {
+        dispatch(setUserData(data.data));
+      });
     })
     .catch((error) => {
       console.error(`Error in Network Request`, error);
@@ -88,9 +98,10 @@ export const patchTask = (
   title,
   description,
   priority,
-  taskStatus
+  taskStatus,
+  dispatch
 ) => {
-  return fetch(
+  fetch(
     `https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks/${taskId}`,
     {
       method: "PATCH",
@@ -109,6 +120,9 @@ export const patchTask = (
       if (!response.ok) {
         throw new Error(`Failed to PATCH`);
       }
+      fetchData().then((data) => {
+        dispatch(setUserData(data.data));
+      });
     })
     .catch((error) => {
       console.error(`Error in Network Request`, error);
