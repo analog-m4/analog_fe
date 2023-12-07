@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import sampleAvatar from "../../images/sample-avatar.png";
 
 function Account({ userStatus, handleLogin }) {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.user.attributes);
 
   if (!user) {
     return <div>Loading...</div>;
