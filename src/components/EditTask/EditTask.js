@@ -4,11 +4,14 @@ import Modal from "react-bootstrap/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { updateTask } from "../../reducers/user";
+import { patchTask } from "../../apiCalls";
 
 function EditTask({ taskId, taskTitle, taskDescription }) {
   // const user = useSelector((state) => state.user.user);
   const projectId = useParams().id;
   const dispatch = useDispatch();
+  const currentUserId = useSelector((state) => state.user.user.id);
+  const selectedProject = useSelector((state) => state.user.selectedProject);
 
   useEffect(() => {
     console.log("EditTask props updated:", taskTitle, taskDescription);
@@ -55,6 +58,7 @@ function EditTask({ taskId, taskTitle, taskDescription }) {
               //   })
               // );
               // POST REQUEST 
+              patchTask(currentUserId, selectedProject, taskId, title, description, "high", "doing")
               handleClose();
             }}
             id="editmodal"

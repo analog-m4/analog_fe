@@ -68,8 +68,8 @@ export const postTask = (userId, projectId, title, description, priority, taskSt
   });
 }
 
-export const patchTask = (userId, projectId, title, description, priority) => {
-  return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks`,
+export const patchTask = (userId, projectId, taskId, title, description, priority, taskStatus) => {
+  return fetch(`https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/${userId}/projects/${projectId}/tasks/${taskId}`,
   {
     method: 'PATCH',
     headers: {
@@ -77,10 +77,10 @@ export const patchTask = (userId, projectId, title, description, priority) => {
     },
     body: JSON.stringify(
       {
-        project_id: projectId,
         title: title,
         description: description,
         priority: priority,
+        status: taskStatus
     })
   })
   .then((response) => {
