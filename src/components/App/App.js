@@ -6,6 +6,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../reducers/user";
 import Header from "../Header/Header";
+import Error from "../Error/Error";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function App() {
           path="/project/:id"
           element={<Dashboard userStatus={userStatus} />}
         ></Route>
+        <Route path="*" element={<Error />}></Route>
       </Routes>
     </div>
   );

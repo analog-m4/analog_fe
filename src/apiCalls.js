@@ -1,4 +1,5 @@
 import { setUserData } from "./reducers/user";
+import { useDispatch } from "react-redux";
 
 export const fetchData = () => {
   // return fetch(`https://66bd0f8d-570b-453b-9987-71e98b3d8338.mock.pstmn.io`)
@@ -9,11 +10,12 @@ export const fetchData = () => {
       if (!response.ok) {
         throw new Error(`Failed to fetch data.`);
       }
-
+      // dispatch to clear state of error here
       return response.json();
     })
     .catch((error) => {
       console.error(`Error in Network Request`, error);
+      // dispatch to set state of error appropriately here
     });
 };
 
