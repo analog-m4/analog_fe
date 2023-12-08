@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { addTaskToProject } from "../../reducers/user";
-import { v4 as uuidv4 } from "uuid";
 import { postTask } from "../../apiCalls";
+import Form from "react-bootstrap/Form";
 
 function AddTask({ taskStatus }) {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ function AddTask({ taskStatus }) {
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskDescription, setNewTaskDescription] = useState("");
+  const [priority, setPriority] = useState("");
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -65,7 +66,7 @@ function AddTask({ taskStatus }) {
                 selectedProject,
                 newTaskTitle,
                 newTaskDescription,
-                "low",
+                priority,
                 taskStatus,
                 dispatch
               );
@@ -112,6 +113,31 @@ function AddTask({ taskStatus }) {
                   value={newTaskDescription}
                   onChange={(e) => setNewTaskDescription(e.target.value)}
                 />
+              </div>
+            </div>
+            <div className="md:flex md:items-center mb-6">
+              <div className="md:w-1/3">
+                <label
+                  className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                  htmlFor="priority"
+                >
+                  Priority
+                </label>
+              </div>
+              <div className="md:w-2/3">
+                <Form.Select
+                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  id="priority"
+                  value={priority}
+                  onChange={(e) => {
+                    setPriority(e.target.value);
+                  }}
+                >
+                  <option hidden>{priority}</option>
+                  <option>low</option>
+                  <option>medium</option>
+                  <option>high</option>
+                </Form.Select>
               </div>
             </div>
           </form>
