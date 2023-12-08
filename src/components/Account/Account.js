@@ -8,16 +8,10 @@ function Account({ userStatus, handleLogin }) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="nav flex gap-5 sm:w-1/4 md:w-1/6">
+      <div className="nav flex sm:w-1/4 md:w-1/6 justify-center">
         {userStatus === false ? (
           <>
-            <div
-              className="login-btn text-sm flex items-center font-lato"
-              // onClick={() => handleLogin()}
-            >
-              LOGIN
-            </div>
-            <div className="join-btn text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl">
+            <div className="join-btn text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500">
               JOIN NOW
             </div>
           </>
