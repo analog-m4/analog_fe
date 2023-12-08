@@ -14,4 +14,7 @@ export const userSlice = createSlice({
       return { ...state, error: errorData };
     },
   },
+  clearError: (state, action) => {
+    return { ...state, error: "" };
+  },
 });
