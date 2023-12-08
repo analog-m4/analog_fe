@@ -78,7 +78,7 @@ function FileUpload() {
       <div className="min-w-max p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
         <label
           htmlFor="formFile"
-          className="form-label font-bold text-gray-900 border-b pb-1 mb-2 font-fjalla text-lg"
+          className="form-label font-bold text-gray-900 border-b pb-1 mb-2 font-fjalla text-xl"
         >
           Files
         </label>
