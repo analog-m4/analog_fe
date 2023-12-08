@@ -134,7 +134,7 @@ function WhiteBoard() {
   }
 
   return (
-    <div className='whiteboard flex flex-col w-10/12'>
+    <div className='whiteboard flex flex-col w-10/12 pb-5'>
     <div className="flex font-fjalla text-gray-900 self-end text-xl italic mb-1 pr-2">
       WhiteBoard
     </div>
