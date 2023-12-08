@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedProject } from "../../reducers/user";
 
 function Project({ title, id, color }) {
@@ -9,11 +9,19 @@ function Project({ title, id, color }) {
   };
 
   const dispatch = useDispatch();
+  const selectedProjectId = useSelector((state) => state.user.selectedProject);
+
   return (
     <>
-      <NavLink to={`/project/${id}`}>
+      <NavLink
+        to={`/project/${id}`}
+        style={{ textDecoration: "none", color: "inherit" }}
+        activeClassName="active-link"
+      >
         <div
-          className="project flex gap-1 cursor-pointer "
+          className={`project flex gap-1 cursor-pointer hover:font-bold ${
+            selectedProjectId === id ? "text-purple-600 font-bold" : ""
+          }`}
           onClick={() => dispatch(setSelectedProject(id))}
         >
           <div

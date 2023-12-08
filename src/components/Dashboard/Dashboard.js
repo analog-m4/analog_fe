@@ -25,7 +25,7 @@ function Dashboard({ userStatus }) {
 
   return (
     <div className="flex h-auto">
-      <div className="w-2/12 p-5 min-w-max">
+      <div className="w-2/12 ml-5 mr-5 mt-3 min-w-max">
         <div className="dashboard min-w-max p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
           <div className="projects font-bold text-gray-900 border-b pb-1 mb-1 font-fjalla text-lg">
             Projects

@@ -30,7 +30,7 @@ function ProjectBoard() {
             </div>
           </div>
         ) : (
-          <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-3">
+          <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-4 animate-pulse animate-infinite animate-ease-out hover:animate-shake">
             No project selected
           </div>
         )}
