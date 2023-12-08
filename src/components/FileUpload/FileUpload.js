@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function FileUpload() {
   const [file, setFile] = useState(null);
   const baseUrl =
-    "https://s3-direct-upload-microservice-a2d4cfd91078.herokuapp.com"; // Replace with AWS deployment line for deployment checks
+    "https://s3-microservice-3d025e97e722.herokuapp.com"; // Replace with AWS deployment line for deployment checks
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
