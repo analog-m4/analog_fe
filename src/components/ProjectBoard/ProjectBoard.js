@@ -21,20 +21,23 @@ function ProjectBoard() {
 
   return (
     <>
-      <div className="flex flex-col w-auto h-auto mb-4">
+      <div className="flex flex-col w-auto h-auto">
         {selectedProject ? (
-          <div className="flex justify-between w-10/12 pl-1 pr-2 font-fjalla text-3xl text-purple-600 mb-2">
-            {project.title}
-            <div className="text-gray-900 self-end text-xl italic">
+          <div className="flex justify-between pl-1 pr-2 font-fjalla text-2xl text-purple-600 mb-1">
+            {selectedProject.title}
+            {/* <div className="text-gray-900 self-end text-xl">
               Project Board
-            </div>
+            </div> */}
           </div>
         ) : (
-          <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-4 animate-pulse animate-infinite animate-ease-out">
+          <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-1">
             No project selected
           </div>
         )}
-        <div className="project-board flex h-3/4 w-10/12 border border-gray-200 rounded-lg bg-white shadow-sm pl-5">
+        <div
+          className="flex h-3/4 w-10/12 border border-gray-200 rounded-lg bg-white shadow-sm"
+          style={{ maxHeight: "545px", overflowY: "auto" }}
+        >
           <Column
             columnName="Backlog"
             tasks={backlogTasks}

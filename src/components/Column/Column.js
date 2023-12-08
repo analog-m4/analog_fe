@@ -18,7 +18,7 @@ function Column({ columnName, tasks, taskStatus }) {
   return (
     <>
       <div className="flex flex-col w-5/12 min-w-1/4">
-        <div className="column-title font-bold pt-3 pb-3 text-gray-900 font-fjalla text-xl">
+        <div className="column-title ml-1 font-bold pt-3 pb-3 text-gray-900 font-fjalla text-xl">
           {columnName}
         </div>
         <div className="w-10/12 sm:w-11/12">{columnTasks}</div>
