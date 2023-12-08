@@ -13,7 +13,10 @@ function Account({ userStatus, handleLogin }) {
       <div className="nav flex sm:w-1/4 md:w-1/6 gap-2">
         {userStatus === false ? (
           <>
-            <div className="join-btn text-xs text-white flex items-center font-lato bg-black h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500" onClick={() => navigate("/projects")}>
+            <div
+              className="demo-btn text-xs text-white flex items-center font-lato h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer bg-gray-900 hover:bg-gray-700"
+              onClick={() => navigate("/projects")}
+            >
               DEMO
             </div>
             <div className="join-btn text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500">
