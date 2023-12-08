@@ -74,7 +74,7 @@ function FileUpload() {
   };
 
   return (
-    <div className="flex mt-4">
+    <div className="flex mt-4 mb-4">
       <div className="min-w-max p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
         <label
           htmlFor="formFile"
