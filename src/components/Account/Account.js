@@ -28,7 +28,7 @@ function Account({ userStatus, handleLogin }) {
             <div className="flex self-center h-10 w-10">
               <img
                 src={sampleAvatar}
-                className="border-gray-900 rounded-full border-2"
+                className="border-gray-900 rounded-full border-2 cursor-pointer hover:animate-rotate-y hover:animate-infinite"
               />
             </div>
             <div className="text-md flex items-center text-lg">
