@@ -2,8 +2,7 @@ import React, { useState } from "react";
 
 function FileUpload() {
   const [file, setFile] = useState(null);
-  const baseUrl =
-    "https://s3-direct-upload-microservice-a2d4cfd91078.herokuapp.com"; // Replace with AWS deployment line for deployment checks
+  const baseUrl = "https://s3-microservice-3d025e97e722.herokuapp.com"; // Replace with AWS deployment line for deployment checks
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -15,34 +14,30 @@ function FileUpload() {
       return;
     }
     // requests a presigned url from rails AWS microservice
+    // request to microservice
     try {
       const presignedUrlResponse = await fetch(
-        `${baseUrl}/create_presigned_url`,
+        `${baseUrl}/create_presigned_url?file_name=${file.name}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            name: file.name,
-            type: file.type,
-          }),
         }
-      );
+      )
 
       const presignedUrlData = await presignedUrlResponse.json();
-      // creates a form object and appends the file and url fields
+      // creates a form object and appends the file
       const formData = new FormData();
-      Object.keys(presignedUrlData.fields).forEach((key) => {
-        formData.append(key, presignedUrlData.fields[key]);
-      });
       formData.append("file", file);
 
-      //  uploads the file to S3
-      const s3UploadResponse = await fetch(presignedUrlData.url, {
-        method: "POST",
-        body: formData,
+      //  uploads the file to S3 with our presigned_url to S3
+      const s3UploadResponse = await fetch(presignedUrlData.presigned_url, {
+        method: "PUT",
+        body: file,
       });
+      // url
+
       // notifies our microservice that the upload is complete
       if (s3UploadResponse.ok) {
         const uploadCompleteResponse = await fetch(
@@ -53,12 +48,12 @@ function FileUpload() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              name: file.name,
-              s3_key: presignedUrlData.fields.key,
+              file_name: file.name,
             }),
           }
         );
-        // checks if the upload was successful if not throws an error
+
+        // checks if the upload was successful if not, throws an error
         if (uploadCompleteResponse.ok) {
           console.log("File uploaded successfully");
         } else {
@@ -113,5 +108,8 @@ function FileUpload() {
     </div>
   );
 }
+
+// set the permissions to go fetch from S3
+
 
 export default FileUpload;
