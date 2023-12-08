@@ -24,13 +24,13 @@ function ProjectBoard() {
       <div className="flex flex-col w-auto h-auto">
         {selectedProject ? (
           <div className="flex justify-between w-9/12 pl-1 pr-2 font-fjalla text-2xl text-purple-600 mb-1">
-            {selectedProject.title}
+            {project.title}
             <div className="text-gray-900 self-end text-lg italic">
               Project Board
             </div>
           </div>
         ) : (
-          <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-1">
+          <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-3">
             No project selected
           </div>
         )}
