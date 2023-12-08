@@ -24,7 +24,7 @@ function AddTask({ taskStatus }) {
   return (
     <>
       <div
-        className="add-task-btn flex text-gray-400 text-sm items-center cursor-pointer pl-3 pb-3 gap-1 hover:text-green-400"
+        className="add-task-btn flex text-gray-400 text-sm items-center cursor-pointer pb-4 gap-1 hover:text-green-400"
         onClick={handleShow}
       >
         <svg
