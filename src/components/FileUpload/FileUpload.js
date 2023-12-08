@@ -2,8 +2,7 @@ import React, { useState } from "react";
 
 function FileUpload() {
   const [file, setFile] = useState(null);
-  const baseUrl =
-    "https://s3-microservice-3d025e97e722.herokuapp.com"; // Replace with AWS deployment line for deployment checks
+  const baseUrl = "https://s3-microservice-3d025e97e722.herokuapp.com"; // Replace with AWS deployment line for deployment checks
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -15,27 +14,29 @@ function FileUpload() {
       return;
     }
     // requests a presigned url from rails AWS microservice
+    // request to microservice
     try {
       const presignedUrlResponse = await fetch(
         `${baseUrl}/create_presigned_url?file_name=${file.name}`,
         {
-          method: "GET",
+          method: "PUT",
           headers: {
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         }
-      );
+      )
 
       const presignedUrlData = await presignedUrlResponse.json();
       // creates a form object and appends the file
       const formData = new FormData();
       formData.append("file", file);
 
-      //  uploads the file to S3 with our presigned_url
+      //  uploads the file to S3 with our presigned_url to S3
       const s3UploadResponse = await fetch(presignedUrlData.presigned_url, {
         method: "PUT",
         body: file,
       });
+      // url
 
       // notifies our microservice that the upload is complete
       if (s3UploadResponse.ok) {
@@ -47,7 +48,7 @@ function FileUpload() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              file_name: file.name
+              file_name: file.name,
             }),
           }
         );
@@ -102,5 +103,8 @@ function FileUpload() {
     </div>
   );
 }
+
+// set the permissions to go fetch from S3
+
 
 export default FileUpload;
