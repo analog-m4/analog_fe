@@ -24,7 +24,7 @@ function AddTask({ taskStatus }) {
   return (
     <>
       <div
-        className="add-task-btn flex text-gray-400 text-sm items-center cursor-pointer pl-3 pb-3"
+        className="add-task-btn flex text-gray-400 text-sm items-center cursor-pointer pl-3 pb-3 gap-1 hover:text-green-400"
         onClick={handleShow}
       >
         <svg
@@ -33,7 +33,7 @@ function AddTask({ taskStatus }) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-5 h-6 text-green-400 mr-2"
+          className="w-5 h-6 text-green-400"
         >
           <path
             strokeLinecap="round"

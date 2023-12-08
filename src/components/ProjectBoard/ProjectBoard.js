@@ -23,7 +23,7 @@ function ProjectBoard() {
     <>
       <div className="flex flex-col w-auto h-auto">
         {selectedProject ? (
-          <div className="flex justify-between w-9/12 pl-1 pr-2 font-fjalla text-3xl text-purple-600 mb-2">
+          <div className="flex justify-between w-10/12 pl-1 pr-2 font-fjalla text-3xl text-purple-600 mb-2">
             {project.title}
             <div className="text-gray-900 self-end text-xl italic">
               Project Board
@@ -34,7 +34,7 @@ function ProjectBoard() {
             No project selected
           </div>
         )}
-        <div className="flex h-3/4 w-9/12 border border-gray-200 rounded-lg bg-white shadow-sm">
+        <div className="project-board flex h-3/4 w-10/12 border border-gray-200 rounded-lg bg-white shadow-sm pl-5">
           <Column
             columnName="Backlog"
             tasks={backlogTasks}
