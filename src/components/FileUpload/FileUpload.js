@@ -17,32 +17,26 @@ function FileUpload() {
     // requests a presigned url from rails AWS microservice
     try {
       const presignedUrlResponse = await fetch(
-        `${baseUrl}/create_presigned_url`,
+        `${baseUrl}/create_presigned_url?file_name=${file.name}`,
         {
-          method: "POST",
+          method: "GET",
           headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: file.name,
-            type: file.type,
-          }),
+            "Content-Type": "application/json"
+          }
         }
       );
 
       const presignedUrlData = await presignedUrlResponse.json();
-      // creates a form object and appends the file and url fields
+      // creates a form object and appends the file
       const formData = new FormData();
-      Object.keys(presignedUrlData.fields).forEach((key) => {
-        formData.append(key, presignedUrlData.fields[key]);
-      });
       formData.append("file", file);
 
-      //  uploads the file to S3
-      const s3UploadResponse = await fetch(presignedUrlData.url, {
-        method: "POST",
-        body: formData,
+      //  uploads the file to S3 with our presigned_url
+      const s3UploadResponse = await fetch(presignedUrlData.presigned_url, {
+        method: "PUT",
+        body: file,
       });
+
       // notifies our microservice that the upload is complete
       if (s3UploadResponse.ok) {
         const uploadCompleteResponse = await fetch(
@@ -53,12 +47,12 @@ function FileUpload() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              name: file.name,
-              s3_key: presignedUrlData.fields.key,
+              file_name: file.name
             }),
           }
         );
-        // checks if the upload was successful if not throws an error
+
+        // checks if the upload was successful if not, throws an error
         if (uploadCompleteResponse.ok) {
           console.log("File uploaded successfully");
         } else {
