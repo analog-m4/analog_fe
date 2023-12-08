@@ -49,7 +49,7 @@ function AddProject() {
   return (
     <>
       <div
-        className="add-project-btn flex text-gray-400 font-light text-sm items-center cursor-pointer mt-2"
+        className="add-project-btn flex text-gray-400 font-light text-md items-center cursor-pointer mt-2 hover:text-green-400 hover:font-normal"
         onClick={handleShow}
       >
         <svg
@@ -58,7 +58,7 @@ function AddProject() {
           viewBox="2 0 30 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-5 h-6 text-green-400"
+          className="w-6 h-6 text-green-400"
         >
           <path
             strokeLinecap="round"

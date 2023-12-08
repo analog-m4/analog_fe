@@ -4,13 +4,12 @@ import Login from "../Login/Login";
 
 function Welcome({ handleLogin }) {
   return (
-    <>
-      <div className="flex flex-col h-screen items-center">
-        <p>Welcome to Analog</p>
+    <div className="h-screen flex justify-center gap-2">
         <About />
+        <div>
         <Login handleLogin={handleLogin} />
-      </div>
-    </>
+        </div>
+    </div>
   );
 }
 

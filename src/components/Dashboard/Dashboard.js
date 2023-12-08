@@ -24,23 +24,25 @@ function Dashboard({ userStatus }) {
   });
 
   return (
-    <div className="flex h-screen">
-      <div className="w-2/12 p-5 min-w-max">
+    <div className="flex h-auto">
+      <div className="w-2/12 ml-5 mr-5 mt-3 min-w-max">
         <div className="dashboard min-w-max p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
-          <div className="projects font-bold text-gray-900 border-b pb-1 mb-1 font-fjalla text-lg">
+          <div className="projects font-bold text-gray-900 border-b pb-1 mb-1 font-fjalla text-xl">
             Projects
           </div>
           <div className="flex flex-col">{userProjects}</div>
           <AddProject />
         </div>
-      </div>
-      <div className="flex flex-col w-10/12">
-        <FileUpload />
-        <div className="h-screen">
-          <ProjectBoard />
+        <div className="flex">
+          <FileUpload />
         </div>
       </div>
-      <WhiteBoard />
+      <div className="flex flex-col w-10/12">
+        <div className="h-auto">
+          <ProjectBoard />
+          <WhiteBoard />
+        </div>
+      </div>
     </div>
   );
 }

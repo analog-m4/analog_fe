@@ -134,9 +134,11 @@ function WhiteBoard() {
   }
 
   return (
-    <div>
+    <div className='whiteboard flex flex-col w-10/12 pb-5'>
+    <div className="flex font-fjalla text-gray-900 self-end text-xl italic mb-1 pr-2">
       WhiteBoard
-      <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+      <canvas id="canvas" width="865" height="500" className='rounded-2xl border-8 border-gray-300 shadow-sm'></canvas>
     </div>
   );
     

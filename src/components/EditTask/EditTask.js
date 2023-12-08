@@ -35,14 +35,82 @@ function EditTask({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const highPrio = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="w-6 h-6 text-red-600"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M3.75 6.75a3 3 0 00-3 3v6a3 3 0 003 3h15a3 3 0 003-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 00-3-3h-15zm15 1.5a1.5 1.5 0 011.5 1.5v6a1.5 1.5 0 01-1.5 1.5h-15a1.5 1.5 0 01-1.5-1.5v-6a1.5 1.5 0 011.5-1.5h15zM4.5 9.75a.75.75 0 00-.75.75V15c0 .414.336.75.75.75H18a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75H4.5z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  );
+
+  const mediumPrio = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="w-6 h-6 text-orange-400"
+    >
+      <path d="M4.5 9.75a.75.75 0 00-.75.75V15c0 .414.336.75.75.75h6.75A.75.75 0 0012 15v-4.5a.75.75 0 00-.75-.75H4.5z" />
+      <path
+        fill-rule="evenodd"
+        d="M3.75 6.75a3 3 0 00-3 3v6a3 3 0 003 3h15a3 3 0 003-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 00-3-3h-15zm15 1.5a1.5 1.5 0 011.5 1.5v6a1.5 1.5 0 01-1.5 1.5h-15a1.5 1.5 0 01-1.5-1.5v-6a1.5 1.5 0 011.5-1.5h15z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  );
+
+  const lowPrio = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="w-6 h-6 text-green-700"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M.75 9.75a3 3 0 013-3h15a3 3 0 013 3v.038c.856.173 1.5.93 1.5 1.837v2.25c0 .907-.644 1.664-1.5 1.838v.037a3 3 0 01-3 3h-15a3 3 0 01-3-3v-6zm19.5 0a1.5 1.5 0 00-1.5-1.5h-15a1.5 1.5 0 00-1.5 1.5v6a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-6z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  );
+
   return (
-    <>
-      <button
-        onClick={handleShow}
-        className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
-      >
-        Update
-      </button>
+    <div className="flex">
+      <div className="flex flex-col justify-between gap-3 ml-1">
+        <div className="flex task-status italic text-sm">
+          {priority === "high"
+            ? highPrio
+            : priority === "medium"
+            ? mediumPrio
+            : lowPrio}
+        </div>
+        <button
+          onClick={handleShow}
+          className="flex text-purple-600 font-semibold rounded-md hover:text-purple-400"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+            />
+          </svg>
+        </button>
+      </div>
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={true}>
         <Modal.Header closeButton>
           <Modal.Title>Update Task</Modal.Title>
@@ -137,7 +205,7 @@ function EditTask({
                     setPriority(e.target.value);
                   }}
                 >
-                  <option>{priority}</option>
+                  <option hidden>{priority}</option>
                   <option>low</option>
                   <option>medium</option>
                   <option>high</option>
@@ -162,7 +230,7 @@ function EditTask({
                     setStatus(e.target.value);
                   }}
                 >
-                  <option>{status}</option>
+                  <option hidden>{status}</option>
                   <option>backlog</option>
                   <option>doing</option>
                   <option>done</option>
@@ -186,7 +254,7 @@ function EditTask({
           </button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 }
 
