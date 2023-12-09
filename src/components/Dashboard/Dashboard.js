@@ -40,7 +40,7 @@ function Dashboard({ userStatus }) {
           <FileUpload />
         </div>
       </div>
-      <div className="flex flex-col w-10/12">
+      <div className="flex flex-col sm:w-10/12">
         <div className="h-auto">
           <ProjectBoard />
           <WhiteBoard />
