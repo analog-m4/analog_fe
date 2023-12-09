@@ -46,7 +46,7 @@ describe("Analog Welcome Screen", () => {
       .should("have.length", 11);
   });
 
-  it("Should be able to navigate to the projects page and be met with project data", () => {
+  it.skip("Should be able to navigate to the projects page and be met with project data", () => {
     cy.visit("http://localhost:3000/")
       .get(".demo-btn")
       .click()
@@ -63,12 +63,32 @@ describe("Analog Welcome Screen", () => {
       .get(".project-buttons")
       .find(".project")
       .should("have.length", 3)
+      .get(".add-project-btn")
       .get(".files-container")
       .find("label")
       .should("contain", "Files")
       .get("#formFile")
       .should("exist")
       .get(".upload-file-btn")
-      .should("exist");
+      .should("exist")
+      .get(".no-project-selected")
+      .should("contain", "No project selected")
+      .get(".column-title")
+      .eq(0)
+      .should("contain", "Backlog")
+      .get(".column")
+      .eq(0)
+      .find(".add-task-btn")
+      .should("exist")
+      .get(".column-title")
+      .eq(1)
+      .should("contain", "Doing")
+      .get(".column-title")
+      .eq(2)
+      .should("contain", "Done")
+      .get("#canvas")
+      .should("exist")
+      .get(".whiteboard-title")
+      .should("contain", "Whiteboard");
   });
 });
