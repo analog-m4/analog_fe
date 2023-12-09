@@ -26,7 +26,7 @@ function ProjectBoard() {
           <>
           </>
         ) : (
-          <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-1">
+          <div className="no-project-selected flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-1">
             No project selected
           </div>
         )}

@@ -24,7 +24,7 @@ function FileUpload() {
             "Content-Type": "application/json",
           },
         }
-      )
+      );
 
       const presignedUrlData = await presignedUrlResponse.json();
       // Creates a form object and appends the file
@@ -69,7 +69,7 @@ function FileUpload() {
   };
 
   return (
-    <div className="flex flex-col pl-2mt-4 mb-3 sm:mt-5 sm:mb-5">
+    <div className="files-container flex flex-col pl-2mt-4 mb-3 sm:mt-5 sm:mb-5">
       <label
         htmlFor="formFile"
         className="form-label font-bold text-gray-900 border-b pb-1 mb-2 ml-1 font-fjalla text-xl"
@@ -110,6 +110,5 @@ function FileUpload() {
 }
 
 // Set the permissions to go fetch from S3
-
 
 export default FileUpload;

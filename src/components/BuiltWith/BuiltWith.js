@@ -103,7 +103,6 @@ function BuiltWith() {
           {tailwind}
           {redux}
           {bootstrap}
-          {/* {typescript} */}
           {ruby}
           {rails}
           {websockets}
