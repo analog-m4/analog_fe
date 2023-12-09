@@ -69,14 +69,14 @@ function FileUpload() {
   };
 
   return (
-    <div className="flex flex-col mt-4 mb-4">
+    <div className="flex flex-col sm:mt-4 sm:mb-4">
       <label
         htmlFor="formFile"
         className="form-label font-bold text-gray-900 border-b pb-1 mb-2 font-fjalla text-xl"
       >
         Files
       </label>
-      <div className="min-w-max p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
+      <div className="sm:p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
         <div className="upload-file flex">
           <input
             className="form-control"
