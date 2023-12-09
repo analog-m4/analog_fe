@@ -13,8 +13,8 @@ function FileUpload() {
       alert("Please select a file");
       return;
     }
-    // requests a presigned url from rails AWS microservice
-    // request to microservice
+    // Requests a presigned url from rails AWS microservice
+    // Request to microservice
     try {
       const presignedUrlResponse = await fetch(
         `${baseUrl}/create_presigned_url?file_name=${file.name}`,
@@ -27,18 +27,18 @@ function FileUpload() {
       )
 
       const presignedUrlData = await presignedUrlResponse.json();
-      // creates a form object and appends the file
+      // Creates a form object and appends the file
       const formData = new FormData();
       formData.append("file", file);
 
-      //  uploads the file to S3 with our presigned_url to S3
+      // Uploads the file to S3 with our presigned_url to S3
       const s3UploadResponse = await fetch(presignedUrlData.presigned_url, {
         method: "PUT",
         body: file,
       });
-      // url
+      // URL
 
-      // notifies our microservice that the upload is complete
+      // Notifies our microservice that the upload is complete
       if (s3UploadResponse.ok) {
         const uploadCompleteResponse = await fetch(
           `${baseUrl}/upload_complete`,
@@ -53,7 +53,7 @@ function FileUpload() {
           }
         );
 
-        // checks if the upload was successful if not, throws an error
+        // Checks if the upload was successful if not, throws an error
         if (uploadCompleteResponse.ok) {
           console.log("File uploaded successfully");
         } else {
@@ -109,7 +109,7 @@ function FileUpload() {
   );
 }
 
-// set the permissions to go fetch from S3
+// Set the permissions to go fetch from S3
 
 
 export default FileUpload;

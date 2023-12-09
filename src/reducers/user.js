@@ -20,8 +20,12 @@ export const userSlice = createSlice({
       console.log("setUserData ran", userData);
       return { ...state, user: userData };
     },
+    setSelectedProject: (state, action) => {
+      const selectedProject = action.payload;
+      return { ...state, selectedProject };
+    },
     // addProjectToUser: (state, action) => {
-    //   const newProject = action.payload;
+      //   const newProject = action.payload;
     //   return {
     //     ...state,
     //     user: { ...state.user, projects: [...state.user.projects, newProject] },
@@ -44,10 +48,6 @@ export const userSlice = createSlice({
 
     //   return state;
     // },
-    setSelectedProject: (state, action) => {
-      const selectedProject = action.payload;
-      return { ...state, selectedProject };
-    },
     // updateTask: (state, action) => {
     //   const { project_id, task_id, modifiedTask } = action.payload;
 

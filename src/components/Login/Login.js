@@ -6,10 +6,10 @@ function Login({ handleLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const userInfo = {
-      username,
-      password,
-    };
+    // const userInfo = {
+    //   username,
+    //   password,
+    // };
     handleLogin();
     clearInputs();
   }

@@ -1,7 +1,6 @@
 import Project from "../Project/Project";
 import { useSelector } from "react-redux";
 import ProjectBoard from "../ProjectBoard/ProjectBoard";
-import { useState } from "react";
 import WhiteBoard from "../WhiteBoard/WhiteBoard";
 // import createSocket from '../utils/websocket';
 import AddProject from "../AddProject/AddProject";

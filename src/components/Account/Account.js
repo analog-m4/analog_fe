@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import sampleAvatar from "../../images/sample-avatar.png";
 import { useNavigate } from "react-router-dom";
 
-function Account({ userStatus, handleLogin }) {
+function Account({ userStatus }) {
   const user = useSelector((state) => state.user.user.attributes);
   const navigate = useNavigate();
 
