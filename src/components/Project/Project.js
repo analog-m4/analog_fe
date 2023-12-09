@@ -16,7 +16,7 @@ function Project({ title, id, color }) {
       <NavLink
         to={`/project/${id}`}
         style={{ textDecoration: "none", color: "inherit" }}
-        activeClassName="active-link"
+        activeclassname="active-link"
       >
         <div
           className={`project flex cursor-pointer hover:font-bold ${
