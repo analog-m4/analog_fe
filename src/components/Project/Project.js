@@ -16,11 +16,13 @@ function Project({ title, id, color }) {
       <NavLink
         to={`/project/${id}`}
         style={{ textDecoration: "none", color: "inherit" }}
-        activeClassName="active-link"
+        activeclassname="active-link"
       >
         <div
           className={`project flex gap-1 cursor-pointer hover:font-bold ${
-            selectedProjectId === id ? "text-purple-600 font-bold underline" : ""
+            selectedProjectId === id
+              ? "text-purple-600 font-bold underline"
+              : ""
           }`}
           onClick={() => dispatch(setSelectedProject(id))}
         >
