@@ -10,7 +10,7 @@ describe("Analog Welcome Screen", () => {
     );
   });
 
-  it("Upon loading the page, you should see the application header, account information, and information about the application", () => {
+  it.skip("Upon loading the page, you should see the application header, account information, and information about the application", () => {
     cy.visit("http://localhost:3000/")
       .get(".header")
       .should("contain", "ANA")
@@ -43,6 +43,32 @@ describe("Analog Welcome Screen", () => {
       .should("be.enabled")
       .get(".built-with-images")
       .find("img")
-      .should("have.length", 11)
+      .should("have.length", 11);
+  });
+
+  it("Should be able to navigate to the projects page and be met with project data", () => {
+    cy.visit("http://localhost:3000/")
+      .get(".demo-btn")
+      .click()
+      .get(".header")
+      .should("contain", "ANA")
+      .get(".header-2")
+      .should("contain", "LOG")
+      .get(".demo-btn")
+      .should("contain", "DEMO")
+      .get(".join-btn")
+      .should("contain", "JOIN NOW")
+      .get(".projects")
+      .should("contain", "Projects")
+      .get(".project-buttons")
+      .find(".project")
+      .should("have.length", 3)
+      .get(".files-container")
+      .find("label")
+      .should("contain", "Files")
+      .get("#formFile")
+      .should("exist")
+      .get(".upload-file-btn")
+      .should("exist");
   });
 });

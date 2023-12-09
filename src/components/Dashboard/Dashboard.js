@@ -32,7 +32,7 @@ function Dashboard({ userStatus }) {
           <div className="projects font-bold text-gray-900 border-b pb-1 mb-1 font-fjalla text-xl">
             Projects
           </div>
-          <div className="flex flex-col">{userProjects}</div>
+          <div className="project-buttons flex flex-col">{userProjects}</div>
           <AddProject />
         </div>
         <div className="flex">
