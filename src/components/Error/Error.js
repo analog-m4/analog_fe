@@ -19,7 +19,7 @@ function Error() {
             </div>
           </div>
           <div className="mt-3 text-base font-fjalla italic text-black w-7/12 align-center">
-            Try checking your your URL, otherwise hang just hang tight
+            Try checking your URL, otherwise hang just hang tight
           </div>
         </div>
         <Link to="/" className="no-underline">
