@@ -24,6 +24,25 @@ describe("Analog Welcome Screen", () => {
       .should(
         "contain",
         "Manage tasks, write notes, and organize projects. Analog is the fastest way to get work done!"
-      );
+      )
+      .get(".demo-btn")
+      .should("contain", "DEMO")
+      .get(".join-btn")
+      .should("contain", "JOIN NOW")
+      .get(".username")
+      .type("user1")
+      .get(".username")
+      .should("have.value", "user1")
+      .get(".submit-button")
+      .should("be.disabled")
+      .get(".password")
+      .type("password")
+      .get(".password")
+      .should("have.value", "password")
+      .get(".submit-button")
+      .should("be.enabled")
+      .get(".built-with-images")
+      .find("img")
+      .should("have.length", 11)
   });
 });
