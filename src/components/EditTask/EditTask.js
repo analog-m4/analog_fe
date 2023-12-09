@@ -38,14 +38,16 @@ function EditTask({
   const highPrio = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      fill="none"
       viewBox="0 0 24 24"
-      fill="currentColor"
-      class="w-6 h-6 text-red-600"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-5 h-5 text-red-600"
     >
       <path
-        fill-rule="evenodd"
-        d="M3.75 6.75a3 3 0 00-3 3v6a3 3 0 003 3h15a3 3 0 003-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 00-3-3h-15zm15 1.5a1.5 1.5 0 011.5 1.5v6a1.5 1.5 0 01-1.5 1.5h-15a1.5 1.5 0 01-1.5-1.5v-6a1.5 1.5 0 011.5-1.5h15zM4.5 9.75a.75.75 0 00-.75.75V15c0 .414.336.75.75.75H18a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75H4.5z"
-        clip-rule="evenodd"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
       />
     </svg>
   );
@@ -53,15 +55,16 @@ function EditTask({
   const mediumPrio = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      fill="none"
       viewBox="0 0 24 24"
-      fill="currentColor"
-      class="w-6 h-6 text-orange-400"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-5 h-5 text-orange-400"
     >
-      <path d="M4.5 9.75a.75.75 0 00-.75.75V15c0 .414.336.75.75.75h6.75A.75.75 0 0012 15v-4.5a.75.75 0 00-.75-.75H4.5z" />
       <path
-        fill-rule="evenodd"
-        d="M3.75 6.75a3 3 0 00-3 3v6a3 3 0 003 3h15a3 3 0 003-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 00-3-3h-15zm15 1.5a1.5 1.5 0 011.5 1.5v6a1.5 1.5 0 01-1.5 1.5h-15a1.5 1.5 0 01-1.5-1.5v-6a1.5 1.5 0 011.5-1.5h15z"
-        clip-rule="evenodd"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 9h16.5m-16.5 6.75h16.5"
       />
     </svg>
   );
@@ -69,15 +72,13 @@ function EditTask({
   const lowPrio = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      fill="none"
       viewBox="0 0 24 24"
-      fill="currentColor"
-      class="w-6 h-6 text-green-700"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-5 h-5 text-green-600"
     >
-      <path
-        fill-rule="evenodd"
-        d="M.75 9.75a3 3 0 013-3h15a3 3 0 013 3v.038c.856.173 1.5.93 1.5 1.837v2.25c0 .907-.644 1.664-1.5 1.838v.037a3 3 0 01-3 3h-15a3 3 0 01-3-3v-6zm19.5 0a1.5 1.5 0 00-1.5-1.5h-15a1.5 1.5 0 00-1.5 1.5v6a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-6z"
-        clip-rule="evenodd"
-      />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
     </svg>
   );
 
