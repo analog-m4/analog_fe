@@ -15,6 +15,7 @@ function App() {
   // const [user, setUser] = useState({});
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user.attributes);
+  const error = useSelector((state) => state.error.error);
 
   useEffect(() => {
     fetchData()
@@ -35,7 +36,15 @@ function App() {
     setUserStatus(!userStatus);
     navigate("/projects");
   }
-  return (
+  return error ? (
+    <div className="bg-cream font-lato">
+      <Header
+        userStatus={userStatus}
+        // user={user}
+      />
+      <Error />
+    </div>
+  ) : (
     <div className="bg-cream font-lato">
       <Header
         userStatus={userStatus}
