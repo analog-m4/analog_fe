@@ -5,7 +5,7 @@ function Error() {
   return (
     <div className="error-container flex justify-center h-screen mt-5">
       <div
-        className="error flex flex-col items-center justify-end w-7/12 h-1/2 rounded-5"
+        className="error flex flex-col items-center justify-end w-7/12 h-1/2 rounded-5 overflow-hidden"
         style={{ backgroundColor: "rgba(166, 80, 240, .5)" }}
       >
         <div
