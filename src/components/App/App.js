@@ -5,6 +5,7 @@ import { fetchData } from "../../apiCalls";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../reducers/user";
+import { setError } from "../../reducers/error";
 import Header from "../Header/Header";
 import Error from "../Error/Error";
 
@@ -16,13 +17,18 @@ function App() {
   const user = useSelector((state) => state.user.user.attributes);
 
   useEffect(() => {
-    fetchData().then((data) => {
-      console.log(data);
-      dispatch(setUserData(data.data)); // removed .attributes to be able to retrieve user id
-
-      // setUser(data.data.attributes["user-data"]);
-      // console.log(`useEffect`, user);
-    });
+    fetchData()
+      .then((data) => {
+        console.log(data);
+        dispatch(setUserData(data.data));
+      })
+      .catch((error) => {
+        console.error(`Error in Network Request`, error.message);
+        dispatch(setError(error.message));
+        console.log("getting to after the dispatch");
+        // setUser(data.data.attributes["user-data"]);
+        // console.log(`useEffect`, user);
+      });
   }, []);
 
   function handleLogin() {

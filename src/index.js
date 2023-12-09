@@ -6,12 +6,14 @@ import App from "./components/App/App";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import userReducer from "./reducers/user";
+import errorReducer from "./reducers/error";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
+    error: errorReducer,
   },
 });
 

@@ -9,10 +9,11 @@ export const errorSlice = createSlice({
   initialState: initialStateValue,
   reducers: {
     setError: (state, action) => {
-      console.log("getting to setError");
-      const errorData = action.payload;
-      console.log("setError ran", errorData);
-      return { ...state, error: errorData };
+      console.log("getting here");
+      console.log("payload", action.payload);
+      const errorMessage = action.payload;
+      console.log("setError ran", errorMessage);
+      return { ...state, error: errorMessage };
     },
     clearError: (state) => {
       return { ...state, error: "" };
