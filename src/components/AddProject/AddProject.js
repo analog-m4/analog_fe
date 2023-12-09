@@ -108,6 +108,7 @@ function AddProject() {
                   placeholder="Project Title"
                   value={newProjectTitle}
                   onChange={(e) => setNewProjectTitle(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -128,6 +129,7 @@ function AddProject() {
                   placeholder="Project Description"
                   value={newProjectDescription}
                   onChange={(e) => setNewProjectDescription(e.target.value)}
+                  required
                 />
               </div>
             </div>
