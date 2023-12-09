@@ -20,10 +20,10 @@ function Login({ handleLogin }) {
   }
 
   return (
-    <div className="login min-w-max p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+    <div className="login min-w-max p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:w-2/3 md:w-1/2 lg:w-1/3">
       <form className="flex flex-col mt-2">
         <input
-          className="m-2 w-max bg-gray-100 p-2 rounded-md italic border border-gray-200"
+          className="mb-2 w-full bg-gray-100 p-2 rounded-md italic border border-gray-200 text-sm"
           type="text"
           placeholder="username"
           name="username"
@@ -31,7 +31,7 @@ function Login({ handleLogin }) {
           onChange={(event) => setUserName(event.target.value)}
         />
         <input
-          className="m-2 w-max bg-gray-100 p-2 rounded-md italic border border-gray-200"
+          className=" w-full bg-gray-100 p-2 rounded-md italic border border-gray-200 text-sm"
           type="password"
           placeholder="password"
           name="password"
@@ -40,7 +40,7 @@ function Login({ handleLogin }) {
         />
 
         <button
-          className="submit-button text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl mt-3 shadow-sm cursor-pointer hover:bg-purple-500"
+          className="submit-button text-xs sm:text-sm text-white flex items-center font-lato bg-purple-600 h-8 self-center pl-4 pr-4 rounded-3xl mt-3 shadow-sm cursor-pointer hover:bg-purple-500"
           onClick={(e) => handleSubmit(e)}
           disabled={!username || !password}
         >
