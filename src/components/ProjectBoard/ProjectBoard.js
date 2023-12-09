@@ -31,7 +31,7 @@ function ProjectBoard() {
           </div>
         )}
         <div
-          className="flex h-3/4 sm:w-10/12 border border-gray-200 rounded-lg bg-white shadow-sm"
+          className="flex h-3/4 sm:w-11/12 md:w-10/12 border border-gray-200 rounded-lg bg-white shadow-sm"
           style={{ maxHeight: "545px", overflowY: "auto" }}
         >
           <Column
