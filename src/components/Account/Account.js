@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import sampleAvatar from "../../images/sample-avatar.png";
 import { useNavigate } from "react-router-dom";
 
-function Account({ userStatus, handleLogin }) {
+function Account({ userStatus }) {
   const user = useSelector((state) => state.user.user.attributes);
   const navigate = useNavigate();
 
@@ -10,16 +10,16 @@ function Account({ userStatus, handleLogin }) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="nav flex sm:w-1/4 md:w-1/6 gap-2">
+      <div className="nav flex justify-center sm:w-1/3 md:w-1/3 gap-2">
         {userStatus === false ? (
           <>
             <div
-              className="demo-btn text-xs text-white flex items-center font-lato h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer bg-gray-900 hover:bg-gray-700"
+              className="demo-btn text-xs text-white flex items-center font-lato h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer bg-gray-900 hover:bg-gray-700 active:bg-gray-900"
               onClick={() => navigate("/projects")}
             >
               DEMO
             </div>
-            <div className="join-btn text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500">
+            <div className="join-btn text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500 active:bg-purple-600">
               JOIN NOW
             </div>
           </>

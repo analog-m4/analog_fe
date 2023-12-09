@@ -12,7 +12,7 @@ function Project({ title, id, color }) {
   const selectedProjectId = useSelector((state) => state.user.selectedProject);
 
   return (
-    <>
+    <div className="flex">
       <NavLink
         to={`/project/${id}`}
         style={{ textDecoration: "none", color: "inherit" }}
@@ -31,7 +31,7 @@ function Project({ title, id, color }) {
           <div>{title}</div>
         </div>
       </NavLink>
-    </>
+    </div>
   );
 }
 

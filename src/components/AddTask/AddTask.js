@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { addTaskToProject } from "../../reducers/user";
 import { postTask } from "../../apiCalls";
 import Form from "react-bootstrap/Form";
 
@@ -52,15 +51,7 @@ function AddTask({ taskStatus }) {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              // dispatch(
-              //   addTaskToProject({
-              //     task_id: uuidv4(), // random uuid
-              //     title: newTaskTitle,
-              //     description: newTaskDescription,
-              //     status: taskStatus,
-              //   })
-              // );
-              // INSERT POST REQUEST
+              // POST REQUEST
               postTask(
                 currentUserId,
                 selectedProject,
@@ -92,6 +83,7 @@ function AddTask({ taskStatus }) {
                   placeholder="Task Title"
                   value={newTaskTitle}
                   onChange={(e) => setNewTaskTitle(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -112,6 +104,7 @@ function AddTask({ taskStatus }) {
                   placeholder="Task Description"
                   value={newTaskDescription}
                   onChange={(e) => setNewTaskDescription(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -132,6 +125,7 @@ function AddTask({ taskStatus }) {
                   onChange={(e) => {
                     setPriority(e.target.value);
                   }}
+                  required
                 >
                   <option hidden>{priority}</option>
                   <option>low</option>

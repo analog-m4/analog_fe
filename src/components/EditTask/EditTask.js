@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { updateTask } from "../../reducers/user";
 import { patchTask } from "../../apiCalls";
 import Form from "react-bootstrap/Form";
 
@@ -23,7 +21,6 @@ function EditTask({
   useEffect(() => {
     console.log("EditTask props updated:", taskTitle, taskDescription);
   }, [taskTitle, taskDescription]);
-
   // Check if project and task exist before accessing properties
 
   const [title, setTitle] = useState(taskTitle);
@@ -119,17 +116,7 @@ function EditTask({
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              // dispatch(
-              //   updateTask({
-              //     project_id: parseInt(projectId),
-              //     task_id: taskId,
-              //     modifiedTask: {
-              //       title: title,
-              //       description: description,
-              //     },
-              //   })
-              // );
-              // POST REQUEST
+              // PATCH REQUEST
               patchTask(
                 currentUserId,
                 selectedProject,
