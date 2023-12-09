@@ -11,6 +11,19 @@ describe("Analog Welcome Screen", () => {
   });
 
   it("Upon loading the page, you should see the application header, account information, and information about the application", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("http://localhost:3000/")
+      .get(".header")
+      .should("contain", "ANA")
+      .get(".header-2")
+      .should("contain", "LOG")
+      .get(".application-announcement-large")
+      .should("contain", "The ultimate")
+      .get(".application-announcement-large-2")
+      .should("contain", "to-do list application.")
+      .get(".application-announcement-small")
+      .should(
+        "contain",
+        "Manage tasks, write notes, and organize projects. Analog is the fastest way to get work done!"
+      );
   });
 });
