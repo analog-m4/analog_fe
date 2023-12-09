@@ -92,6 +92,7 @@ function AddTask({ taskStatus }) {
                   placeholder="Task Title"
                   value={newTaskTitle}
                   onChange={(e) => setNewTaskTitle(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -112,6 +113,7 @@ function AddTask({ taskStatus }) {
                   placeholder="Task Description"
                   value={newTaskDescription}
                   onChange={(e) => setNewTaskDescription(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -132,6 +134,7 @@ function AddTask({ taskStatus }) {
                   onChange={(e) => {
                     setPriority(e.target.value);
                   }}
+                  required
                 >
                   <option hidden>{priority}</option>
                   <option>low</option>
