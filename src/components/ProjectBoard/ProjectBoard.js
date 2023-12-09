@@ -23,19 +23,15 @@ function ProjectBoard() {
     <>
       <div className="flex flex-col w-auto h-auto">
         {selectedProject ? (
-          <div className="flex justify-between pl-1 pr-2 font-fjalla text-2xl text-purple-600 mb-1">
-            {selectedProject.title}
-            {/* <div className="text-gray-900 self-end text-xl">
-              Project Board
-            </div> */}
-          </div>
+          <>
+          </>
         ) : (
           <div className="flex justify-center w-9/12 font-fjalla text-2xl text-purple-700 mb-1">
             No project selected
           </div>
         )}
         <div
-          className="flex h-3/4 w-10/12 border border-gray-200 rounded-lg bg-white shadow-sm"
+          className="flex h-3/4 sm:w-11/12 md:w-10/12 border border-gray-200 rounded-lg bg-white shadow-sm pl-3 sm:pl-3 md:pl-6"
           style={{ maxHeight: "545px", overflowY: "auto" }}
         >
           <Column

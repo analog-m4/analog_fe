@@ -98,7 +98,7 @@ function BuiltWith() {
         THIS APPLICATION WAS BUILT WITH
       </div>
       <div className="flex justify-center">
-        <div className="built-with-images flex gap-2 cursor-pointer hover:animate-wiggle hover:animate-infinite hover:animate-duration-2000">
+        <div className="built-with-images flex flex-wrap gap-2 cursor-pointer hover:animate-wiggle hover:animate-infinite hover:animate-duration-2000 justify-center">
           {react}
           {tailwind}
           {redux}

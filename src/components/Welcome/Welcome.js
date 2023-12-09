@@ -1,4 +1,3 @@
-import Header from "../Header/Header";
 import About from "../About/About";
 import Login from "../Login/Login";
 

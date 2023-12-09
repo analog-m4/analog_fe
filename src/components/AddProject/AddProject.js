@@ -28,13 +28,6 @@ function AddProject() {
   };
 
   const handleAddProject = () => {
-    // dispatch(addProjectToUser({
-    //   // project_id: uuidv4(), // random uuid
-    //   title: newProjectTitle,
-    //   description: newProjectDescription,
-    //   tasks: [],
-    // }));
-    console.log("Current User ID:", currentUserId);
     postProject(
       currentUserId,
       newProjectTitle,
@@ -76,15 +69,7 @@ function AddProject() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              // dispatch(
-              //   addTaskToProject({
-              //     task_id: uuidv4(), // random uuid
-              //     title: newTaskTitle,
-              //     description: newTaskDescription,
-              //     status: taskStatus,
-              //   })
-              // );
-              // INSERT POST REQUEST
+              // POST REQUEST
               handleAddProject();
               handleClose();
             }}
@@ -108,6 +93,7 @@ function AddProject() {
                   placeholder="Project Title"
                   value={newProjectTitle}
                   onChange={(e) => setNewProjectTitle(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -128,6 +114,7 @@ function AddProject() {
                   placeholder="Project Description"
                   value={newProjectDescription}
                   onChange={(e) => setNewProjectDescription(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -140,7 +127,6 @@ function AddProject() {
           >
             Close
           </button>
-          {/* <Button onClick={handleAddProject}>Add Project</Button> */}
           <button
             className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
             form="add-project"

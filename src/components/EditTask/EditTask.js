@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { updateTask } from "../../reducers/user";
 import { patchTask } from "../../apiCalls";
 import Form from "react-bootstrap/Form";
 
@@ -23,7 +21,6 @@ function EditTask({
   useEffect(() => {
     console.log("EditTask props updated:", taskTitle, taskDescription);
   }, [taskTitle, taskDescription]);
-
   // Check if project and task exist before accessing properties
 
   const [title, setTitle] = useState(taskTitle);
@@ -38,6 +35,7 @@ function EditTask({
   const highPrio = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      fill="none"
       viewBox="0 0 24 24"
       fill="currentColor"
       className="w-6 h-6 text-red-600"
@@ -53,11 +51,11 @@ function EditTask({
   const mediumPrio = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      fill="none"
       viewBox="0 0 24 24"
       fill="currentColor"
       className="w-6 h-6 text-orange-400"
     >
-      <path d="M4.5 9.75a.75.75 0 00-.75.75V15c0 .414.336.75.75.75h6.75A.75.75 0 0012 15v-4.5a.75.75 0 00-.75-.75H4.5z" />
       <path
         fillRule="evenodd"
         d="M3.75 6.75a3 3 0 00-3 3v6a3 3 0 003 3h15a3 3 0 003-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 00-3-3h-15zm15 1.5a1.5 1.5 0 011.5 1.5v6a1.5 1.5 0 01-1.5 1.5h-15a1.5 1.5 0 01-1.5-1.5v-6a1.5 1.5 0 011.5-1.5h15z"
@@ -69,6 +67,7 @@ function EditTask({
   const lowPrio = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      fill="none"
       viewBox="0 0 24 24"
       fill="currentColor"
       className="w-6 h-6 text-green-700"
@@ -119,17 +118,7 @@ function EditTask({
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              // dispatch(
-              //   updateTask({
-              //     project_id: parseInt(projectId),
-              //     task_id: taskId,
-              //     modifiedTask: {
-              //       title: title,
-              //       description: description,
-              //     },
-              //   })
-              // );
-              // POST REQUEST
+              // PATCH REQUEST
               patchTask(
                 currentUserId,
                 selectedProject,
