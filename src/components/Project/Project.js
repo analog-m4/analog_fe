@@ -19,13 +19,13 @@ function Project({ title, id, color }) {
         activeClassName="active-link"
       >
         <div
-          className={`project flex gap-1 cursor-pointer hover:font-bold ${
+          className={`project flex cursor-pointer hover:font-bold ${
             selectedProjectId === id ? "text-purple-600 font-bold underline" : ""
           }`}
           onClick={() => dispatch(setSelectedProject(id))}
         >
           <div
-            className="project-color self-center w-3 h-3 border-600 border bg-600 rounded-full"
+            className="project-color self-center sm:w-2 sm:h-2 md:w-3 md:h-3 border-600 p-1 mr-1 border bg-600 rounded-full"
             style={circleStyle}
           ></div>
           <div>{title}</div>
