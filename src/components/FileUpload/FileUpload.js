@@ -85,7 +85,7 @@ function FileUpload() {
             onChange={handleFileChange}
           />
           <div
-            className="upload-file-btn flex cursor-pointer sm:pt-2"
+            className="upload-file-btn flex cursor-pointer sm:pt-2 pl-2"
             onClick={handleUpload}
           >
             <svg
