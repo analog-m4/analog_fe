@@ -40,7 +40,7 @@ function Login({ handleLogin }) {
         />
 
         <button
-          className="submit-button text-xs sm:text-sm text-white flex items-center font-lato bg-purple-600 h-8 self-center pl-4 pr-4 rounded-3xl mt-3 shadow-sm cursor-pointer hover:bg-purple-500"
+          className="submit-button text-xs sm:text-sm text-white flex items-center font-lato bg-purple-600 h-8 self-center pl-4 pr-4 rounded-3xl mt-3 shadow-sm cursor-pointer hover:bg-purple-500 active:bg-purple-600"
           onClick={(e) => handleSubmit(e)}
           disabled={!username || !password}
         >
