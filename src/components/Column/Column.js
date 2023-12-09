@@ -21,7 +21,7 @@ function Column({ columnName, tasks, taskStatus }) {
         <div className="column-title ml-1 font-bold pt-3 pb-3 text-gray-900 font-fjalla text-xl">
           {columnName}
         </div>
-        <div className="w-10/12 sm:w-11/12">{columnTasks}</div>
+        <div className="sm:w-10/12 md:w-11/12">{columnTasks}</div>
         <AddTask taskStatus={taskStatus} />
       </div>
     </>

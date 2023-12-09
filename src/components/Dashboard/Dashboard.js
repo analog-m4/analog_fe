@@ -25,7 +25,7 @@ function Dashboard({ userStatus }) {
 
   return (
     <div className="sm:flex h-auto w-full">
-      <div className="sm:w-1/4 md:w-2/12 sm:ml-5 sm:mr-5">
+      <div className="sm:w-1/4 md:w-3/12 sm:ml-5 sm:mr-5">
         <div
           className="dashboard w-full p-3 bg-white border border-gray-200 rounded-lg shadow-sm"
           style={{ maxHeight: "545px", overflowY: "auto" }}

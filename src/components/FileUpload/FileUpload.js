@@ -69,23 +69,23 @@ function FileUpload() {
   };
 
   return (
-    <div className="flex flex-col sm:mt-4 sm:mb-4">
+    <div className="flex flex-col pl-2mt-4 mb-3 sm:mt-5 sm:mb-5">
       <label
         htmlFor="formFile"
-        className="form-label font-bold text-gray-900 border-b pb-1 mb-2 font-fjalla text-xl"
+        className="form-label font-bold text-gray-900 border-b pb-1 mb-2 ml-1 font-fjalla text-xl"
       >
         Files
       </label>
-      <div className="sm:p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
+      <div className="p-3 sm:p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
         <div className="upload-file flex">
           <input
-            className="form-control"
+            className="form-control flex"
             type="file"
             id="formFile"
             onChange={handleFileChange}
           />
           <div
-            className="upload-file-btn flex items-end pb-2 ml-1 cursor-pointer"
+            className="upload-file-btn flex cursor-pointer sm:pt-2"
             onClick={handleUpload}
           >
             <svg
