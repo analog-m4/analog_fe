@@ -2,9 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* * {
+* {
   border: 1px solid green;
-} */
+}
 
 html {
   height: 100%;
