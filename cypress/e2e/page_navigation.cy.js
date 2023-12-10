@@ -1,5 +1,5 @@
 describe("Application Navigation", () => {
-  it("Should be able to add projects and tasks", () => {
+  it("Should be able to add projects and tasks as well as update tasks", () => {
     cy.intercept(
       "GET",
       "https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/1/dashboard",
@@ -109,6 +109,52 @@ describe("Application Navigation", () => {
       .should("contain", "Complete cypress testing")
       .get(".task-description")
       .should("contain", "I hope code freeze comes soon")
+      .get(".task-status")
+      .should("have.css", "color", "rgb(33, 37, 41)");
+
+    cy.intercept(
+      "GET",
+      "https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/1/dashboard",
+      {
+        statusCode: 200,
+        fixture: "update_task",
+      }
+    ).as("getUpdatedTasks");
+
+    cy.intercept(
+      "PATCH",
+      "https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/1/projects/4/tasks/8",
+      {
+        statusCode: 201,
+        body: {
+          title: "Analog is the greatest app in the world!",
+          description: "JK, but it's pretty cool",
+          priority: "high",
+          status: "doing",
+        },
+      }
+    ).as("patchUpdateTask");
+
+    cy.get(".task")
+      .find("button")
+      .click()
+      .get("#title")
+      .clear()
+      .type("Analog is the greatest app in the world!")
+      .get("#description")
+      .clear()
+      .type("JK, but it's pretty cool")
+      .get("select[id='priority']")
+      .select("high")
+      .get("select[id='status']")
+      .select("doing")
+      .get("button")
+      .eq(3)
+      .click()
+      .get(".task-title")
+      .should("contain", "Analog is the greatest app in the world!")
+      .get(".task-description")
+      .should("contain", "JK, but it's pretty cool")
       .get(".task-status")
       .should("have.css", "color", "rgb(33, 37, 41)");
   });

@@ -101,10 +101,10 @@
           "deadline": "2023-12-25",
           "tasks": [ {
             "id": 8,
-            "title": "Complete cypress testing",
-            "description": "I hope code freeze comes soon",
-            "priority": "low",
-            "status": "backlog",
+            "title": "CAnalog is the greatest app in the world!",
+            "description": "JK, but it's pretty cool",
+            "priority": "high",
+            "status": "doing",
             "project_id": 4
           }
           ]
