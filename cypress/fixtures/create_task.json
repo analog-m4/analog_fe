@@ -1,0 +1,115 @@
+{
+  "data": {
+    "id": "1",
+    "type": "dashboard",
+    "attributes": {
+      "username": "Test User 1",
+      "email": "user1@test.com",
+      "projects": [
+        {
+          "id": 1,
+          "title": "Project 1",
+          "description": "This is the first project",
+          "color": "123xyz",
+          "status": "assigned",
+          "deadline": "2023-12-12",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "Task 1",
+              "description": "Task 1 Description",
+              "priority": "high",
+              "status": "backlog",
+              "project_id": 1
+            },
+            {
+              "id": 2,
+              "title": "Task 2",
+              "description": "Task 2 Description",
+              "priority": "medium",
+              "status": "doing",
+              "project_id": 1
+            },
+            {
+              "id": 3,
+              "title": "Task 3",
+              "description": "Task 3 Description",
+              "priority": "low",
+              "status": "done",
+              "project_id": 1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Project 2",
+          "description": "This is the second project",
+          "color": "456abc",
+          "status": "assigned",
+          "deadline": "2023-11-24",
+          "tasks": [
+            {
+              "id": 4,
+              "title": "Task 4",
+              "description": "This is the fourth task",
+              "priority": "high",
+              "status": "backlog",
+              "project_id": 2
+            },
+            {
+              "id": 5,
+              "title": "Task 5",
+              "description": "This is the fifth task",
+              "priority": "high",
+              "status": "done",
+              "project_id": 2
+            },
+            {
+              "id": 6,
+              "title": "Task 6",
+              "description": "This is the sixth task",
+              "priority": "high",
+              "status": "done",
+              "project_id": 2
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Final Project",
+          "description": "Please work",
+          "color": "#FFFFFF",
+          "status": "assigned",
+          "deadline": "2023-12-12",
+          "tasks": [
+            {
+              "id": 13,
+              "title": "Finish the app",
+              "description": "Please work",
+              "priority": "low",
+              "status": "backlog",
+              "project_id": 3
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "The Real Final Project",
+          "description": "Cypress testing is fun",
+          "color": "#000000",
+          "status": "assigned",
+          "deadline": "2023-12-25",
+          "tasks": [ {
+            "id": 8,
+            "title": "Complete cypress testing",
+            "description": "I hope code freeze comes soon",
+            "priority": "low",
+            "status": "backlog",
+            "project_id": 8
+          }
+          ]
+        }
+      ]
+    }
+  }
+}
