@@ -77,7 +77,7 @@ describe("Application Navigation", () => {
 
     cy.intercept(
       "POST",
-      "https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/4/projects/4/tasks",
+      "https://analog-be-18680af1ea7c.herokuapp.com/api/v1/users/1/projects/4/tasks",
       {
         statusCode: 201,
         body: {
