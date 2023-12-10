@@ -104,6 +104,12 @@ describe("Application Navigation", () => {
       .select("low")
       .get("button")
       .eq(2)
-      .click();
+      .click()
+      .get(".task-title")
+      .should("contain", "Complete cypress testing")
+      .get(".task-description")
+      .should("contain", "I hope code freeze comes soon")
+      .get(".task-status")
+      .should("have.css", "color", "rgb(33, 37, 41)");
   });
 });
