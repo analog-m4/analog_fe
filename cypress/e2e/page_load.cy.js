@@ -1,4 +1,4 @@
-describe("Analog Welcome Screen", () => {
+describe("Analog pages on render", () => {
   beforeEach(() => {
     cy.intercept(
       "GET",
