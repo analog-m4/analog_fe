@@ -10,7 +10,7 @@ describe("Analog pages on render", () => {
     );
   });
 
-  it.skip("Upon loading the page, you should see the application header, account information, and information about the application", () => {
+  it("Upon loading the page, you should see the application header, account information, and information about the application", () => {
     cy.visit("http://localhost:3000/")
       .get(".header")
       .should("contain", "ANA")
@@ -46,7 +46,7 @@ describe("Analog pages on render", () => {
       .should("have.length", 11);
   });
 
-  it.skip("Should be able to navigate to the projects page and be met with project data", () => {
+  it("Should be able to navigate to the projects page and be met with project data", () => {
     cy.visit("http://localhost:3000/")
       .get(".demo-btn")
       .click()

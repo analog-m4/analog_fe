@@ -12,9 +12,9 @@ function Error() {
           className="error-circle flex flex-col items-center justify-center h-2/3 w-1/3 bg-purple-600 mb-4 mt-4 rounded-full"
           style={{ backgroundColor: "rgba(255, 255, 255, 1)" }}
         >
-          <div className="text-5xl flex justify-center items-center w-72 font-fjalla italic">
+          <div className="error-half-1 text-5xl flex justify-center items-center w-72 font-fjalla italic">
             Er
-            <div className="text-5xl font-fjalla italic text-purple-600 hover:animate-jump cursor-pointer">
+            <div className="error-half-2 text-5xl font-fjalla italic text-purple-600 hover:animate-jump cursor-pointer">
               ror
             </div>
           </div>
@@ -23,7 +23,7 @@ function Error() {
           </div>
         </div>
         <Link to="/" className="no-underline">
-          <button className="return-home text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500 mb-5 hover:animate-jump ">
+          <button className="return-home-btn text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500 mb-5 hover:animate-jump ">
             Return to Home
           </button>
         </Link>
