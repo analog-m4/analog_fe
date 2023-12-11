@@ -61,7 +61,13 @@ function AddProject() {
         </svg>
         Add Project
       </div>
-      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={true}>
+      <Modal
+        className="add-project-modal"
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={true}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add Project</Modal.Title>
         </Modal.Header>
