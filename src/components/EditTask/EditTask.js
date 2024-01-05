@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+// import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { updateTask } from "../../reducers/user";
 import { patchTask } from "../../apiCalls";
 import Form from "react-bootstrap/Form";
 
@@ -21,6 +23,7 @@ function EditTask({
   useEffect(() => {
     console.log("EditTask props updated:", taskTitle, taskDescription);
   }, [taskTitle, taskDescription]);
+
   // Check if project and task exist before accessing properties
 
   const [title, setTitle] = useState(taskTitle);
@@ -37,13 +40,14 @@ function EditTask({
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      fill="currentColor"
-      className="w-6 h-6 text-red-600"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-5 h-5 text-red-600"
     >
       <path
-        fillRule="evenodd"
-        d="M3.75 6.75a3 3 0 00-3 3v6a3 3 0 003 3h15a3 3 0 003-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 00-3-3h-15zm15 1.5a1.5 1.5 0 011.5 1.5v6a1.5 1.5 0 01-1.5 1.5h-15a1.5 1.5 0 01-1.5-1.5v-6a1.5 1.5 0 011.5-1.5h15zM4.5 9.75a.75.75 0 00-.75.75V15c0 .414.336.75.75.75H18a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75H4.5z"
-        clipRule="evenodd"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
       />
     </svg>
   );
@@ -53,13 +57,14 @@ function EditTask({
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      fill="currentColor"
-      className="w-6 h-6 text-orange-400"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-5 h-5 text-orange-400"
     >
       <path
-        fillRule="evenodd"
-        d="M3.75 6.75a3 3 0 00-3 3v6a3 3 0 003 3h15a3 3 0 003-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 00-3-3h-15zm15 1.5a1.5 1.5 0 011.5 1.5v6a1.5 1.5 0 01-1.5 1.5h-15a1.5 1.5 0 01-1.5-1.5v-6a1.5 1.5 0 011.5-1.5h15z"
-        clipRule="evenodd"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 9h16.5m-16.5 6.75h16.5"
       />
     </svg>
   );
@@ -69,14 +74,11 @@ function EditTask({
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      fill="currentColor"
-      className="w-6 h-6 text-green-700"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-5 h-5 text-green-600"
     >
-      <path
-        fillRule="evenodd"
-        d="M.75 9.75a3 3 0 013-3h15a3 3 0 013 3v.038c.856.173 1.5.93 1.5 1.837v2.25c0 .907-.644 1.664-1.5 1.838v.037a3 3 0 01-3 3h-15a3 3 0 01-3-3v-6zm19.5 0a1.5 1.5 0 00-1.5-1.5h-15a1.5 1.5 0 00-1.5 1.5v6a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-6z"
-        clipRule="evenodd"
-      />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
     </svg>
   );
 
@@ -98,13 +100,13 @@ function EditTask({
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth="1.5"
+            stroke-width="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            class="w-6 h-6"
           >
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              stroke-linecap="round"
+              stroke-linejoin="round"
               d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
             />
           </svg>
@@ -118,7 +120,17 @@ function EditTask({
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              // PATCH REQUEST
+              // dispatch(
+              //   updateTask({
+              //     project_id: parseInt(projectId),
+              //     task_id: taskId,
+              //     modifiedTask: {
+              //       title: title,
+              //       description: description,
+              //     },
+              //   })
+              // );
+              // POST REQUEST
               patchTask(
                 currentUserId,
                 selectedProject,

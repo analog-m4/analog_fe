@@ -10,7 +10,7 @@ function Account({ userStatus }) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="nav flex justify-center sm:w-1/3 md:w-1/3 gap-2">
+      <div className="account nav flex justify-center sm:w-1/3 md:w-1/3 gap-2">
         {userStatus === false ? (
           <>
             <div
