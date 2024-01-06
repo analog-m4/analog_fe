@@ -6,7 +6,6 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../reducers/user";
 import { setError } from "../../reducers/error";
-import { toggleColor } from "../../reducers/appColor";
 import Header from "../Header/Header";
 import Error from "../Error/Error";
 
@@ -57,7 +56,6 @@ function App() {
           userStatus={userStatus}
           // user={user}
         />
-        <button>Toggle Dark Mode</button>
         <Routes>
           <Route
             path="/"

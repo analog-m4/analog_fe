@@ -1,16 +1,23 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import sampleAvatar from "../../images/sample-avatar.png";
 import { useNavigate } from "react-router-dom";
+import { toggleColor } from "../../reducers/appColor";
 
 function Account({ userStatus }) {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user.attributes);
+  const appColor = useSelector((state) => state.appColor.appColor);
   const navigate = useNavigate();
 
   if (!user) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="nav flex justify-center sm:w-1/3 md:w-1/3 gap-2">
+      <div
+        className={`nav flex justify-center sm:w-1/3 md:w-1/3 gap-2 ${
+          appColor === "dark" && "dark"
+        }`}
+      >
         {userStatus === false ? (
           <>
             <div
@@ -21,6 +28,12 @@ function Account({ userStatus }) {
             </div>
             <div className="join-btn text-xs text-white flex items-center font-lato bg-purple-600 h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500 active:bg-purple-600">
               JOIN NOW
+            </div>
+            <div
+              className="toggle text-xs text-black flex items-center font-lato bg-white h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500 active:bg-purple-600 dark:bg-darkBG2 dark:text-darkText"
+              onClick={() => dispatch(toggleColor())}
+            >
+              {appColor === "light" ? "LGT" : "DRK"}
             </div>
           </>
         ) : (

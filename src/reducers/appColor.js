@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialStateValue = {
-  appColor: "light",
+  appColor: "dark",
 };
 
 export const appColorSlice = createSlice({
@@ -17,6 +17,6 @@ export const appColorSlice = createSlice({
   },
 });
 
-export const { setColor } = appColorSlice.actions;
+export const { toggleColor } = appColorSlice.actions;
 
 export default appColorSlice.reducer;
