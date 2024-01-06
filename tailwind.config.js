@@ -9,7 +9,11 @@ module.exports = {
       },
       colors: {
         cream: "#FFF6F6",
-        dark: "#1F2937",
+        darkBG: "#171717",
+        darkBG2: "#8d8c8d",
+      },
+      textColor: {
+        darkText: "#ffffff",
       },
     },
   },

@@ -19,6 +19,7 @@ function App() {
   const user = useSelector((state) => state.user.user.attributes);
   const error = useSelector((state) => state.error.error);
 
+
   useEffect(() => {
     fetchData()
       .then((data) => {
@@ -40,7 +41,7 @@ function App() {
   }
 
   return error ? (
-    <div className="bg-cream font-lato dark:bg-dark h-screen">
+    <div className="bg-cream font-lato dark:bg-darkBG h-screen">
       <Header
         userStatus={userStatus}
         // user={user}
@@ -49,7 +50,7 @@ function App() {
     </div>
   ) : (
     <div className="dark">
-      <div className="bg-cream font-lato dark:bg-dark h-screen">
+      <div className="bg-cream font-lato dark:bg-darkBG dark:text-darkText h-screen">
         <Header
           userStatus={userStatus}
           // user={user}
