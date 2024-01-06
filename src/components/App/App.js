@@ -6,6 +6,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../reducers/user";
 import { setError } from "../../reducers/error";
+import { toggleColor } from "../../reducers/appColor";
 import Header from "../Header/Header";
 import Error from "../Error/Error";
 
@@ -18,7 +19,8 @@ function App() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user.attributes);
   const error = useSelector((state) => state.error.error);
-
+  const appColor = useSelector((state) => state.appColor.appColor);
+  console.log(appColor);
 
   useEffect(() => {
     fetchData()
@@ -49,7 +51,7 @@ function App() {
       <Error />
     </div>
   ) : (
-    <div className="dark">
+    <div className={appColor}>
       <div className="bg-cream font-lato dark:bg-darkBG dark:text-darkText h-screen">
         <Header
           userStatus={userStatus}
