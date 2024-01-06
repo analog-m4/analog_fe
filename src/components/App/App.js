@@ -13,6 +13,8 @@ function App() {
   const dispatch = useDispatch();
   const [userStatus, setUserStatus] = useState(false);
   // const [user, setUser] = useState({});
+  const [darkMode, setDarkMode] = useState(true);
+
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user.attributes);
   const error = useSelector((state) => state.error.error);
@@ -36,8 +38,9 @@ function App() {
     setUserStatus(!userStatus);
     navigate("/projects");
   }
+
   return error ? (
-    <div className="bg-cream font-lato">
+    <div className="bg-cream font-lato dark:bg-dark h-screen">
       <Header
         userStatus={userStatus}
         // user={user}
@@ -45,24 +48,30 @@ function App() {
       <Error />
     </div>
   ) : (
-    <div className="bg-cream font-lato">
-      <Header
-        userStatus={userStatus}
-        // user={user}
-      />
-      <Routes>
-        <Route path="/" element={<Welcome handleLogin={handleLogin} />}></Route>
-        {/* <Route path="/:user_id/:project_id" element={<ProjectBoard userStatus={userStatus} />}></Route> */}
-        <Route
-          path="/projects"
-          element={<Dashboard userStatus={userStatus} />}
-        ></Route>
-        <Route
-          path="/project/:id"
-          element={<Dashboard userStatus={userStatus} />}
-        ></Route>
-        <Route path="*" element={<Error />}></Route>
-      </Routes>
+    <div className="dark">
+      <div className="bg-cream font-lato dark:bg-dark h-screen">
+        <Header
+          userStatus={userStatus}
+          // user={user}
+        />
+        <button>Toggle Dark Mode</button>
+        <Routes>
+          <Route
+            path="/"
+            element={<Welcome handleLogin={handleLogin} />}
+          ></Route>
+          {/* <Route path="/:user_id/:project_id" element={<ProjectBoard userStatus={userStatus} />}></Route> */}
+          <Route
+            path="/projects"
+            element={<Dashboard userStatus={userStatus} />}
+          ></Route>
+          <Route
+            path="/project/:id"
+            element={<Dashboard userStatus={userStatus} />}
+          ></Route>
+          <Route path="*" element={<Error />}></Route>
+        </Routes>
+      </div>
     </div>
   );
 }
