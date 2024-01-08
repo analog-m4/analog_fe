@@ -26,12 +26,12 @@ function Dashboard({ userStatus }) {
   });
 
   return (
-    <div>
+    <div className={appColor}>
       <div className={`sm:flex h-auto w-full`}>
-        <div className={`sm:w-1/4 md:w-3/12 sm:ml-5 sm:mr-5 ${appColor}`}>
+        <div className={`sm:w-1/4 md:w-3/12 sm:ml-5 sm:mr-5`}>
           {/* this line */}
           <div
-            className="dashboard w-full p-3 light:bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-darkBG2 dark:text-darkText"
+            className="dashboard w-full p-3 light:bg-white dark:bg-darkBG2 dark:text-darkText border border-gray-200 rounded-lg shadow-sm "
             style={{ maxHeight: "545px", overflowY: "auto" }}
           >
             <div className="projects font-bold text-gray-900 border-b pb-1 mb-1 font-fjalla text-xl dark:text-darkText">
