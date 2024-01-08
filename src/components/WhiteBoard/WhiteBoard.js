@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import createSocket from "../utils/websocket";
 
 function WhiteBoard() {
+  const appColor = useSelector((state) => state.appColor.appColor);
   const socket = createSocket();
   var isDrawing = false;
   var lastX = 0;
@@ -53,7 +55,7 @@ function WhiteBoard() {
     context = ctx;
     remoteContext = canvas.getContext("2d");
 
-    ctx.fillStyle = "white";
+    ctx.fillStyle = `${appColor === "light" ? "white" : "#8d8c8d"}`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     canvas.addEventListener("mousedown", startDrawing);
@@ -68,7 +70,7 @@ function WhiteBoard() {
       canvas.removeEventListener("mousemove", draw);
       socket.removeEventListener("message", received);
     };
-  }, [socket]);
+  }, [socket, appColor]);
 
   function startDrawing(event) {
     isDrawing = true;
@@ -143,7 +145,7 @@ function WhiteBoard() {
         id="canvas"
         width="865"
         height="450"
-        className="rounded-2xl border-gray-200 shadow-sm dark:bg-blue"
+        className="rounded-2xl border-gray-200 shadow-sm"
       ></canvas>
     </div>
   );
