@@ -72,7 +72,7 @@ function FileUpload() {
     <div className="files-container flex flex-col pl-2mt-4 mb-3 sm:mt-5 sm:mb-5">
       <label
         htmlFor="formFile"
-        className="form-label font-bold text-gray-900 border-b pb-1 mb-2 ml-1 font-fjalla text-xl"
+        className="form-label font-bold text-gray-900 border-b pb-1 mb-2 ml-1 font-fjalla text-xl "
       >
         Files
       </label>
