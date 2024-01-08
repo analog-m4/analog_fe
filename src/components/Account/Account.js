@@ -47,6 +47,7 @@ function Account({ userStatus }) {
                 type="checkbox"
                 value="synthwave"
                 className="toggle theme-controller"
+                defaultChecked={true}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -143,7 +143,7 @@ function WhiteBoard() {
         id="canvas"
         width="865"
         height="450"
-        className="rounded-2xl border-gray-200 shadow-sm"
+        className="rounded-2xl border-gray-200 shadow-sm dark:bg-blue"
       ></canvas>
     </div>
   );
