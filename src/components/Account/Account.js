@@ -14,9 +14,7 @@ function Account({ userStatus }) {
   } else {
     return (
       <div
-        className={`nav flex justify-center sm:w-1/3 md:w-1/3 gap-2 ${
-          appColor === "dark" && "dark"
-        }`}
+        className={`nav flex justify-center sm:w-1/3 md:w-1/3 gap-2`}
       >
         {userStatus === false ? (
           <>
@@ -30,7 +28,7 @@ function Account({ userStatus }) {
               JOIN NOW
             </div>
             <div
-              className="toggle text-xs text-black flex items-center font-lato bg-white h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500 active:bg-purple-600 dark:bg-darkBG2 dark:text-darkText"
+              className="toggle text-xs flex items-center font-lato h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer hover:bg-purple-500 active:bg-purple-600 light:text-black light:bg-black  "
               onClick={() => dispatch(toggleColor())}
             >
               {appColor === "light" ? "LGT" : "DRK"}
