@@ -56,6 +56,7 @@ function WhiteBoard() {
     remoteContext = canvas.getContext("2d");
 
     ctx.fillStyle = `${appColor === "light" ? "white" : "#8d8c8d"}`;
+    context.strokeStyle = `${appColor === "light" ? "black" : "white"}`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     canvas.addEventListener("mousedown", startDrawing);
