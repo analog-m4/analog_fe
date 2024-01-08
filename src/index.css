@@ -12,5 +12,6 @@
 } */
 
 * {
-  @apply transition-colors duration-200;
+  transition-duration: 400ms;
+  transition-property: background-color;
 }
