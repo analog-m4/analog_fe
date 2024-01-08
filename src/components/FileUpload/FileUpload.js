@@ -72,11 +72,11 @@ function FileUpload() {
     <div className="files-container flex flex-col pl-2mt-4 mb-3 sm:mt-5 sm:mb-5">
       <label
         htmlFor="formFile"
-        className="form-label font-bold text-gray-900 border-b pb-1 mb-2 ml-1 font-fjalla text-xl "
+        className="form-label font-bold text-gray-900 border-b pb-1 mb-2 ml-1 font-fjalla text-xl dark:text-white"
       >
         Files
       </label>
-      <div className="p-3 sm:p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
+      <div className="p-3 sm:p-3 border border-gray-200 rounded-lg shadow-sm dark:bg-darkBG2 light:bg-white">
         <div className="upload-file flex">
           <input
             className="form-control flex"
@@ -85,7 +85,7 @@ function FileUpload() {
             onChange={handleFileChange}
           />
           <div
-            className="upload-file-btn flex cursor-pointer sm:pt-2 pl-2"
+            className="upload-file-btn flex cursor-pointer sm:pt-2 pl-2 "
             onClick={handleUpload}
           >
             <svg
@@ -94,7 +94,7 @@ function FileUpload() {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-6 h-6 dark:text-white"
             >
               <path
                 strokeLinecap="round"
