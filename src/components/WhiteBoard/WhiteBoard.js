@@ -15,12 +15,10 @@ function WhiteBoard() {
   var remoteLastY = 0;
 
   function received(data) {
-    // console.log("Receiving Message", data)
     const jsonData = JSON.parse(data.data);
     const received_message = jsonData.message;
 
     if (!received_message) {
-      // console.error('Invalid data received from the server:', data);
       return;
     }
 
@@ -28,11 +26,11 @@ function WhiteBoard() {
       received_message["state"] === "start" ||
       received_message["state"] === "stop"
     ) {
-      // console.log("Info data", data)
       remoteLastX = received_message["x"];
       remoteLastY = received_message["y"];
       if (received_message["state"] === "start") {
         remoteContext.strokeStyle = received_message["color"];
+        remoteContext.lineWidth = received_message["line"];
       }
       return;
     }
@@ -54,7 +52,6 @@ function WhiteBoard() {
   useEffect(() => {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-    // Set up the canvas and event listeners
     context = ctx;
     remoteContext = canvas.getContext("2d");
 
@@ -78,31 +75,44 @@ function WhiteBoard() {
 
   function startDrawing(event) {
     isDrawing = true;
+    const canvas = document.getElementById('canvas');
+    var mousePos = getMousePos(canvas, event);
+  
     const color = document.getElementById("colorPicker").value;
+    const line = document.getElementById("lineSize").value;
+  
     context.strokeStyle = color;
-    lastX = event.offsetX;
-    lastY = event.offsetY;
+    context.lineWidth = line;
+    lastX = mousePos.x;
+    lastY = mousePos.y;
     lastSent = Date.now();
-    sendDrawData(event.offsetX, event.offsetY, "start", color);
+    sendDrawData(mousePos.x, mousePos.y, "start", color, line);
   }
 
   function stopDrawing(event) {
     isDrawing = false;
-    lastX = event.offsetX;
-    lastY = event.offsetY;
+    const canvas = document.getElementById('canvas');
+    var mousePos = getMousePos(canvas, event);
+  
+    lastX = mousePos.x;
+    lastY = mousePos.y;
     lastSent = Date.now();
-    sendDrawData(event.offsetX, event.offsetY, "stop");
+    sendDrawData(mousePos.x, mousePos.y, "stop");
   }
+  
 
   function draw(event) {
     if (!isDrawing) return;
-
+  
+    const canvas = document.getElementById('canvas');
+    var mousePos = getMousePos(canvas, event);
+  
     if (Date.now() - lastSent > 10) {
-      sendDrawData(event.offsetX, event.offsetY, "drawing");
+      sendDrawData(mousePos.x, mousePos.y, "drawing");
       lastSent = Date.now();
     }
-    drawData(event.offsetX, event.offsetY);
-  }
+    drawData(mousePos.x, mousePos.y);
+  }  
 
   function drawData(x, y) {
     context.lineJoin = "round";
@@ -119,30 +129,45 @@ function WhiteBoard() {
     lastY = y;
   }
 
-  function sendDrawData(x, y, state, color = "#000000") {
+  function sendDrawData(x, y, state, color = "#000000", line = 1) {
     const message = {
       command: "message",
       identifier: JSON.stringify({ id: 1, channel: "DrawChannel" }),
-      data: JSON.stringify({ action: "draw", x, y, state, color }),
+      data: JSON.stringify({ action: "draw", x, y, state, color, line }),
     };
 
     const jsonString = JSON.stringify(message);
     socket.send(jsonString);
   }
 
+  function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect(); 
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+  }
+
   return (
     <div className="whiteboard flex flex-col sm:w-11/12 md:w-10/12 pb-5 mt-4 ">
-      <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-xl ml-1 border-b w-100 mb-2 dark:text-white">
+      <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-xl ml-1 border-b w-full mb-2 dark:text-white">
         Whiteboard
       </div>
-      <input type="color" id="colorPicker" defaultValue="#000000" />
-      <canvas
-        id="canvas"
-        width="865"
-        height="450"
-        className="rounded-2xl border-gray-200 shadow-sm"
-      ></canvas>
+      <div style={{ width: '865px', height: '450px' }}>
+        <canvas
+          id="canvas"
+          width="865"
+          height="450"
+          className="rounded-2xl border-gray-200 shadow-sm"
+          style={{ width: '865px', height: '450px' }}
+        ></canvas>
+      </div>
+      <div>
+        <input type="color" id="colorPicker" defaultValue="#000000" />
+        <input type="range" id="lineSize" min="1" max="10" defaultValue="1" />
+      </div>
     </div>
   );
+  
 }
 export default WhiteBoard;
