@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import createSocket from "../utils/websocket";
 
 function WhiteBoard() {
+  const appColor = useSelector((state) => state.appColor.appColor);
   const socket = createSocket();
   var isDrawing = false;
   var lastX = 0;
@@ -53,7 +55,8 @@ function WhiteBoard() {
     context = ctx;
     remoteContext = canvas.getContext("2d");
 
-    ctx.fillStyle = "white";
+    ctx.fillStyle = `${appColor === "light" ? "white" : "#8d8c8d"}`;
+    context.strokeStyle = `${appColor === "light" ? "black" : "white"}`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     canvas.addEventListener("mousedown", startDrawing);
@@ -68,7 +71,7 @@ function WhiteBoard() {
       canvas.removeEventListener("mousemove", draw);
       socket.removeEventListener("message", received);
     };
-  }, [socket]);
+  }, [socket, appColor]);
 
   function startDrawing(event) {
     isDrawing = true;
@@ -135,8 +138,8 @@ function WhiteBoard() {
   }
 
   return (
-    <div className="whiteboard flex flex-col sm:w-11/12 md:w-10/12 pb-5 mt-4">
-      <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-xl ml-1 border-b w-100 mb-2">
+    <div className="whiteboard flex flex-col sm:w-11/12 md:w-10/12 pb-5 mt-4 ">
+      <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-xl ml-1 border-b w-100 mb-2 dark:text-white">
         Whiteboard
       </div>
       <canvas

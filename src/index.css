@@ -10,3 +10,8 @@
   height: 100%;
   background-color: #fff6f6;
 } */
+
+* {
+  transition-duration: 400ms;
+  transition-property: background-color;
+}
