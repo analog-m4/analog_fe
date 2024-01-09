@@ -13,6 +13,9 @@ function WhiteBoard() {
   var remoteContext = null;
   var remoteLastX = 0;
   var remoteLastY = 0;
+  var isErasing = false;
+  const defaultColor = "#000000";
+  const backgroundColor = appColor === "light" ? "white" : "#8d8c8d";
 
   function received(data) {
     const jsonData = JSON.parse(data.data);
@@ -36,6 +39,12 @@ function WhiteBoard() {
     }
 
     drawRemoteData(received_message["x"], received_message["y"]);
+  }
+
+  function toggleEraser() {
+    isErasing = !isErasing;
+    context.strokeStyle = isErasing ? backgroundColor : defaultColor;
+    context.lineWidth = 25
   }
 
   function drawRemoteData(x, y) {
@@ -65,6 +74,8 @@ function WhiteBoard() {
 
     socket.addEventListener("message", received);
 
+    document.getElementById('eraserButton').addEventListener('click', toggleEraser);
+
     return () => {
       canvas.removeEventListener("mousedown", startDrawing);
       canvas.removeEventListener("mouseup", stopDrawing);
@@ -78,16 +89,16 @@ function WhiteBoard() {
     const canvas = document.getElementById('canvas');
     var mousePos = getMousePos(canvas, event);
   
-    const color = document.getElementById("colorPicker").value;
-    const line = document.getElementById("lineSize").value;
+    if (!isErasing) {
+      context.strokeStyle = document.getElementById("colorPicker").value;
+      context.lineWidth = document.getElementById("lineSize").value;
+    }
   
-    context.strokeStyle = color;
-    context.lineWidth = line;
     lastX = mousePos.x;
     lastY = mousePos.y;
     lastSent = Date.now();
-    sendDrawData(mousePos.x, mousePos.y, "start", color, line);
-  }
+    sendDrawData(mousePos.x, mousePos.y, "start", context.strokeStyle, context.lineWidth);
+  }  
 
   function stopDrawing(event) {
     isDrawing = false;
@@ -164,7 +175,8 @@ function WhiteBoard() {
       </div>
       <div>
         <input type="color" id="colorPicker" defaultValue="#000000" />
-        <input type="range" id="lineSize" min="1" max="10" defaultValue="1" />
+        <input type="range" id="lineSize" min="1" max="20" defaultValue="1" />
+        <button id="eraserButton">Eraser</button>
       </div>
     </div>
   );
