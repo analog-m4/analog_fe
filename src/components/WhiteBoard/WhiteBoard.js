@@ -31,6 +31,9 @@ function WhiteBoard() {
       // console.log("Info data", data)
       remoteLastX = received_message["x"];
       remoteLastY = received_message["y"];
+      if (received_message["state"] === "start") {
+        remoteContext.strokeStyle = received_message["color"];
+      }
       return;
     }
 
@@ -75,18 +78,16 @@ function WhiteBoard() {
 
   function startDrawing(event) {
     isDrawing = true;
-    console.log("startDrawing called");
-    console.log("isDrawing:", isDrawing);
+    const color = document.getElementById("colorPicker").value;
+    context.strokeStyle = color;
     lastX = event.offsetX;
     lastY = event.offsetY;
     lastSent = Date.now();
-    sendDrawData(event.offsetX, event.offsetY, "start");
+    sendDrawData(event.offsetX, event.offsetY, "start", color);
   }
 
   function stopDrawing(event) {
     isDrawing = false;
-    console.log("stopDrawing called");
-    console.log("isDrawing:", isDrawing);
     lastX = event.offsetX;
     lastY = event.offsetY;
     lastSent = Date.now();
@@ -95,13 +96,7 @@ function WhiteBoard() {
 
   function draw(event) {
     if (!isDrawing) return;
-    console.log("drawing");
-    console.log("isDrawing:", isDrawing);
-    console.log("lastX:", lastX);
-    console.log("lastY:", lastY);
 
-    // Send the coordinates to the server every 10ms
-    // time.now() returns the current time in milliseconds
     if (Date.now() - lastSent > 10) {
       sendDrawData(event.offsetX, event.offsetY, "drawing");
       lastSent = Date.now();
@@ -112,25 +107,23 @@ function WhiteBoard() {
   function drawData(x, y) {
     context.lineJoin = "round";
     context.lineCap = "round";
-    // start from
     context.beginPath();
 
-    // go to the old position
+
     context.moveTo(lastX, lastY);
-    // go to the new position
+
     context.lineTo(x, y);
     context.stroke();
 
-    // set the new position as the current one
     lastX = x;
     lastY = y;
   }
 
-  function sendDrawData(x, y, state) {
+  function sendDrawData(x, y, state, color = "#000000") {
     const message = {
       command: "message",
       identifier: JSON.stringify({ id: 1, channel: "DrawChannel" }),
-      data: JSON.stringify({ action: "draw", x, y, state }),
+      data: JSON.stringify({ action: "draw", x, y, state, color }),
     };
 
     const jsonString = JSON.stringify(message);
@@ -142,6 +135,7 @@ function WhiteBoard() {
       <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-xl ml-1 border-b w-100 mb-2 dark:text-white">
         Whiteboard
       </div>
+      <input type="color" id="colorPicker" defaultValue="#000000" />
       <canvas
         id="canvas"
         width="865"
