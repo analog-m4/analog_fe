@@ -28,7 +28,7 @@ function Project({ title, id, color }) {
             className="project-color self-center sm:w-2 sm:h-2 md:w-3 md:h-3 border-600 p-1 mr-1 border bg-600 rounded-full"
             style={circleStyle}
           ></div>
-          <div>{title}</div>
+          <div className="project-title">{title}</div>
         </div>
       </NavLink>
     </div>
