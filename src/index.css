@@ -1,12 +1,17 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* * {
   border: 1px solid green;
 } */
 
-html {
+/* html {
   height: 100%;
-  background-color: #FFF6F6;
+  background-color: #fff6f6;
+} */
+
+* {
+  transition-duration: 400ms;
+  transition-property: background-color;
 }
