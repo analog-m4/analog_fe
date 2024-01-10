@@ -21,6 +21,12 @@ describe("Analog pages on render", () => {
       .get(".demo-btn")
       .click()
       .get(".dashboard")
-      .should("have.css", "background-color", "rgba(0, 0, 0, 0)");
+      .should("have.css", "background-color", "rgba(0, 0, 0, 0)")
+      .get(".projects")
+      .should("have.css", "color", "rgb(17, 24, 39)")
+      .get(".toggle")
+      .click()
+      .get(".projects")
+      .should("have.css", "color", "rgb(255, 255, 255)");
   });
 });
