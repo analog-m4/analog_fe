@@ -13,14 +13,15 @@ function WhiteBoard() {
   var remoteContext = null;
   var remoteLastX = 0;
   var remoteLastY = 0;
+  var isErasing = false;
+  const defaultColor = "#000000";
+  const backgroundColor = appColor === "light" ? "white" : "#8d8c8d";
 
   function received(data) {
-    // console.log("Receiving Message", data)
     const jsonData = JSON.parse(data.data);
     const received_message = jsonData.message;
 
     if (!received_message) {
-      // console.error('Invalid data received from the server:', data);
       return;
     }
 
@@ -28,13 +29,22 @@ function WhiteBoard() {
       received_message["state"] === "start" ||
       received_message["state"] === "stop"
     ) {
-      // console.log("Info data", data)
       remoteLastX = received_message["x"];
       remoteLastY = received_message["y"];
+      if (received_message["state"] === "start") {
+        remoteContext.strokeStyle = received_message["color"];
+        remoteContext.lineWidth = received_message["line"];
+      }
       return;
     }
 
     drawRemoteData(received_message["x"], received_message["y"]);
+  }
+
+  function toggleEraser() {
+    isErasing = !isErasing;
+    context.strokeStyle = isErasing ? backgroundColor : defaultColor;
+    context.lineWidth = 25
   }
 
   function drawRemoteData(x, y) {
@@ -51,7 +61,6 @@ function WhiteBoard() {
   useEffect(() => {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-    // Set up the canvas and event listeners
     context = ctx;
     remoteContext = canvas.getContext("2d");
 
@@ -84,6 +93,8 @@ function WhiteBoard() {
 
     socket.addEventListener("message", received);
 
+    document.getElementById('eraserButton').addEventListener('click', toggleEraser);
+
     return () => {
       window.addEventListener("resize", updateCanvasSize);
       canvas.removeEventListener("mousedown", startDrawing);
@@ -95,66 +106,77 @@ function WhiteBoard() {
 
   function startDrawing(event) {
     isDrawing = true;
-    console.log("startDrawing called");
-    console.log("isDrawing:", isDrawing);
-    lastX = event.offsetX;
-    lastY = event.offsetY;
+    const canvas = document.getElementById('canvas');
+    var mousePos = getMousePos(canvas, event);
+  
+    if (!isErasing) {
+      context.strokeStyle = document.getElementById("colorPicker").value;
+      context.lineWidth = document.getElementById("lineSize").value;
+    }
+  
+    lastX = mousePos.x;
+    lastY = mousePos.y;
     lastSent = Date.now();
-    sendDrawData(event.offsetX, event.offsetY, "start");
-  }
+    sendDrawData(mousePos.x, mousePos.y, "start", context.strokeStyle, context.lineWidth);
+  }  
 
   function stopDrawing(event) {
     isDrawing = false;
-    console.log("stopDrawing called");
-    console.log("isDrawing:", isDrawing);
-    lastX = event.offsetX;
-    lastY = event.offsetY;
+    const canvas = document.getElementById('canvas');
+    var mousePos = getMousePos(canvas, event);
+  
+    lastX = mousePos.x;
+    lastY = mousePos.y;
     lastSent = Date.now();
-    sendDrawData(event.offsetX, event.offsetY, "stop");
+    sendDrawData(mousePos.x, mousePos.y, "stop");
   }
+  
 
   function draw(event) {
     if (!isDrawing) return;
-    console.log("drawing");
-    console.log("isDrawing:", isDrawing);
-    console.log("lastX:", lastX);
-    console.log("lastY:", lastY);
-
-    // Send the coordinates to the server every 10ms
-    // time.now() returns the current time in milliseconds
+  
+    const canvas = document.getElementById('canvas');
+    var mousePos = getMousePos(canvas, event);
+  
     if (Date.now() - lastSent > 10) {
-      sendDrawData(event.offsetX, event.offsetY, "drawing");
+      sendDrawData(mousePos.x, mousePos.y, "drawing");
       lastSent = Date.now();
     }
-    drawData(event.offsetX, event.offsetY);
-  }
+    drawData(mousePos.x, mousePos.y);
+  }  
 
   function drawData(x, y) {
     context.lineJoin = "round";
     context.lineCap = "round";
-    // start from
     context.beginPath();
 
-    // go to the old position
+
     context.moveTo(lastX, lastY);
-    // go to the new position
+
     context.lineTo(x, y);
     context.stroke();
 
-    // set the new position as the current one
     lastX = x;
     lastY = y;
   }
 
-  function sendDrawData(x, y, state) {
+  function sendDrawData(x, y, state, color = "#000000", line = 1) {
     const message = {
       command: "message",
       identifier: JSON.stringify({ id: 1, channel: "DrawChannel" }),
-      data: JSON.stringify({ action: "draw", x, y, state }),
+      data: JSON.stringify({ action: "draw", x, y, state, color, line }),
     };
 
     const jsonString = JSON.stringify(message);
     socket.send(jsonString);
+  }
+
+  function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect(); 
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
   }
 
   return (
@@ -162,13 +184,22 @@ function WhiteBoard() {
       <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-2xl ml-1 border-b w-100 mb-2 dark:text-white">
         Whiteboard
       </div>
-      <canvas
-        id="canvas"
-        width="865"
-        height="450"
-        className="rounded-2xl border-gray-200 shadow-sm"
-      ></canvas>
+      <div style={{ width: '865px', height: '450px' }}>
+        <canvas
+          id="canvas"
+          width="865"
+          height="450"
+          className="rounded-2xl border-gray-200 shadow-sm"
+          style={{ width: '865px', height: '450px' }}
+        ></canvas>
+      </div>
+      <div>
+        <input type="color" id="colorPicker" defaultValue="#000000" />
+        <input type="range" id="lineSize" min="1" max="20" defaultValue="1" />
+        <button id="eraserButton">Eraser</button>
+      </div>
     </div>
   );
+  
 }
 export default WhiteBoard;
