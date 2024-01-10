@@ -55,10 +55,29 @@ function WhiteBoard() {
     context = ctx;
     remoteContext = canvas.getContext("2d");
 
-    ctx.fillStyle = `${appColor === "light" ? "white" : "#636363"}`;
-    context.strokeStyle = `${appColor === "light" ? "black" : "white"}`;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    function updateCanvasSize() {
+      const parent = canvas.parentElement;
 
+      // Set maximum width and height for the canvas
+      const maxWidth = 1200;
+      const maxHeight = 600;
+
+      // Calculate new width and height based on the parent size
+      const newWidth = Math.min(parent.clientWidth, maxWidth);
+      const newHeight = Math.min(parent.clientHeight, maxHeight);
+
+      // Set canvas size
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+
+      ctx.fillStyle = `${appColor === "light" ? "white" : "#636363"}`;
+      context.strokeStyle = `${appColor === "light" ? "black" : "white"}`;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    updateCanvasSize();
+
+    window.addEventListener("resize", updateCanvasSize);
     canvas.addEventListener("mousedown", startDrawing);
     canvas.addEventListener("mouseup", stopDrawing);
     canvas.addEventListener("mousemove", draw);
@@ -66,6 +85,7 @@ function WhiteBoard() {
     socket.addEventListener("message", received);
 
     return () => {
+      window.addEventListener("resize", updateCanvasSize);
       canvas.removeEventListener("mousedown", startDrawing);
       canvas.removeEventListener("mouseup", stopDrawing);
       canvas.removeEventListener("mousemove", draw);
