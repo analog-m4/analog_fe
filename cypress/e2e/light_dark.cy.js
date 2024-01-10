@@ -17,6 +17,10 @@ describe("Analog pages on render", () => {
       .get(".toggle")
       .click()
       .get(".app-container")
-      .should("have.class", "light:bg-cream");
+      .should("have.class", "light:bg-cream")
+      .get(".demo-btn")
+      .click()
+      .get(".dashboard")
+      .should("have.css", "background-color", "rgba(0, 0, 0, 0)");
   });
 });
