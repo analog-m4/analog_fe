@@ -15,7 +15,7 @@ function WhiteBoard() {
   var remoteLastY = 0;
   var isErasing = false;
   const defaultColor = "#000000";
-  const backgroundColor = appColor === "light" ? "white" : "#8d8c8d";
+  const backgroundColor = appColor === "light" ? "white" : "#636363";
 
   function received(data) {
     const jsonData = JSON.parse(data.data);
