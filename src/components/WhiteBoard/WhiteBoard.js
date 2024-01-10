@@ -181,7 +181,7 @@ function WhiteBoard() {
 
   return (
     <div className="whiteboard flex flex-col sm:w-11/12 md:w-10/12 pb-5 mt-4 ">
-      <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-xl ml-1 border-b w-full mb-2 dark:text-white">
+      <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-2xl ml-1 border-b w-full mb-2 dark:text-white">
         Whiteboard
       </div>
       <div style={{ width: '865px', height: '450px' }}>
