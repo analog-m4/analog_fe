@@ -8,7 +8,7 @@ describe("Analog pages on render", () => {
         fixture: "user",
       }
     );
-  });
+});
 
   it("Upon loading the page, you should see the application header, account information, and information about the application", () => {
     cy.visit("http://localhost:3000/")

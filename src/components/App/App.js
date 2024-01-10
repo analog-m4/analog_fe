@@ -51,7 +51,7 @@ function App() {
     </div>
   ) : (
     <div className={appColor}>
-      <div className="bg-cream font-lato dark:bg-darkBG dark:text-darkText h-screen">
+      <div className="app-container light:bg-cream font-lato dark:bg-darkBG dark:text-darkText h-screen">
         <Header
           userStatus={userStatus}
           // user={user}
