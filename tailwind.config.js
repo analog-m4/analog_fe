@@ -19,4 +19,9 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animated"), require("daisyui")],
   darkMode: "class",
+  variants: {
+    extend: {
+      backgroundColor: ["dark", "light"],
+    },
+  },
 };
