@@ -34,10 +34,10 @@ function Dashboard({ userStatus }) {
             className="dashboard w-full p-3 light:bg-white dark:bg-darkBG2 dark:text-darkText border border-gray-200 rounded-lg shadow-sm "
             style={{ maxHeight: "545px", overflowY: "auto" }}
           >
-            <div className="projects font-bold text-gray-900 border-b pb-1 mb-1 font-fjalla text-xl dark:text-darkText">
+            <div className="projects font-normal text-gray-900 border-b pb-1 mb-1 font-fjalla text-2xl dark:text-darkText">
               Projects
             </div>
-            <div className="project-buttons flex flex-col">{userProjects}</div>
+            <div className="project-buttons flex flex-col text-md font-light">{userProjects}</div>
             <AddProject />
           </div>
           <div className="flex">

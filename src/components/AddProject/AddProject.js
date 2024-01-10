@@ -42,7 +42,7 @@ function AddProject() {
   return (
     <>
       <div
-        className="add-project-btn flex text-gray-400 font-light text-md items-center cursor-pointer mt-2 hover:text-green-400 hover:font-normal dark:text-darkText"
+        className="add-project-btn flex text-gray-400 font-normal text-md items-center cursor-pointer mt-2 dark:text-darkText"
         onClick={handleShow}
       >
         <svg

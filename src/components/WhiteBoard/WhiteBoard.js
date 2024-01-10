@@ -55,7 +55,7 @@ function WhiteBoard() {
     context = ctx;
     remoteContext = canvas.getContext("2d");
 
-    ctx.fillStyle = `${appColor === "light" ? "white" : "#8d8c8d"}`;
+    ctx.fillStyle = `${appColor === "light" ? "white" : "#636363"}`;
     context.strokeStyle = `${appColor === "light" ? "black" : "white"}`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -139,7 +139,7 @@ function WhiteBoard() {
 
   return (
     <div className="whiteboard flex flex-col sm:w-11/12 md:w-10/12 pb-5 mt-4 ">
-      <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-xl ml-1 border-b w-100 mb-2 dark:text-white">
+      <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-2xl ml-1 border-b w-100 mb-2 dark:text-white">
         Whiteboard
       </div>
       <canvas
