@@ -9,14 +9,19 @@ module.exports = {
       },
       colors: {
         cream: "#FFF6F6",
-        darkBG: "#171717",
-        darkBG2: "#8d8c8d",
+        darkBG: "#1d232a",
+        darkBG2: "#191e23",
       },
       textColor: {
-        darkText: "#ffffff",
+        darkText: "#FFFFFF",
       },
     },
   },
   plugins: [require("tailwindcss-animated"), require("daisyui")],
   darkMode: "class",
+  variants: {
+    extend: {
+      backgroundColor: ["dark", "light"],
+    },
+  },
 };

@@ -25,7 +25,7 @@ function Project({ title, id, color }) {
           onClick={() => dispatch(setSelectedProject(id))}
         >
           <div
-            className="project-color self-center sm:w-2 sm:h-2 md:w-3 md:h-3 border-600 p-1 mr-1 border bg-600 rounded-full"
+            className="project-color self-center sm:w-4 sm:h-4 md:w-4 md:h- p-1 mr-1 rounded-full"
             style={circleStyle}
           ></div>
           <div className="project-title">{title}</div>

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 function FileUpload() {
   const [file, setFile] = useState(null);
   const baseUrl = "https://s3-microservice-3d025e97e722.herokuapp.com"; // Replace with AWS deployment line for deployment checks
+  const appColor = useSelector((state) => state.appColor.appColor);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -69,14 +71,18 @@ function FileUpload() {
   };
 
   return (
-    <div className="files-container flex flex-col pl-2mt-4 mb-3 sm:mt-5 sm:mb-5">
+    <div className="files-container flex flex-col pl-2 mt-4 mb-3 sm:mt-5 sm:mb-5">
       <label
         htmlFor="formFile"
-        className="form-label font-bold text-gray-900 border-b pb-1 mb-2 ml-1 font-fjalla text-xl dark:text-white"
+        className="form-label font-normal text-gray-900 border-b pb-1 mb-2 ml-1 font-fjalla text-2xl dark:text-white"
       >
         Files
       </label>
-      <div className="p-3 sm:p-3 border border-gray-200 rounded-lg shadow-sm dark:bg-darkBG2 light:bg-white">
+      <div
+        className={`p-3 sm:p-3 border border-gray-200 rounded-lg shadow-sm ${
+          appColor === "dark" ? "bg-dark" : "bg-white"
+        }`}
+      >
         <div className="upload-file flex">
           <input
             className="form-control flex"

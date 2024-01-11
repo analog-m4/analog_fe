@@ -42,7 +42,7 @@ function App() {
   }
 
   return error ? (
-    <div className="bg-cream font-lato dark:bg-darkBG h-screen">
+    <div className="bg-cream font-lato dark:bg-darkBG">
       <Header
         userStatus={userStatus}
         // user={user}
@@ -51,7 +51,7 @@ function App() {
     </div>
   ) : (
     <div className={appColor}>
-      <div className="app-container light:bg-cream font-lato dark:bg-darkBG dark:text-darkText h-screen">
+      <div className="font-lato bg-cream dark:bg-darkBG dark:text-darkText">
         <Header
           userStatus={userStatus}
           // user={user}
