@@ -13,20 +13,22 @@ describe("Analog pages on render", () => {
   it("The application showcases the correct color when light / dark mode is toggled, and the ui also follows such as work areas and text", () => {
     cy.visit("http://localhost:3000/")
       .get(".app-container")
-      .should("have.css", "background-color", "rgb(23, 23, 23)")
+      .should("have.css", "background-color", "rgb(29, 35, 42)")
       .get(".toggle")
       .click()
       .get(".app-container")
-      .should("have.class", "light:bg-cream")
+      .should("have.css", "background-color", "rgb(255, 246, 246)")
       .get(".demo-btn")
       .click()
       .get(".dashboard")
-      .should("have.css", "background-color", "rgba(0, 0, 0, 0)")
+      .should("have.css", "background-color", "rgb(255, 255, 255)")
       .get(".projects")
       .should("have.css", "color", "rgb(17, 24, 39)")
       .get(".toggle")
       .click()
       .get(".projects")
-      .should("have.css", "color", "rgb(255, 255, 255)");
+      .should("have.css", "color", "rgb(255, 255, 255)")
+      .get(".dashboard")
+      .should("have.css", "background-color", "rgb(29, 35, 42)");
   });
 });
