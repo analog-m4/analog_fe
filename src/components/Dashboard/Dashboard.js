@@ -1,4 +1,5 @@
 import Project from "../Project/Project";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import ProjectBoard from "../ProjectBoard/ProjectBoard";
 import WhiteBoard from "../WhiteBoard/WhiteBoard";
@@ -32,8 +33,8 @@ function Dashboard({ userStatus }) {
           {/* this line */}
           <div
             className={`dashboard w-full p-3 ${
-              appColor === "dark" ? "bg-dark" : "bg-white"
-            } dark:bg-darkBG2 dark:text-darkText border border-gray-200 rounded-lg shadow-sm`}
+              appColor === "dark" ? "bg-darkBG" : "bg-white"
+            }  dark:text-darkText border border-gray-200 rounded-lg shadow-sm`}
             style={{ maxHeight: "545px", overflowY: "auto" }}
           >
             <div className="projects font-normal text-gray-900 border-b pb-1 mb-1 font-fjalla text-2xl dark:text-darkText">

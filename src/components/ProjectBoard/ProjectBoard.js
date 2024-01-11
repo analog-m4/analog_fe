@@ -32,7 +32,7 @@ function ProjectBoard() {
         )}
         <div
           className={`flex h-3/4 sm:w-11/12 md:w-10/12 border border-gray-200 rounded-lg shadow-sm pl-3 sm:pl-3 md:pl-6 ${
-            appColor === "dark" ? "bg-dark" : "bg-white"
+            appColor === "dark" ? "bg-darkBG" : "bg-white"
           } dark:text-darkText`}
           style={{ maxHeight: "545px", overflowY: "auto" }}
         >

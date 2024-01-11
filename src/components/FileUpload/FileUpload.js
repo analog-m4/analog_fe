@@ -80,7 +80,7 @@ function FileUpload() {
       </label>
       <div
         className={`p-3 sm:p-3 border border-gray-200 rounded-lg shadow-sm ${
-          appColor === "dark" ? "bg-dark" : "bg-white"
+          appColor === "dark" ? "BG" : "bg-white"
         }`}
       >
         <div className="upload-file flex">
