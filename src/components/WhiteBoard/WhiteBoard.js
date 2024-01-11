@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import createSocket from "../utils/websocket";
+import eraserIcon from "../../images/eraser-icon.png"
 
 function WhiteBoard() {
   const appColor = useSelector((state) => state.appColor.appColor);
@@ -199,12 +200,12 @@ function WhiteBoard() {
           style={{ width: "865px", height: "450px" }}
         ></canvas>
       </div>
-      <div className="whiteboard-palette flex items-center justify-center p-3 gap-3">
+      <div className="whiteboard-palette flex justify-center p-3 gap-3">
         <div className="rounded-full">
           <input type="color" id="colorPicker" defaultValue="#000000" className="w-8 h-8"/>
         </div>
         <input type="range" id="lineSize" min="1" max="20" defaultValue="1" />
-        <button id="eraserButton">Eraser</button>
+        <button id="eraserButton"><img src={eraserIcon} className="w-9 h-9"/></button>
       </div>
     </div>
   );
