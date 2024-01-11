@@ -17,7 +17,7 @@ function Account({ userStatus }) {
         {userStatus === false ? (
           <>
             <div
-              className="demo-btn text-xs text-white flex items-center font-lato h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer bg-gray-900 hover:bg-gray-700 active:bg-gray-900"
+              className="demo-btn text-xs text-white flex items-center font-lato h-10 self-center pl-5 pr-5 rounded-3xl cursor-pointer bg-gray-700 hover:bg-gray-600 active:bg-gray-700"
               onClick={() => navigate("/projects")}
             >
               DEMO
