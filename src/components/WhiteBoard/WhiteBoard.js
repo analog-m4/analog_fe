@@ -191,13 +191,13 @@ function WhiteBoard() {
       <div className="whiteboard-title flex font-fjalla text-gray-900 self-start text-2xl ml-1 border-b w-full mb-2 dark:text-white">
         Whiteboard
       </div>
-      <div style={{ width: "865px", height: "450px" }}>
+      <div style={{ flex: 1, position: "relative" }}>
         <canvas
           id="canvas"
-          width="865"
-          height="450"
+          width="1200"
+          height="600"
           className="rounded-2xl border-gray-200 shadow-sm"
-          style={{ width: "865px", height: "450px" }}
+          style={{ width: "100%", height: "100%" }}
         ></canvas>
       </div>
       <div className="whiteboard-palette flex justify-center p-3 gap-3">
